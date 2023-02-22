@@ -15,7 +15,7 @@ import java.util.logging.Logger;
  * @author rania
  */
 public class DataSource {
-     private String url="jdbc:mysql://localhost:3306/myart";
+     private String url="jdbc:mysql://127.0.0.1:3306/myart";
     private String login="root";
     private String pwd="";
     private Connection cnx;
