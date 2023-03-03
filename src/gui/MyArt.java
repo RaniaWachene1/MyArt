@@ -22,11 +22,13 @@ import javafx.stage.Stage;
  * @author rania
  */
 public class MyArt extends Application {
-    
+    public static final String CURRENCY = "$";
 
      @Override
     public void start(Stage primaryStage) throws IOException {
-        FXMLLoader loader=new FXMLLoader(getClass().getResource("Galerie.fxml"));
+      //FXMLLoader loader=new FXMLLoader(getClass().getResource("Galerie.fxml"));
+       //FXMLLoader loader=new FXMLLoader(getClass().getResource("CategoryG.fxml"));
+ FXMLLoader loader=new FXMLLoader(getClass().getResource("MarketG.fxml"));
                             System.out.println(loader.getLocation());
         Parent root=loader.load();
          System.out.println("MyArt");

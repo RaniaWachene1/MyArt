@@ -43,12 +43,7 @@ public class Galerie {
 
     @Override
     public String toString() {
-        return "Galerie{" + "id_galerie=" + id_galerie + ", titre_galerie=" + titre_galerie + '}';
+        return  titre_galerie + ' ';
     }
-    
-    
-    
-    
-    
-    
+
 }

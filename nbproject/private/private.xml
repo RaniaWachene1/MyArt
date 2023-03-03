@@ -3,9 +3,15 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
-            <file>file:/C:/Users/rania/OneDrive/Documents/NetBeansProjects/MyArt/src/gui/Panier.fxml</file>
-            <file>file:/C:/Users/rania/OneDrive/Documents/NetBeansProjects/MyArt/src/gui/Galerie.fxml</file>
-            <file>file:/C:/Users/rania/OneDrive/Documents/NetBeansProjects/MyArt/src/gui/Accueil.fxml</file>
+            <file>file:/C:/Users/rania/OneDrive/Documents/NetBeansProjects/MyArt/src/service/ServiceArticle.java</file>
+            <file>file:/C:/Users/rania/OneDrive/Documents/NetBeansProjects/MyArt/src/service/IService.java</file>
+            <file>file:/C:/Users/rania/OneDrive/Documents/NetBeansProjects/MyArt/src/entite/Galerie.java</file>
+            <file>file:/C:/Users/rania/OneDrive/Documents/NetBeansProjects/MyArt/src/entite/Article.java</file>
+            <file>file:/C:/Users/rania/OneDrive/Documents/NetBeansProjects/MyArt/src/gui/MarketGController.java</file>
+            <file>file:/C:/Users/rania/OneDrive/Documents/NetBeansProjects/MyArt/src/gui/MyListener.java</file>
+            <file>file:/C:/Users/rania/OneDrive/Documents/NetBeansProjects/MyArt/src/gui/ArticleGController.java</file>
+            <file>file:/C:/Users/rania/OneDrive/Documents/NetBeansProjects/MyArt/src/gui/MyArt.java</file>
+            <file>file:/C:/Users/rania/OneDrive/Documents/NetBeansProjects/MyArt/src/gui/GalerieController.java</file>
         </group>
     </open-files>
 </project-private>

@@ -5,7 +5,9 @@
 package service;
 
 
+import entite.Article;
 import entite.Galerie;
+import entite.User;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -15,6 +17,8 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 import utils.DataSource;
 
 /**
@@ -147,17 +151,50 @@ public class ServiceGalerie implements IService<Galerie>{
             
             ResultSet rs=pst.executeQuery();
             if(rs.next())
-            {   System.out.println("Galierie Trouve");
+            {   System.out.println("done");
                 i= rs.getInt(1);
             }
 
         } catch (SQLException ex) {
             System.err.println(ex.getMessage());
-             System.out.println("galerie inExistenteé!");
+             System.out.println("error!");
         }
       return i;
   
     }
+  
+
+  
+  
+  
+  
+  
+  public ObservableList<Galerie> SearchBycateg(String ar) {
+     
+        ObservableList<Galerie> listData = FXCollections.observableArrayList();
+        try {
+            String sql = "select * from galeries where id_galerie like '%"+ar+"%'or titre_galerie like '%"+ar+"%' ";
+            ResultSet rs = conn.createStatement().executeQuery(sql);
+            while (rs.next()) {  
+                
+                 Galerie g=new Galerie();
+                g.setId_galerie(rs.getInt("id_galerie"));
+                g.setTitre_galerie(rs.getString("titre_galerie"));
+                
+                
+                listData.add(g);
+            }
+        } catch (Exception ex) {
+            Logger.getLogger(User.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        return listData;
+    }
+  
+  
+  
+  
+  
+  
 }
 
  

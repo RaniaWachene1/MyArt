@@ -19,6 +19,7 @@ public class Article {
     private Galerie galerie;
     private User user;
 
+   
     public Article(int id_article, String titre_article, String desc_article, String photo_article, String nom_artiste, float prix_article, int quantite_article, Galerie galerie) {
         this.id_article = id_article;
         this.titre_article = titre_article;
@@ -81,12 +82,15 @@ public Article(int id_article, String titre_article, String desc_article, String
         this.galerie = galerie;
     }
 
-    
+   //////////////////////////////////////////////////////////////////////////////////////////// 
     public Article() {
     }
 
     
+   
 
+    
+///////////////////////////////////////////////////////////////////////////////////////////////
     public Galerie getGalerie() {
         return galerie;
     }
