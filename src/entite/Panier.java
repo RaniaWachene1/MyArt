@@ -13,7 +13,6 @@ import java.util.List;
  */
 public class Panier {
     private int id_panier;
-    private User user;
     private Article article;
     private int qte;
 
@@ -21,15 +20,15 @@ public class Panier {
     }
     
 
-    public Panier(int id_panier, User user, Article article, int qte ) {
+    public Panier(int id_panier, Article article, int qte ) {
         this.id_panier = id_panier;
-        this.user = user;
+       
         this.article = article;
         this.qte = qte;
     }
 
-    public Panier(User user, Article article, int qte) {
-        this.user = user;
+    public Panier( Article article, int qte) {
+     
         this.article = article;
         this.qte = qte;
     }
@@ -43,13 +42,9 @@ public class Panier {
         this.id_panier = id_panier;
     }
 
-    public User getUser() {
-        return user;
-    }
+   
 
-    public void setUser(User user) {
-        this.user = user;
-    }
+  
 
     public Article getArticle() {
         return article;
@@ -66,10 +61,19 @@ public class Panier {
     public void setQte(int qte) {
         this.qte = qte;
     }
+    public void increaseQuantity(){
+    this.qte++;
+    
+    }
+     public void decreaseQuantity(){
+         if(this.qte>0)
+    this.qte--;
+    
+    }
 
     @Override
     public String toString() {
-        return "Panier{" + "id_panier=" + id_panier + ", user=" + user + ", article=" + article + ", qte=" + qte + '}';
+        return "Panier{" + "id_panier=" + id_panier +  ", article=" + article + ", qte=" + qte + '}';
     }
 
    

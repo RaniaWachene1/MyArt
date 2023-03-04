@@ -5,6 +5,7 @@
 package gui;
 import gui.ArticleGController.MyListener;
 import entite.Article;
+import entite.Galerie;
 import java.io.IOException;
 import java.net.URL;
 import java.sql.Connection;
@@ -35,12 +36,19 @@ import java.net.URL;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.ResourceBundle;
+import java.util.stream.Collectors;
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.control.ComboBox;
 import javafx.scene.control.Menu;
 import javafx.scene.control.MenuBar;
 import javafx.stage.Stage;
+import org.controlsfx.control.Rating;
+import service.ServiceArticle;
+import service.ServiceGalerie;
 
 /**
  * FXML Controller class
@@ -51,8 +59,6 @@ public class MarketGController implements Initializable {
 
     @FXML
     private Button btn_search;
-    @FXML
-    private TextField txt_search;
     @FXML
     private VBox chosenArticle;
     @FXML
@@ -87,6 +93,13 @@ Connection conn = DataSource.getInstance().getCnx();
     private Button btn_logout;
     @FXML
     private Button Card;
+    @FXML
+    private ComboBox<String> Category;
+    ObservableList<Article> ProductListSearch;
+    
+    
+    
+    
     private List<Article> getData() {
         List<Article> articles = new ArrayList<>();
         Article article = new Article();
@@ -161,7 +174,7 @@ System.out.println(articles);
           itemController.setData(articles.get(i), myListener );
                 
            
-                if (column == 3) {
+                if (column == 2) {
                     column = 0;
                     row++;
                 }
@@ -180,6 +193,15 @@ System.out.println(articles);
         } catch (IOException e) {
             e.printStackTrace();
         }
+        
+        ServiceGalerie sg=new ServiceGalerie();
+        List<Galerie> list=new ArrayList<>();
+        list=sg.readAll();
+        List<String> list2=list.stream().map(e->e.getTitre_galerie()).collect(Collectors.toList());
+        System.out.println(list2);
+        Category.setItems(FXCollections.observableArrayList(list2));
+        
+        
 }
     @FXML
     private void addToCart(ActionEvent event) {
@@ -204,50 +226,15 @@ System.out.println(articles);
                 stage.setResizable(false);
                 stage.show();
     }
+
+    @FXML
+    private void SearchByCategory(ActionEvent event) {
+         ServiceArticle st= new  ServiceArticle();
+        ProductListSearch = st.SearchByGalerie(Category.getValue());
+       // ProductTable.setItems(ProductListSearch);
+    }
     
 }
 
-//        if (articles.size() > 0) {
-//            setChosenFruit(articles.get(0));
-//            myListener = new MyListener() {
-//                @Override
-//                public void onClickListener(Article article) {
-//                    setChosenFruit(article);
-//                }
-//            };
-//        }
-//        
-//        
-//        try {
-//            for (int i = 0; i < articles.size(); i++) {
-//                FXMLLoader fxmlLoader = new FXMLLoader();
-//                fxmlLoader.setLocation(getClass().getResource("ArticleG.fxml"));
-//                AnchorPane anchorPane = fxmlLoader.load();
-//
-//                ArticleGController itemController = fxmlLoader.getController();
-//              itemController.setData( new Article(),new ArticleGController.MyListener() {
-//                    @Override
-//                    public void onClickListener(Article article) {
-//                        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
-//                    }
-//              });
-//              //itemController.setData(articles.get(i),myListener);
-//                if (column == 2) {
-//                    column = 0;
-//                    row++;
-//                }
-//
-//               
-//                grid.add(anchorPane, column++, row);
-//                grid.setMinWidth(Region.USE_COMPUTED_SIZE);
-//                grid.setPrefWidth(Region.USE_COMPUTED_SIZE);
-//                grid.setMaxWidth(Region.USE_PREF_SIZE);
-//                grid.setMinHeight(Region.USE_COMPUTED_SIZE);
-//                grid.setPrefHeight(Region.USE_COMPUTED_SIZE);
-//                grid.setMaxHeight(Region.USE_PREF_SIZE);
-//
-//                GridPane.setMargin(anchorPane, new Insets(20));
-//            }
-//        } catch (IOException e) {
-//            e.printStackTrace();
-//        }
+
+

@@ -188,7 +188,36 @@ public ObservableList<Article> SearchByArticle(String ar) {
      
         ObservableList<Article> listData = FXCollections.observableArrayList();
         try {
-            String sql = "select * from articles where id_article like '%"+ar+"%' or titre_article like '%"+ar+"%' or nom_artiste like '%"+ar+"%'   ";
+            String sql = "select * from articles where id_article like '%"+ar+"%' or titre_article like '%"+ar+"%'  ";
+            ResultSet rs = conn.createStatement().executeQuery(sql);
+            while (rs.next()) {                  
+                Article a = new Article();
+                a.setId_article(rs.getInt("id_article"));
+                a.setTitre_article(rs.getString( "titre_article"));
+           a.setDesc_article(rs.getString( "desc_article"));
+           a.setPhoto_article(rs.getString( "photo_article"));
+           a.setNom_artiste(rs.getString( "nom_artiste"));
+            a.setPrix_article(rs.getFloat("prix_article"));
+            a.setQuantite_article(rs.getInt("quantite_article"));
+            ServiceGalerie sg =new ServiceGalerie();
+            Galerie g =new Galerie();
+            g=sg.readById(rs.getInt("id_galerie"));
+           a.setGalerie( g);
+           
+            
+           
+                listData.add(a);
+            }
+        } catch (Exception ex) {
+            Logger.getLogger(User.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        return listData;
+    }
+public ObservableList<Article> SearchByGalerie(String ar) {
+     
+        ObservableList<Article> listData = FXCollections.observableArrayList();
+        try {
+            String sql = "select * from articles where id_galerie like '%"+ar+"%'   ";
             ResultSet rs = conn.createStatement().executeQuery(sql);
             while (rs.next()) {                  
                 Article a = new Article();

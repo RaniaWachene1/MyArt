@@ -152,7 +152,7 @@ public class GalerieController implements Initializable {
      */
     @Override
     public void initialize(URL url, ResourceBundle rb) {
-      //  ObservableList<String> list = FXCollections.observableList("a","b");
+      
         
         // TODO
         ObservableList<Article> Liste = FXCollections.observableArrayList();
@@ -172,7 +172,7 @@ public class GalerieController implements Initializable {
         List<String> list2=list.stream().map(e->e.getTitre_galerie()).collect(Collectors.toList());
         System.out.println(list2);
         galerie.setItems(FXCollections.observableArrayList(list2));
-                //ValidationSupport.registerValidator(Txt_titre, Validator.createEmptyValidator("Product name is required"));
+               
               
 
     }    
@@ -287,7 +287,7 @@ tray.showAndDismiss(Duration.millis(3000));
         }
          else 
             
-            if ( Txt_titre.getText().matches(".*[0-9].*")||Txt_titre.getText().matches(".*[%-@-.-/-!-;-,-_].*")
+            if ( Txt_titre.getText().matches(".*[0-9].*")
 //                
                     )
             {
@@ -433,6 +433,7 @@ tray.showAndDismiss(Duration.millis(1000));
    
    
    }
+  
     }
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
     @FXML

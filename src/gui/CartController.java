@@ -15,6 +15,9 @@ import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
+import javafx.scene.control.Label;
+import javafx.scene.control.ScrollPane;
+import javafx.scene.control.TextField;
 import javafx.scene.image.ImageView;
 import javafx.stage.Stage;
 
@@ -37,6 +40,16 @@ public class CartController implements Initializable {
     private Button log_out_btn;
     @FXML
     private Button back_btn;
+    @FXML
+    private ScrollPane scroll;
+    @FXML
+    private Label label_coupon;
+    @FXML
+    private TextField txt_coupon;
+    @FXML
+    private Button btn_coupon;
+    @FXML
+    private Button btn_coupon1;
 
     /**
      * Initializes the controller class.
@@ -76,6 +89,10 @@ public class CartController implements Initializable {
                 stage.setScene(scene);
                 stage.setResizable(false);
                 stage.show();
+    }
+
+    @FXML
+    private void coupon(ActionEvent event) {
     }
     
 }

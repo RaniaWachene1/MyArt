@@ -18,12 +18,15 @@ import java.sql.SQLException;
 import java.util.ResourceBundle;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import javafx.beans.value.ChangeListener;
+import javafx.beans.value.ObservableValue;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Label;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
+import org.controlsfx.control.Rating;
 import utils.DataSource;
 
 /**
@@ -46,13 +49,23 @@ public class ArticleGController implements Initializable {
   private Article article;
  private MyListener myListener;
 Connection conn = DataSource.getInstance().getCnx();
+    @FXML
+    private Rating rating;
+    @FXML
+    private Label label_rating;
 
     /**
      * Initializes the controller class.
      */
     @Override
     public void initialize(URL url, ResourceBundle rb) {
-       System.out.print("hey ");
+       rating.ratingProperty().addListener(new ChangeListener <Number>(){
+           @Override
+           public void changed(ObservableValue<? extends Number> observable, Number oldValue, Number newR) {
+               label_rating.setText(""+newR);
+           }
+           
+       });
     }    
   
 

@@ -30,13 +30,13 @@ public class ServicePanier implements IService<Panier> {
 ///////////////////////////////////////////////////////////////////////
     @Override
     public void insert(Panier p) {
-        String requete = "INSERT INTO panier(id_article, id_user,qte) value(?,?,?)";
+        String requete = "INSERT INTO panier(id_article,qte) value(?,?)";
         
         try {
             PreparedStatement pst = conn.prepareStatement(requete);
             pst.setInt(1, p.getArticle().getId_article());
-            pst.setInt(2, p.getUser().getId_user());
-            pst.setInt(3, p.getQte());
+            
+            pst.setInt(2, p.getQte());
             
             
             pst.executeUpdate();
@@ -94,10 +94,9 @@ public class ServicePanier implements IService<Panier> {
                 ServiceArticle sa =new ServiceArticle();
             Article a =new Article();
             a=sa.readById(rs.getInt("id_galerie"));
-            UserService us =new UserService();
-            User u =new User();
-            u=us.readById(rs.getInt("id_user"));
-              Panier p=new Panier(rs.getInt("id_panier"),u,a,rs.getInt("qte"));
+            //UserService us =new UserService();
+            
+              Panier p=new Panier(rs.getInt("id_panier"),a,rs.getInt("qte"));
 
 list.add(p);
             }
@@ -123,10 +122,10 @@ list.add(p);
             a=sa.readById(rst.getInt("id_article"));
            p.setArticle( a);
            
-           UserService us =new UserService();
-            User u =new User();
-            u=us.readById(rst.getInt("id_user"));
-             p.setUser( u);
+          // UserService us =new UserService();
+           // User u =new User();
+          //  u=us.readById(rst.getInt("id_user"));
+            // p.setUser( u);
              
            p.setId_panier(rst.getInt( "id_panier"));
             

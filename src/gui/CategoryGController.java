@@ -109,7 +109,7 @@ tray.showAndDismiss(Duration.millis(3000));
         
         else{txt_galerie.setStyle(null);}
         
-          if ( txt_galerie.getText().matches(".*[0-9].*")||txt_galerie.getText().matches(".*[%-@-.-/-!-;-,-_].*")) {
+          if ( txt_galerie.getText().matches(".*[0-9].*")) {
              txt_galerie.setStyle("-fx-border-color:red ; -fx-border-width:2px ;");
         new animatefx.animation.Shake(txt_galerie).play();
                         String titre=" Gallery Name must be alphabetic !";
@@ -120,7 +120,7 @@ tray.setAnimationType(type);
 tray.setTitle(titre);
 tray.setMessage(message);
 tray.setNotificationType(NotificationType.ERROR);
-tray.showAndDismiss(Duration.millis(4000));
+tray.showAndDismiss(Duration.millis(5000));
 
         }
             else{txt_galerie.setStyle(null);}
@@ -139,9 +139,11 @@ tray.setAnimationType(type);
 tray.setTitle(titre);
 tray.setMessage(message);
 tray.setNotificationType(NotificationType.SUCCESS);
-tray.showAndDismiss(Duration.millis(3000));
+tray.showAndDismiss(Duration.millis(5000));
        
-    }}
+    }
+  
+    }
 
     @FXML
     private void delete(ActionEvent event) {
@@ -218,7 +220,7 @@ tray.showAndDismiss(Duration.millis(3000));
     @FXML
     private void search(ActionEvent event) {
         ServiceGalerie st= new  ServiceGalerie();
-        CategoryListSearch = st.SearchBycateg(txt_galerie.getText());
+        CategoryListSearch = st.SearchBycateg( txt_search.getText());
         GalleryTable.setItems(CategoryListSearch);
     }
 

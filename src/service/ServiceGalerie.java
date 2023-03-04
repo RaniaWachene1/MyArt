@@ -120,7 +120,7 @@ public class ServiceGalerie implements IService<Galerie>{
         return list;    
     }
 
-    ///////////////////////////////////////////////CRUD Afficher par id GALERIE /////////////////////////////////////////////////////////NOK*
+    ///////////////////////////////////////////////CRUD Afficher par id GALERIE /////////////////////////////////////////////////////////OK
     @Override
     public Galerie readById(int id_galerie) {
        
@@ -173,7 +173,7 @@ public class ServiceGalerie implements IService<Galerie>{
      
         ObservableList<Galerie> listData = FXCollections.observableArrayList();
         try {
-            String sql = "select * from galeries where id_galerie like '%"+ar+"%'or titre_galerie like '%"+ar+"%' ";
+            String sql = "select * from galeries where titre_galerie like '%"+ar+"%' ";
             ResultSet rs = conn.createStatement().executeQuery(sql);
             while (rs.next()) {  
                 

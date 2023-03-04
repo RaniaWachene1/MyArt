@@ -4,6 +4,8 @@
  */
 package entite;
 
+import java.util.Objects;
+
 /**
  *
  * @author rania
@@ -40,6 +42,31 @@ public class Galerie {
     public void setTitre_galerie(String titre_galerie) {
         this.titre_galerie = titre_galerie;
     }
+
+    @Override
+    public int hashCode() {
+        int hash = 3;
+        return hash;
+    }
+
+    @Override
+    public boolean equals(Object obj) {
+        if (this == obj) {
+            return true;
+        }
+        if (obj == null) {
+            return false;
+        }
+        if (getClass() != obj.getClass()) {
+            return false;
+        }
+        final Galerie other = (Galerie) obj;
+        if (this.id_galerie != other.id_galerie) {
+            return false;
+        }
+        return Objects.equals(this.titre_galerie, other.titre_galerie);
+    }
+    
 
     @Override
     public String toString() {

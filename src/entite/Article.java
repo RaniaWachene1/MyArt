@@ -16,6 +16,7 @@ public class Article {
     private String nom_artiste;
     private float prix_article;
     private int quantite_article;
+    private int rate;
     private Galerie galerie;
     private User user;
 

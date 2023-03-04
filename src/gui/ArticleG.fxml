@@ -8,12 +8,13 @@
 <?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
+<?import org.controlsfx.control.Rating?>
 
-<AnchorPane id="AnchorPane" onMousePressed="#click" prefHeight="100.0" prefWidth="100.0" style="-fx-background-color: ffff;" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="gui.ArticleGController">
+<AnchorPane id="AnchorPane" onMousePressed="#click" prefHeight="155.0" prefWidth="143.0" style="-fx-background-color: ffff; -fx-background-radius: 20;" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="gui.ArticleGController">
    <children>
-      <VBox layoutX="-9.0" layoutY="-6.0" prefHeight="166.0" prefWidth="159.0" style="-fx-border-color: ebecee;">
+      <VBox prefHeight="209.0" prefWidth="197.0" style="-fx-border-color: ebecee; -fx-background-radius: 20;">
          <children>
-            <HBox prefHeight="44.0" prefWidth="230.0">
+            <HBox prefHeight="35.0" prefWidth="141.0" style="-fx-background-radius: 20;">
                <children>
                   <Label fx:id="label_titre" prefHeight="39.0" prefWidth="98.0" text="Starry">
                      <HBox.margin>
@@ -29,14 +30,30 @@
                      </font></Label>
                </children>
             </HBox>
-            <ImageView fx:id="image" fitHeight="113.0" fitWidth="128.0" pickOnBounds="true" preserveRatio="true">
+            <ImageView fx:id="image" fitHeight="124.0" fitWidth="139.0" pickOnBounds="true" preserveRatio="true">
                <image>
                   <Image url="@../img/p.jpg" />
                </image>
                <VBox.margin>
-                  <Insets left="20.0" />
+                  <Insets left="28.0" />
                </VBox.margin>
             </ImageView>
+            <Rating fx:id="rating" opacity="0.81" prefHeight="20.0" prefWidth="10.0" rating="0.0">
+               <opaqueInsets>
+                  <Insets left="12.0" />
+               </opaqueInsets>
+               <padding>
+                  <Insets left="10.0" />
+               </padding>
+            </Rating>
+            <Label fx:id="label_rating" prefHeight="15.0" prefWidth="189.0" text="   rating ">
+               <padding>
+                  <Insets left="150.0" />
+               </padding>
+               <font>
+                  <Font name="System Italic" size="10.0" />
+               </font>
+            </Label>
          </children>
       </VBox>
    </children>
