@@ -82,6 +82,8 @@ public class CrudController implements Initializable {
     private TableColumn<User, Date> date_naiss;
     @FXML
     private TableColumn<User, String> sexe;
+     @FXML
+    private TextField blocks;
     @FXML
     private Button delete;
     private TextField lastname;
@@ -186,10 +188,7 @@ private ResultSet rs;
            listrole.add("client");
             listrole.add("Admin");
            newrole.setItems(FXCollections.observableArrayList(listrole));
-               /* Rating rate = new Rationg();
-                // current value
-                rate.getRating();
-                pst.setDouble(11,rate.getRating());*/
+              
           /************************************************/
            ObservableList<User> Listeu = FXCollections.observableArrayList();
           id_user.setCellValueFactory(new PropertyValueFactory<>("id_user"));
@@ -207,17 +206,22 @@ private ResultSet rs;
 //    
     }
      @FXML
-    void unblocked(ActionEvent event) throws SQLException {
+    void unblocked(ActionEvent event)  {
        
         // LAHNE VLOCKED TEKHO FALSE
         ConnectionClass connectionClass=new ConnectionClass();
          Connection conn=connectionClass.getConnection();
-        String req = "insert into users (id_user, block) values (?,?) ";
+         try{
+         String req = "UPDATE `users` SET `block`= ? WHERE`id_user` = ? ";
          PreparedStatement pt = conn.prepareStatement(req);
          int a = Integer.parseInt(newid.getText()) ;
          pt.setInt(1,a);
          pt.setBoolean(2, false);
-        ResultSet rs = pt.executeQuery();
+ int row = pt.executeUpdate();
+ System.out.print(pt);}
+         catch(SQLException e){
+     System.out.print(e);
+ }
         
     }
      @FXML
@@ -225,12 +229,14 @@ private ResultSet rs;
         // BLOCKED TEKHO TRUE
         ConnectionClass connectionClass=new ConnectionClass();
          Connection conn=connectionClass.getConnection();
-        String req = "insert into users (id_user, unblock) values (?,?) ";
+        String req = "UPDATE `users` SET `block`= ? WHERE`id_user` = ?";
          PreparedStatement pt = conn.prepareStatement(req);
          int a = Integer.parseInt(newid.getText()) ;
          pt.setInt(1,a);
          pt.setBoolean(2, true);
-        ResultSet rs =pt.executeQuery();
+        int row = pt.executeUpdate();
+                System.out.print("this is block "+pt);
+
        
 
     }
@@ -368,27 +374,60 @@ tray.showAndDismiss(Duration.millis(3000));
     /**********************************************************************************************************************/
 
     @FXML
-    private void update(ActionEvent event) {
+    private void update(ActionEvent event) throws SQLException {
+        
+        
+      ConnectionClass connectionClass=new ConnectionClass();
+         Connection conn=connectionClass.getConnection();
 //          TablePosition tablePosition=tableview.getSelectionModel().getSelectedCells().get(0);
 //        int row=tablePosition.getRow();
 //        User item=tableview.getItems().get(row);
 //        TableColumn tableColumn=tablePosition.getTableColumn();
 //        String data= (String) tableColumn.getCellObservableValue(item).getValue();    
 //    System.out.println(data);
-         UserService us=new UserService();
-       User u=new User(
-                
-               Integer.parseInt(newid.getText()),
-               newfirstname.getText(),
-                 newlastname.getText(),
-                
-                newemail.getText(),
-                 newpass.getText(),
-                 newsexe.getValue(),
-               Integer.parseInt(newphone.getText()),
-                 addpho.getText(),
-                  newaddress.getText()
-                  );
+String req = "UPDATE `users` SET `nom_user`= ?,`prenom_user`= ?,`pwd_user`= ?,`date_naiss`= ?,`tel_user`= ?,`sexe`= ?,`adresse`= ?,`img`= ?,`email`= ?,`id_role`=? WHERE `id_user`= ?";
+PreparedStatement pst = conn.prepareStatement(req);
+
+LocalDate value = newdatenais.getValue();
+pst.setString(1, newfirstname.getText());
+pst.setString(2, newlastname.getText());
+pst.setString(3, newpass.getText());
+pst.setString(4, value+"");
+pst.setInt(5, Integer.parseInt(newphone.getText()));
+pst.setString(6, newsexe.getValue());
+pst.setString(7, newaddress.getText());
+pst.setString(8, addpho.getText());
+pst.setString(9, newemail.getText());
+if(newrole.getValue().equals("Admin")){
+    pst.setInt(10,1);
+}else if(newrole.getValue().equals("Client")){
+    pst.setInt(10,2);
+}else{
+    pst.setInt(10,3);
+}
+
+pst.setInt(11,Integer.parseInt(newid.getText()) );
+
+int row = pst.executeUpdate();
+
+System.out.print(pst);
+
+
+
+//         UserService us=new UserService();
+//       User u=new User(
+//                
+//               Integer.parseInt(newid.getText()),
+//               newfirstname.getText(),
+//                 newlastname.getText(),
+//                
+//                newemail.getText(),
+//                 newpass.getText(),
+//                 newsexe.getValue(),
+//               Integer.parseInt(newphone.getText()),
+//                 addpho.getText(),
+//                  newaddress.getText()
+//                  );
      String titre=" successfly update";
             String message = email.getText();
             TrayNotification tray = new TrayNotification();

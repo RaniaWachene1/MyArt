@@ -70,7 +70,7 @@ private ResultSet rs;
     @Override
     public void update(User t) {
         try {
-        pst = conn.prepareStatement("update users set nom_user= ?,prenom_user= ?,email= ?,pwd_user= ?,sexe= ?,tel_user= ?,Img= ?,adresse = ? where id_user = ?;");
+        PreparedStatement pst = conn.prepareStatement("UPDATE users set nom_user= ?,prenom_user= ?,email= ?,pwd_user= ?,sexe= ?,tel_user= ?,Img= ?, adresse = ? where id_user = ?;");
           
         pst.setString(1, t.getNom_user());
         pst.setString(2, t.getPrenom_user());

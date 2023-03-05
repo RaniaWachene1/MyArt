@@ -7,7 +7,7 @@ package gui;
     
 
 
-import com.sun.xml.internal.bind.v2.runtime.unmarshaller.Loader;
+//import com.sun.xml.internal.bind.v2.runtime.unmarshaller.Loader;
 import entite.Role;
 import entite.User;
 import java.io.IOException;
@@ -119,10 +119,10 @@ private PreparedStatement pst;
 
    
     @FXML
-   public void login(ActionEvent event) {
-      // if(bolcktrue)
+   public void login(ActionEvent event) throws SQLException, IOException {
+     
                 conn = DataSource.getInstance().getConnection();
-             String   query="select id_role, email, pwd_user from users where email=? and pwd_user=? and block= false";
+             String   query="select * from users where email=? and pwd_user=?";
         try {
                      if (email.getText().isEmpty()|| password.getText().isEmpty()) {
                          String titre=" Required fields are empty !";
@@ -141,13 +141,13 @@ private PreparedStatement pst;
             pst= conn.prepareStatement(query);
             pst.setString(1,email.getText());
             pst.setString(2, password.getText());
-            
+           
            rs = pst.executeQuery();
            //getEmail();
            
            while(rs.next()){
-               for (int i=0 ;i< rs.getString(1).length();i++){
-                   if(rs.getString(1).equals("1")){
+               for (int i=0 ;i< rs.getString(11).length();i++){
+                   if(rs.getString(11).equals(1)){
                        // Admin scene
                            try {
                 Parent page = FXMLLoader.load(getClass().getResource("Crud.fxml"));
@@ -170,11 +170,40 @@ private PreparedStatement pst;
             } catch (IOException ex) {
                 System.out.println(ex.getMessage());
             }
-                   }else if(rs.getString(1).equals("2")){
-                       //Article a = new Article(email.getText())
-                       // rania this 2 
+                           
+                   }
+             if(rs.getString(11).equals(2) && rs.getBoolean(12)==false){
                        
-                       User u = new User(email.getText());
+                          
+                User u = new User(email.getText());
+                Parent page = FXMLLoader.load(getClass().getResource("profil.fxml"));
+                Scene scene = new Scene(page);
+                Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+                stage.setUserData(u);
+                stage.setScene(scene);
+                stage.setResizable(false);
+                stage.show();
+               
+                
+                        
+
+            } else {
+               Parent page = FXMLLoader.load(getClass().getResource("Blocked.fxml"));
+                Scene scene = new Scene(page);
+                Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+                stage.setScene(scene);
+                stage.setResizable(false);
+                stage.show();
+                  
+            }
+                          
+                           
+                           
+                  
+            if(rs.getString(11).equals(3) && rs.getBoolean(12)==false){
+                       
+                         
+                User u = new User(email.getText());
                 Parent page = FXMLLoader.load(getClass().getResource("profil.fxml"));
                 Scene scene = new Scene(page);
                 Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
@@ -183,21 +212,85 @@ private PreparedStatement pst;
                 stage.setScene(scene);
                 stage.setResizable(false);
                 stage.show();
-                   }else {
-                       Parent page = FXMLLoader.load(getClass().getResource("profil.fxml"));
+                
+                        
+
+            } else{
+                     Parent page = FXMLLoader.load(getClass().getResource("Blocked.fxml"));
                 Scene scene = new Scene(page);
                 Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
                 stage.setScene(scene);
                 stage.setResizable(false);
                 stage.show();
+            }
+                           
+                           
                    }
+                 }
+             }
+          
+                   
+//                    if(rs.getString(1).equals("2") && rs.getBoolean(12)){
+//                               //display profile.fxml
+//                           }else{
+//                               //display blocked
+                         
+//                     if(rs.getString(1).equals("3") && rs.getBoolean(12)){
+//                               //display profile.fxml
+//                           }else{
+//                               //display blocked
+//                           }
+ 
+//                 if(rs.getString(1).equals("2") && rs.getBoolean(12)){
+//                      
+//                       User u = new User(email.getText());
+//                Parent page = FXMLLoader.load(getClass().getResource("profil.fxml"));
+//                Scene scene = new Scene(page);
+//                Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+//                //rania u need it 
+//                stage.setUserData(u);
+//                stage.setScene(scene);
+//                stage.setResizable(false);
+//                stage.show();
+//                   }
+//           else {
+//                       Parent page = FXMLLoader.load(getClass().getResource("Blocked.fxml"));
+//                Scene scene = new Scene(page);
+//                Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+//                stage.setScene(scene);
+//                stage.setResizable(false);
+//                stage.show();
+//                   }
                     
-               }
+        
+//                  if(rs.getString(1).equals("3") && rs.getBoolean(12)){
+//                      
+//                       User u = new User(email.getText());
+//                Parent page = FXMLLoader.load(getClass().getResource("profil.fxml"));
+//                Scene scene = new Scene(page);
+//                Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+//                stage.setUserData(u);
+//                stage.setScene(scene);
+//                stage.setResizable(false);
+//                stage.show();
+//                   }
+//           else {
+//                       Parent page = FXMLLoader.load(getClass().getResource("Blocked.fxml"));
+//                Scene scene = new Scene(page);
+//                Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+//                stage.setScene(scene);
+//                stage.setResizable(false);
+//                stage.show();
+//                   }
+                 
+                 
+                 
+              
                    
                
-           }
+      
             
-        } catch (SQLException ex) {
+        catch (SQLException ex) {
             Logger.getLogger(LoginController.class.getName()).log(Level.SEVERE, null, ex);
                    String titre=" ERROR";
             String message = email.getText();
@@ -208,11 +301,10 @@ tray.setTitle(titre);
 tray.setMessage(message);
 tray.setNotificationType(NotificationType.ERROR);
 tray.showAndDismiss(Duration.millis(3000));
-        } catch (IOException ex) {
-            Logger.getLogger(LoginController.class.getName()).log(Level.SEVERE, null, ex);
-        }
+        
         
     }
+         }
    public String em;
 public void getEmail(){
     login.setOnAction(new EventHandler<ActionEvent>() {
@@ -248,7 +340,7 @@ public void getEmail(){
                 stage.show();
              }
     
-   
+  
 
 
 //          Notifications notification = pushNotify(email +" was not found in our database", "try again");
@@ -328,5 +420,6 @@ public void getEmail(){
 
 
         }
+
     
   

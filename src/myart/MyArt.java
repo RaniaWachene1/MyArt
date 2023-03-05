@@ -14,31 +14,30 @@ import java.util.Date;
  *
  * @author rania
  */
-//public class MyArt {
-//
+public class MyArt {
+
 //    /**
 //     * @param args the command line arguments
 //     */
-//    public static void main(String[] args) {
-////         TODO code application logic here
-//      DataSource ds1 =DataSource.getInstance();
-//     System.out.println(ds1);
+  public static void main(String[] args) {
+     // TODO code application logic here
+     DataSource ds1 =DataSource.getInstance();
+    System.out.println(ds1);
 //     
-//    LocalDate ld=LocalDate.of(1999, 03, 06);
+  LocalDate ld=LocalDate.of(1999, 03, 06);
 //     
 //     
 //
-//      
-// Role r=new Role(1,"Admin");
-//UserService pst =new UserService();
-//User u1 =new User( "Admin", "", ld, "Admin@gmail.com", "admin", "femme", 0122425, "Img", "adresse",r);
+Role r=new Role(1,"Admin");
+UserService pst =new UserService();
+User u1 =new User( "Admin", "admin", ld, "Admin@gmail.com", "admin", "femme", 00000, "Img", "adresse",r);
 ////RoleService pst =new RoleService();
 //
 //pst.insert(u1);
   //pst.insert(u1);
 ////pst.readById(2);
 ////pst.readAll().forEach(System.out::println);
-//pst.update(u1);
+pst.update(u1);
 //
 //  // RoleService r=new RoleService();
 //  //Role role=new Role();
@@ -47,4 +46,4 @@ import java.util.Date;
 //    }
 //
 //  
-//}}
+}}
