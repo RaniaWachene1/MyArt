@@ -30,7 +30,7 @@ public class ServiceArticle implements IService<Article> {
     ///////////////////////////////////////////////CRUD AJOUTER ARTICLE /////////////////////////////////////////////////////////OK*
 @Override
     public void insert(Article a) {
-        String requete = "insert into articles (titre_article,desc_article,photo_article,nom_artiste,prix_article,quantite_article,id_galerie,id_user) values(?,?,?,?,?,?,?,?)";
+        String requete = "insert into articles (titre_article,desc_article,photo_article,nom_artiste,prix_article,quantite_article,rate,id_galerie,id_user) values(?,?,?,?,?,?,?,?,?)";
         try {
             PreparedStatement pst = conn.prepareStatement(requete);
            pst.setString(1, a.getTitre_article());
@@ -39,8 +39,9 @@ public class ServiceArticle implements IService<Article> {
             pst.setString(4, a.getNom_artiste());
             pst.setFloat(5, a.getPrix_article());
             pst.setInt(6, a.getQuantite_article());
-            pst.setInt(7,  a.getGalerie().getId_galerie());
-            pst.setInt(8,  1); //a.getUser().getId_user()
+            pst.setDouble(7, a.getRate());
+            pst.setInt(8,  a.getGalerie().getId_galerie());
+            pst.setInt(9,  1); //a.getUser().getId_user()
             pst.executeUpdate();
             System.out.println("Article ajouté!");
 
@@ -217,7 +218,7 @@ public ObservableList<Article> SearchByGalerie(String ar) {
      
         ObservableList<Article> listData = FXCollections.observableArrayList();
         try {
-            String sql = "select * from articles where id_galerie like '%"+ar+"%'   ";
+            String sql = "select * from articles where titre_galerie like '%"+ar+"%'   ";
             ResultSet rs = conn.createStatement().executeQuery(sql);
             while (rs.next()) {                  
                 Article a = new Article();
@@ -244,5 +245,6 @@ public ObservableList<Article> SearchByGalerie(String ar) {
     }
 
     
+  
     
 }

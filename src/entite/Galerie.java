@@ -4,6 +4,7 @@
  */
 package entite;
 
+import java.util.List;
 import java.util.Objects;
 
 /**
@@ -13,6 +14,11 @@ import java.util.Objects;
 public class Galerie {
     private int id_galerie;
     private String titre_galerie;
+    private List<Galerie> galeries;
+
+    public Galerie(List<Galerie> galeries) {
+        this.galeries = galeries;
+    }
 
     public Galerie() {
     }

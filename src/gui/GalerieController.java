@@ -145,7 +145,12 @@ public class GalerieController implements Initializable {
     ValidationSupport ValidationSupport =new ValidationSupport();
     @FXML
     private TableColumn<Article, String> id_galerie;
- 
+    private List<Galerie> products;
+
+//    public ProductForm(List<Galerie> products) {
+//        this.products = products;
+//    }
+// 
  
     /**
      * Initializes the controller class.
@@ -306,8 +311,27 @@ tray.showAndDismiss(Duration.millis(4000));
         }
             else{Txt_titre.setStyle(null);}
 
+       // if (Galerie.get.equals( Txt_titre.getText()) { }
+       
+        String name = Txt_titre.getText();
+
         
-        
+
+//     
+//            if (galeries.getTitre_galerie().equals(name)) {
+//                       new animatefx.animation.Shake(Txt_titre).play();
+//                        String titre=" Product Name must be alphabetic !";
+//String message = "Please enter only letters !";
+//TrayNotification tray = new TrayNotification();
+//AnimationType type = AnimationType.POPUP;
+//tray.setAnimationType(type);
+//tray.setTitle(titre);
+//tray.setMessage(message);
+//tray.setNotificationType(NotificationType.ERROR);
+//tray.showAndDismiss(Duration.millis(4000));
+//               
+//            }
+     
         
 //         if ( 
 //                nom_artiste.getText().matches(".*[0-9].*")||nom_artiste.getText().matches(".*[%-@-.-/-!-;-,-_].*")

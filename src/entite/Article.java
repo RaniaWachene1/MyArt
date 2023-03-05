@@ -16,7 +16,7 @@ public class Article {
     private String nom_artiste;
     private float prix_article;
     private int quantite_article;
-    private int rate;
+    private double rate;
     private Galerie galerie;
     private User user;
 
@@ -85,6 +85,19 @@ public Article(int id_article, String titre_article, String desc_article, String
 
    //////////////////////////////////////////////////////////////////////////////////////////// 
     public Article() {
+    }
+
+    public Article(int id_article, String titre_article, String desc_article, String photo_article, String nom_artiste, float prix_article, int quantite_article, double rate, Galerie galerie, User user) {
+        this.id_article = id_article;
+        this.titre_article = titre_article;
+        this.desc_article = desc_article;
+        this.photo_article = photo_article;
+        this.nom_artiste = nom_artiste;
+        this.prix_article = prix_article;
+        this.quantite_article = quantite_article;
+        this.rate = rate;
+        this.galerie = galerie;
+        this.user = user;
     }
 
     
@@ -167,6 +180,19 @@ public Article(int id_article, String titre_article, String desc_article, String
         this.quantite_article = quantite_article;
     }
 
+    public double getRate() {
+        return rate;
+    }
+
+    public void setRate(double rate) {
+        this.rate = rate;
+    }
+
+    
+    
+    
+    
+    
     @Override
     public String toString() {
         return "Article{" + "id_article=" + id_article + ", titre_article=" + titre_article + ", desc_article=" + desc_article + ", photo_article=" + photo_article + ", nom_artiste=" + nom_artiste + ", prix_article=" + prix_article + ", quantite_article=" + quantite_article + ", galerie=" + galerie + '}';

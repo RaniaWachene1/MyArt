@@ -22,10 +22,13 @@ import javafx.beans.value.ChangeListener;
 import javafx.beans.value.ObservableValue;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
+import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
+import javafx.scene.input.DragEvent;
 import javafx.scene.input.MouseEvent;
+import javafx.scene.input.TouchEvent;
 import org.controlsfx.control.Rating;
 import utils.DataSource;
 
@@ -42,8 +45,8 @@ public class ArticleGController implements Initializable {
     private Label label_prix;
     @FXML
     private ImageView image;
-    
-    public static int idArticle;
+    Double res;
+    //public static int idArticle;
   private PreparedStatement pst;
   private ResultSet rs;
   private Article article;
@@ -53,7 +56,9 @@ Connection conn = DataSource.getInstance().getCnx();
     private Rating rating;
     @FXML
     private Label label_rating;
-
+    @FXML
+    private Button ratee;
+    
     /**
      * Initializes the controller class.
      */
@@ -62,18 +67,34 @@ Connection conn = DataSource.getInstance().getCnx();
        rating.ratingProperty().addListener(new ChangeListener <Number>(){
            @Override
            public void changed(ObservableValue<? extends Number> observable, Number oldValue, Number newR) {
+               res= (double) newR;
                label_rating.setText(""+newR);
            }
            
        });
-    }    
-  
+    }  
+    
+    
+    
+    
+       void rated(TouchEvent event) {
+
+           
+    }
+    
+    
+    
+//Rating rrating = new Rating();
+
+
+
 
     public void setData(Article article, MyListener myListener) throws MalformedURLException {
         this.article = article;
         this.myListener = myListener;
         label_titre.setText(article.getTitre_article());
         label_prix.setText(MyArt.CURRENCY + article.getPrix_article());
+       // label_rating.setText(article.getRate());
         //quantite.setText(String.valueOf(fruit.getQuantite()));
         String path =  "file://C:/xampp/htdocs/imgfile:/C:/xampp/htdocs/img/"+article.getPhoto_article();
         
@@ -91,6 +112,27 @@ Connection conn = DataSource.getInstance().getCnx();
     @FXML
     private void click(MouseEvent event) {
          myListener.onClickListener(article);
+    }
+
+    @FXML
+    private void rating(ActionEvent event) {
+        
+        
+         String req = "UPDATE `articles` SET `rate`= ? WHERE `id_user`= ?";
+               try {
+                   pst = conn.prepareStatement(req);
+                   pst.setDouble(1, res);
+                   pst.setInt(2, 2);
+                   
+                   int row = pst.executeUpdate();
+                   System.out.println(pst);
+                   
+               } catch (SQLException ex) {
+                   Logger.getLogger(ArticleGController.class.getName()).log(Level.SEVERE, null, ex);
+               }
+         
+        
+        
     }
 
  

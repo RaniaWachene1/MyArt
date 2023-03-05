@@ -6,6 +6,7 @@ package gui;
 
 import java.io.IOException;
 import java.net.URL;
+import java.util.ArrayList;
 import java.util.ResourceBundle;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -16,9 +17,11 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
+import javafx.scene.control.RadioButton;
 import javafx.scene.control.ScrollPane;
 import javafx.scene.control.TextField;
 import javafx.scene.image.ImageView;
+import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
 
 /**
@@ -49,7 +52,25 @@ public class CartController implements Initializable {
     @FXML
     private Button btn_coupon;
     @FXML
-    private Button btn_coupon1;
+    private AnchorPane cartIteams;
+    @FXML
+    private Label name;
+    @FXML
+    private Label categoey;
+    @FXML
+    private Label price;
+    @FXML
+    private Label label_total;
+    @FXML
+    private Label total;
+    @FXML
+    private Button confirm;
+    @FXML
+    private RadioButton cod;
+    @FXML
+    private Button display;
+    @FXML
+    private Label qte;
 
     /**
      * Initializes the controller class.
@@ -93,6 +114,23 @@ public class CartController implements Initializable {
 
     @FXML
     private void coupon(ActionEvent event) {
+    }
+
+    @FXML
+    private void Display(ActionEvent event) {
+        double tot =0;
+        ArrayList<data> ar = new ArrayList();
+        Node node = (Node) event.getSource();
+  Stage stage = (Stage) node.getScene().getWindow();
+        data liste = (data) stage.getUserData();
+        name.setText(liste.getTitle());
+        price.setText(liste.getPrix()+"");
+        qte.setText(liste.getQte()+"");
+        for(int i =0 ; i<= ar.size(); i++)
+        {
+         tot=tot+(liste.getPrix()*liste.getQte());
+        }
+        total.setText(tot+"");
     }
     
 }

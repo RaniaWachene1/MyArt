@@ -133,8 +133,11 @@ Connection conn = DataSource.getInstance().getCnx();
 System.out.println(articles);
         return articles;
     }
-
+Article a = new Article();
     private void setChosenFruit(Article article) {
+        
+        a = article;
+        
         titre.setText(article.getTitre_article());
         prix.setText(MyArt.CURRENCY + article.getPrix_article());
         //getClass().getResourceAsStream(getData().get(0)+"")
@@ -204,8 +207,18 @@ System.out.println(articles);
         
 }
     @FXML
-    private void addToCart(ActionEvent event) {
-    }
+    private void addToCart(ActionEvent event) throws IOException {
+        System.out.print(a);
+               data datas = new data(a.getTitre_article(),Integer.parseInt(txt_quantite.getText().toString()),a.getPrix_article());
+               
+                Parent page = FXMLLoader.load(getClass().getResource("Cart.fxml"));
+                Scene scene = new Scene(page);
+                Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+                stage.setUserData(datas);
+                stage.setScene(scene);
+                stage.setResizable(false);
+                stage.show();
+   }
 
     @FXML
     private void viewCart(ActionEvent event) throws IOException {
@@ -231,7 +244,43 @@ System.out.println(articles);
     private void SearchByCategory(ActionEvent event) {
          ServiceArticle st= new  ServiceArticle();
         ProductListSearch = st.SearchByGalerie(Category.getValue());
-       // ProductTable.setItems(ProductListSearch);
+    //  tableview.setItems(ProductListSearch);
+    }
+    
+}
+class data{
+    private String title;
+    private int qte;
+    private double prix;
+
+    public data(String title, int qte, double prix) {
+        this.title = title;
+        this.qte = qte;
+        this.prix = prix;
+    }
+
+    public String getTitle() {
+        return title;
+    }
+
+    public void setTitle(String title) {
+        this.title = title;
+    }
+
+    public int getQte() {
+        return qte;
+    }
+
+    public void setQte(int qte) {
+        this.qte = qte;
+    }
+
+    public double getPrix() {
+        return prix;
+    }
+
+    public void setPrix(double prix) {
+        this.prix = prix;
     }
     
 }
