@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.DatePicker?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.Menu?>
+<?import javafx.scene.control.MenuBar?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
+<?import javafx.scene.text.Text?>
+
+<AnchorPane id="AnchorPane" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="gui.AddeventController">
+   <children>
+      <AnchorPane id="AnchorPane" layoutX="10.0" layoutY="10.0" prefHeight="480.0" prefWidth="790.0">
+         <children>
+            <AnchorPane prefHeight="480.0" prefWidth="305.0" style="-fx-background-color: ebecee;">
+               <children>
+                  <Label fx:id="labelPN" layoutX="26.0" layoutY="103.0" prefHeight="0.0" prefWidth="86.0" text="Name  Event" />
+                  <TextField fx:id="name_event" layoutX="141.0" layoutY="99.0" prefHeight="26.0" prefWidth="150.0" />
+                  <Label fx:id="labelC" layoutX="27.0" layoutY="151.0" text="Lieu Event" />
+                  <Label fx:id="labelAN" layoutX="26.0" layoutY="198.0" text="Date Event" />
+                  <TextField fx:id="place_event" layoutX="136.0" layoutY="146.0" prefHeight="26.0" prefWidth="157.0" />
+                  <Text fx:id="labelProduct" fill="#245393" layoutX="90.0" layoutY="59.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Event" textAlignment="CENTER" wrappingWidth="140.69010543823242">
+                     <font>
+                        <Font name="Arial Bold" size="35.0" />
+                     </font>
+                  </Text>
+                  <Button fx:id="btnAdd" layoutX="141.0" layoutY="275.0" mnemonicParsing="false" onAction="#insert" style="-fx-background-color: #4f90b8;" text="Add" />
+                  <ImageView fx:id="imview" fitHeight="96.0" fitWidth="109.0" layoutX="98.0" layoutY="356.0" pickOnBounds="true" preserveRatio="true" />
+                  <DatePicker layoutX="110.0" layoutY="194.0" />
+               </children>
+            </AnchorPane>
+            <AnchorPane layoutX="315.0" layoutY="-3.0" prefHeight="480.0" prefWidth="474.0">
+               <children>
+                  <TableView fx:id="ProductTable" layoutX="13.0" layoutY="125.0" prefHeight="287.0" prefWidth="449.0" style="-fx-background-color: ebecee;">
+                     <columns>
+                        <TableColumn fx:id="id_ev" prefWidth="25.0" text="ID" />
+                        <TableColumn fx:id="name_ev" prefWidth="87.0" text="Name Event" />
+                        <TableColumn fx:id="place_ev" prefWidth="81.0" text="Place Event" />
+                        <TableColumn fx:id="date_ev" prefWidth="63.0" text="Date_event" />
+                     </columns>
+                     <columnResizePolicy>
+                        <TableView fx:constant="CONSTRAINED_RESIZE_POLICY" />
+                     </columnResizePolicy>
+                  </TableView>
+                  <Button fx:id="btnUpdate" layoutX="217.0" layoutY="428.0" mnemonicParsing="false" onAction="#update" style="-fx-background-color: #4f90b8;" text="Update" />
+                  <Button fx:id="btnDelete" layoutX="355.0" layoutY="428.0" mnemonicParsing="false" onAction="#delete" style="-fx-background-color: #4f90b8;" text="Delete" />
+                  <TextField fx:id="txt_GS" layoutX="118.0" layoutY="81.0" prefHeight="25.0" prefWidth="172.0" promptText="     Search" />
+                  <Button fx:id="btn_GS" layoutX="318.0" layoutY="79.0" minWidth="31.0" mnemonicParsing="false" prefHeight="30.0" prefWidth="31.0" style="-fx-background-color: #4f90b8;" textFill="WHITE">
+                     <font>
+                        <Font name="Arial Bold" size="12.0" />
+                     </font>
+                  </Button>
+                  <MenuBar fx:id="id_menu" layoutY="14.0" prefHeight="50.0" prefWidth="250.0">
+                     <menus>
+                        <Menu id="id_home" fx:id="id_home" mnemonicParsing="false" text="Home" />
+                        <Menu fx:id="id_Gallery" mnemonicParsing="false" text="Gallery" />
+                        <Menu fx:id="id_events" mnemonicParsing="false" text="Events" />
+                        <Menu fx:id="id_auctions" mnemonicParsing="false" text="Auction" />
+                     </menus>
+                  </MenuBar>
+                  <Button fx:id="btn_read" layoutX="81.0" layoutY="427.0" mnemonicParsing="false" onAction="#readAll" prefHeight="33.0" prefWidth="75.0" style="-fx-background-color: #4f90b8;" text="ReadAll" textFill="WHITE">
+                     <font>
+                        <Font name="Arial Bold" size="18.0" />
+                     </font>
+                  </Button>
+               </children>
+            </AnchorPane>
+         </children>
+      </AnchorPane>
+   </children>
+</AnchorPane>
