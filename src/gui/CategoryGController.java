@@ -66,6 +66,8 @@ public class CategoryGController implements Initializable {
     @FXML
     private Button btn_search;
     ObservableList<Galerie> CategoryListSearch;
+    @FXML
+    private Button myprofile;
 
     /**
      * Initializes the controller class.
@@ -230,6 +232,10 @@ tray.showAndDismiss(Duration.millis(3000));
     txt_idgal.setText(String.valueOf(a.getId_galerie()));
     txt_galerie.setText(String.valueOf(a.getTitre_galerie()));
    
+    }
+
+    @FXML
+    private void profile(ActionEvent event) {
     }
     
     }

@@ -47,7 +47,7 @@ public class ArticleGController implements Initializable {
     @FXML
     private ImageView image;
     Double res;
-    //public static int idArticle;
+    
   private PreparedStatement pst;
   private ResultSet rs;
   private Article article;
@@ -138,7 +138,6 @@ Connection conn = DataSource.getInstance().getCnx();
     }
 
  
-
 
     public interface MyListener {
     public void onClickListener(Article article);

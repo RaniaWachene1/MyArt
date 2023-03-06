@@ -103,6 +103,7 @@
                   <Image url="@../img/logo.png" />
                </image>
             </ImageView>
+            <Button fx:id="myprofile" layoutX="394.0" layoutY="15.0" mnemonicParsing="false" onAction="#profile" style="-fx-background-color: #dfda7e;" text="Profile" />
          </children>
       </AnchorPane>
    </children>

@@ -148,6 +148,8 @@ public class GalerieController implements Initializable {
     private TableColumn<Article, String> id_galerie;
     private List<Galerie> products;
     private String PhotoPath;
+    @FXML
+    private Button myprofile;
 
 //    public ProductForm(List<Galerie> products) {
 //        this.products = products;
@@ -184,38 +186,23 @@ public class GalerieController implements Initializable {
 
     }    
 
-  /*  private void InsertPhoto(ActionEvent event) throws FileNotFoundException, IOException {
-
-        FileChooser fileChooser = new FileChooser();
-
-        fileChooser.setTitle("Open Resource File");
-
-        fileChooser.getExtensionFilters().addAll(
-                new FileChooser.ExtensionFilter("Image Files", "*.png", "*.jpg", "*.gif"));
-        File selectedFile = fileChooser.showOpenDialog(null);
-        
-        if (selectedFile != null) {
-            Image image = new Image(selectedFile.toURI().toString());
-                       imview.setImage(image);
-photoPath=selectelFile.getPath();
-//            BufferedImage bufferedImage = ImageIO.read(selectedFile);
-//            WritableImage image = SwingFXUtils.toFXImage(bufferedImage, null);
-//            this.photo.setText(selectedFile.toURI().toString());
-//           imview.setImage(image);
-        }
-
-//    File selectedFile = fileChooser.showOpenDialog(null);
-//    if (selectedFile != null) {
-//        Image image = new Image(selectedFile.toURI().toString());
-//        imageview.setImage(image);
-//          photoPath = selectedFile.getPath();
-//    }
-    }*/
-    
 
     @FXML
     private void insert(ActionEvent event) throws Exception {
-        
+   if (Txt_titre.getText().isEmpty() || photo.getText().isEmpty() || prix.getText().isEmpty() || quantite.getText().isEmpty() || nom_artiste.getText().isEmpty() || galerie.getValue() == null) {
+    
+            String titre="Required fields are empty !";
+String message = "Required fields are empty";
+TrayNotification tray = new TrayNotification();
+AnimationType type = AnimationType.POPUP;
+tray.setAnimationType(type);
+tray.setTitle(titre);
+tray.setMessage(message);
+tray.setNotificationType(NotificationType.ERROR);
+tray.showAndDismiss(Duration.millis(3000));
+            
+        }
+   
         if (Txt_titre.getText().isEmpty()){
         Txt_titre.setStyle("-fx-border-color:red ; -fx-border-width:2px ;");
         new animatefx.animation.Shake(Txt_titre).play();
@@ -280,85 +267,8 @@ photoPath=selectelFile.getPath();
         }
         
         else{photo.setStyle(null);}
-        
-        
-        if (Txt_titre.getText().isEmpty() || photo.getText().isEmpty() || prix.getText().isEmpty() || quantite.getText().isEmpty() || nom_artiste.getText().isEmpty() || galerie.getValue() == null) {
-           
-            
-            
-            
-            String titre="Required fields are empty !";
-String message = "Required fields are empty";
-TrayNotification tray = new TrayNotification();
-AnimationType type = AnimationType.POPUP;
-tray.setAnimationType(type);
-tray.setTitle(titre);
-tray.setMessage(message);
-tray.setNotificationType(NotificationType.ERROR);
-tray.showAndDismiss(Duration.millis(3000));
-            
-        }
-         else 
-            
-            if ( Txt_titre.getText().matches(".*[0-9].*"))
-            {
-                Txt_titre.setStyle("-fx-border-color:red ; -fx-border-width:2px ;");
-        new animatefx.animation.Shake(Txt_titre).play();
-                        String titre=" Product Name must be alphabetic !";
-String message = "Please enter only letters !";
-TrayNotification tray = new TrayNotification();
-AnimationType type = AnimationType.POPUP;
-tray.setAnimationType(type);
-tray.setTitle(titre);
-tray.setMessage(message);
-tray.setNotificationType(NotificationType.ERROR);
-tray.showAndDismiss(Duration.millis(4000));
-
-        }
-            else{Txt_titre.setStyle(null);}
-
-      
-       
  
-
-        
-
-//     
-//            if (galeries.getTitre_galerie().equals(name)) {
-//                       new animatefx.animation.Shake(Txt_titre).play();
-//                        String titre=" Product Name must be alphabetic !";
-//String message = "Please enter only letters !";
-//TrayNotification tray = new TrayNotification();
-//AnimationType type = AnimationType.POPUP;
-//tray.setAnimationType(type);
-//tray.setTitle(titre);
-//tray.setMessage(message);
-//tray.setNotificationType(NotificationType.ERROR);
-//tray.showAndDismiss(Duration.millis(4000));
-//               
-//            }
-     
-        
-//         if ( 
-//                nom_artiste.getText().matches(".*[0-9].*")||nom_artiste.getText().matches(".*[%-@-.-/-!-;-,-_].*")
-//                    )
-//            {
-//                Txt_nomArtiste.setStyle("-fx-border-color:red ; -fx-border-width:2px ;");
-//        new animatefx.animation.Shake(Txt_nomArtiste).play();
-//                        String titre=" Artist Name must be alphabetic !";
-//String message = "Please enter only letters !";
-//TrayNotification tray = new TrayNotification();
-//AnimationType type = AnimationType.POPUP;
-//tray.setAnimationType(type);
-//tray.setTitle(titre);
-//tray.setMessage(message);
-//tray.setNotificationType(NotificationType.ERROR);
-//tray.showAndDismiss(Duration.millis(4000));
-//
-//        }
-//            else{Txt_nomArtiste.setStyle(null);}
-        
-        
+       
         
         if ( 
                 prix.getText().matches(".*[a-z].*")
@@ -426,18 +336,8 @@ tray.showAndDismiss(Duration.millis(4000));
                  g);
                  ServiceArticle servicearticle=new ServiceArticle();
            servicearticle.insert(a);
-//           Alert a3 = new Alert(Alert.AlertType.INFORMATION);
-//            a3.setHeaderText(null);
-//            a3.setContentText("Successfully added ! ");
-//            a3.showAndWait();
-        
-//              ServiceGalerie sg=new ServiceGalerie();
-//              int intGalerie=sg.getgalerieFromName( galerie.getValue());
-//              Galerie g= new Galerie();
-//              g.setId_galerie(intGalerie);
-//
 
-//          g,
+
 String titre=" Product Successfully added !";
 String message =( Txt_titre.getText()+" Successfully added !");
 TrayNotification tray = new TrayNotification();
@@ -661,6 +561,10 @@ tray.showAndDismiss(Duration.millis(3000));
           PhotoPath = selectedFile.getPath();
     }
 }
+
+    @FXML
+    private void profile(ActionEvent event) {
+    }
 }
         
         
