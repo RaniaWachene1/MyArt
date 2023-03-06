@@ -83,9 +83,7 @@ Connection conn = DataSource.getInstance().getCnx();
            
     }
     
-    
-    
-//Rating rrating = new Rating();
+
 
 
 
