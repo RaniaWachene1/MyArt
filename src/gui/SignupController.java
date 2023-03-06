@@ -84,8 +84,6 @@ public class SignupController implements Initializable {
     @FXML
     private ImageView image1;
     @FXML
-    private Button cancel;
-    @FXML
     private Button addphoto;
     
     
@@ -268,14 +266,7 @@ stage.show();
  
     }
 
-    
 
-//    private void cancel(ActionEvent event) {
-//        Stage stage = (Stage) cancel.getScene().getWindow(); 
-//        stage.close();
-//        Platform.exit();  
-//    }
-////
 
     
 

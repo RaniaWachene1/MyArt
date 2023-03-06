@@ -111,43 +111,8 @@ public class ProfilController extends LoginController {
          newsexe1.getItems().addAll("homme","femme");
         
         /*******************************************************************************************/
-//        
-//       ConnectionClass connectionClass=new ConnectionClass();
-//         Connection conn=connectionClass.getConnection();
-////        conn = DataSource.getInstance().getConnection();
-//        String req="SELECT * FROM `users` WHERE email= ?";
-//        
-//        PreparedStatement pst1;
-//        
-//        
-//        try {
-//          //  String ema = em;
-//          //Article a =(Article) stage.getUserData();
-//           User u = (User) stage.getUserData();
-////rating.setRation(a.getRating())
-//            pst1 = conn.prepareStatement(req);
-//             pst1.setString(1,u.getEmail());
-//             
-//             ResultSet rst=pst1.executeQuery();
-//             System.out.print(pst1);
-//      
-//        while(rst.next()){
-//           newphone1.setText(rst.getInt(6)+"");
-//           newfirstname1.setText(rst.getString(3));
-//          newlastname1.setText(rst.getString(2));
-//           newemail1.setText(rst.getString(10));
-//           newaddress1.setText(rst.getString(8));
-//           //Image imgdegs = new Image(getClass().getResourceAsStream(rst.getString(9)+""));
-//          // imgdeg = new ImageView(imgdegs);
-//            newpass1.setText(rst.getString(4));
-//           newsexe1.getItems().addAll(rst.getString(7));
-//         newdatenais1.setValue(rst.getDate(5).toLocalDate());//tValue(rst.getString(5));
-//           newrole1.getItems().add(rst.getString(11));
-//        }
-//        } catch (SQLException ex) {
-//            Logger.getLogger(ProfilController.class.getName()).log(Level.SEVERE, null, ex);
-//        }
-       
+
+
         
         List<String> listgendre=new ArrayList<>();
      listgendre.add("Homme");

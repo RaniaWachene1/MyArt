@@ -206,8 +206,7 @@ private ResultSet rs;
     }
      @FXML
     void unblocked(ActionEvent event)  {
-       
-        // LAHNE VLOCKED TEKHO FALSE
+      
         ConnectionClass connectionClass=new ConnectionClass();
          Connection conn=connectionClass.getConnection();
          try{
@@ -226,7 +225,6 @@ private ResultSet rs;
     }
      @FXML
     void block(ActionEvent event) throws SQLException {
-        // BLOCKED TEKHO TRUE
         ConnectionClass connectionClass=new ConnectionClass();
          Connection conn=connectionClass.getConnection();
         String req = "UPDATE `users` SET `block`= ? WHERE`id_user` = ?";
@@ -379,12 +377,7 @@ tray.showAndDismiss(Duration.millis(3000));
         
       ConnectionClass connectionClass=new ConnectionClass();
          Connection conn=connectionClass.getConnection();
-//          TablePosition tablePosition=tableview.getSelectionModel().getSelectedCells().get(0);
-//        int row=tablePosition.getRow();
-//        User item=tableview.getItems().get(row);
-//        TableColumn tableColumn=tablePosition.getTableColumn();
-//        String data= (String) tableColumn.getCellObservableValue(item).getValue();    
-//    System.out.println(data);
+
 String req = "UPDATE `users` SET `nom_user`= ?,`prenom_user`= ?,`pwd_user`= ?,`date_naiss`= ?,`tel_user`= ?,`sexe`= ?,`adresse`= ?,`img`= ?,`email`= ?,`id_role`=? WHERE `id_user`= ?";
 PreparedStatement pst = conn.prepareStatement(req);
 
@@ -413,21 +406,6 @@ int row = pst.executeUpdate();
 System.out.print(pst);
 
 
-
-//         UserService us=new UserService();
-//       User u=new User(
-//                
-//               Integer.parseInt(newid.getText()),
-//               newfirstname.getText(),
-//                 newlastname.getText(),
-//                
-//                newemail.getText(),
-//                 newpass.getText(),
-//                 newsexe.getValue(),
-//               Integer.parseInt(newphone.getText()),
-//                 addpho.getText(),
-//                  newaddress.getText()
-//                  );
      String titre=" successfly update";
             String message = email.getText();
             TrayNotification tray = new TrayNotification();
@@ -526,31 +504,7 @@ Listu=us.readAll();
     private void cancel(ActionEvent event) {
     }
     
-    
-    
-    
-    
-    
-    
-    /***********************************************/
 
-    //private void statisticss(ActionEvent event) throws IOException {
-         // Parent page = FXMLLoader.load(getClass().getResource("statistics.fxml"));
-              //  Scene scene = new Scene(page);
-                //Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
-                //stage.setScene(scene);
-                //stage.setResizable(false);
-              //  stage.show();
-        
-        
-   // }
-//
-//    @FXML
-//    private void cancel(ActionEvent event) {
-//        
-//    }
-
-    
 
     
     }

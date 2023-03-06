@@ -119,193 +119,6 @@ private PreparedStatement pst;
 
    
     @FXML
-//   public void login(ActionEvent event) throws SQLException, IOException {
-//     
-//                conn = DataSource.getInstance().getConnection();
-//             String   query="select * from users where email=? and pwd_user=?";
-//        try {
-//                     if (email.getText().isEmpty()|| password.getText().isEmpty()) {
-//                         String titre=" Required fields are empty !";
-//            String message = email.getText();
-//            TrayNotification tray = new TrayNotification();
-//            AnimationType type = AnimationType.POPUP;
-//            tray.setAnimationType(type);
-//            tray.setTitle(titre);
-//            tray.setMessage(message);
-//            tray.setNotificationType(NotificationType.ERROR);
-//            tray.showAndDismiss(Duration.millis(3000));
-//            
-//                     }
-//                     
-//                   
-//            pst= conn.prepareStatement(query);
-//            pst.setString(1,email.getText());
-//            pst.setString(2, password.getText());
-//           
-//           rs = pst.executeQuery();
-//           //getEmail();
-//           
-//           while(rs.next()){
-//               for (int i=0 ;i< rs.getString(11).length();i++){
-//                   if(rs.getString(11).equals(1)){
-//                       // Admin scene
-//                           try {
-//                Parent page = FXMLLoader.load(getClass().getResource("Crud.fxml"));
-//                Scene scene = new Scene(page);
-//                Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
-//                stage.setScene(scene);
-//                stage.setResizable(false);
-//                stage.show();
-//                
-//                        
-////                String titre=" successfully login";
-////            String message = email.getText();
-////            TrayNotification tray = new TrayNotification();
-////            AnimationType type = AnimationType.POPUP;
-////            tray.setAnimationType(type);
-////            tray.setTitle(titre);
-////            tray.setMessage(message);
-////            tray.setNotificationType(NotificationType.SUCCESS);
-////            tray.showAndDismiss(Duration.millis(3000));
-//            } catch (IOException ex) {
-//                System.out.println(ex.getMessage());
-//            }
-//                           
-//                   }
-//             if ((rs.getString(11).equals(2)&& rs.getString(12).equals("unBlock")) ){
-//                       
-//                          
-//                User u = new User(email.getText());
-//                Parent page = FXMLLoader.load(getClass().getResource("profil.fxml"));
-//                Scene scene = new Scene(page);
-//                Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
-//                stage.setUserData(u);
-//                stage.setScene(scene);
-//                stage.setResizable(false);
-//                stage.show();
-//               
-//                
-//                        
-//
-////            } else {
-////               Parent page = FXMLLoader.load(getClass().getResource("Blocked.fxml"));
-////                Scene scene = new Scene(page);
-////                Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
-////                stage.setScene(scene);
-////                stage.setResizable(false);
-////                stage.show();
-////                  
-//       }
-//                          
-//                           
-//                           
-//                  
-//            if(rs.getString(11).equals(3) ){
-//                       
-//                         //&& rs.getString(12).equals("unBlock")
-//                User u = new User(email.getText());
-//                Parent page = FXMLLoader.load(getClass().getResource("profil.fxml"));
-//                Scene scene = new Scene(page);
-//                Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
-//                //rania u need it 
-//                stage.setUserData(u);
-//                stage.setScene(scene);
-//                stage.setResizable(false);
-//                stage.show();
-//                
-//                        
-////
-////            } else{
-////                     Parent page = FXMLLoader.load(getClass().getResource("Blocked.fxml"));
-////                Scene scene = new Scene(page);
-////                Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
-////                stage.setScene(scene);
-////                stage.setResizable(false);
-////                stage.show();
-////            }
-//                           
-//                           
-//                   }
-//                 }
-//            }
-//          
-//                   
-////                    if(rs.getString(1).equals("2") && rs.getBoolean(12)){
-////                               //display profile.fxml
-////                           }else{
-////                               //display blocked
-//                         
-////                     if(rs.getString(1).equals("3") && rs.getBoolean(12)){
-////                               //display profile.fxml
-////                           }else{
-////                               //display blocked
-////                           }
-// 
-////                 if(rs.getString(1).equals("2") && rs.getString(12)){
-////                      
-////                       User u = new User(email.getText());
-////                Parent page = FXMLLoader.load(getClass().getResource("profil.fxml"));
-////                Scene scene = new Scene(page);
-////                Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
-////                //rania u need it 
-////                stage.setUserData(u);
-////                stage.setScene(scene);
-////                stage.setResizable(false);
-////                stage.show();
-////                   }
-////           else {
-////                       Parent page = FXMLLoader.load(getClass().getResource("Blocked.fxml"));
-////                Scene scene = new Scene(page);
-////                Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
-////                stage.setScene(scene);
-////                stage.setResizable(false);
-////                stage.show();
-////                   }
-//                    
-//        
-////                  if(rs.getString(1).equals("3") && rs.getBoolean(12)){
-////                      
-////                       User u = new User(email.getText());
-////                Parent page = FXMLLoader.load(getClass().getResource("profil.fxml"));
-////                Scene scene = new Scene(page);
-////                Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
-////                stage.setUserData(u);
-////                stage.setScene(scene);
-////                stage.setResizable(false);
-////                stage.show();
-////                   }
-////           else {
-////                       Parent page = FXMLLoader.load(getClass().getResource("Blocked.fxml"));
-////                Scene scene = new Scene(page);
-////                Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
-////                stage.setScene(scene);
-////                stage.setResizable(false);
-////                stage.show();
-//                 
-//                 
-//                 
-//                 
-//              
-//                   
-//               
-//      }
-//            
-//        catch (SQLException ex) {
-//            Logger.getLogger(LoginController.class.getName()).log(Level.SEVERE, null, ex);
-//                   String titre=" ERROR";
-//            String message = email.getText();
-//            TrayNotification tray = new TrayNotification();
-//AnimationType type = AnimationType.POPUP;
-//tray.setAnimationType(type);
-//tray.setTitle(titre);
-//tray.setMessage(message);
-//tray.setNotificationType(NotificationType.ERROR);
-//tray.showAndDismiss(Duration.millis(3000));
-//        
-//        
-//    }
-//         }
- 
     void login(ActionEvent event) throws SQLException, IOException {
                 conn = DataSource.getInstance().getConnection();
              String   query="select id_role, email, pwd_user , block from users where email=? and pwd_user=? ";
@@ -322,6 +135,7 @@ private PreparedStatement pst;
             tray.showAndDismiss(Duration.millis(3000));
             
                      }
+               
                    
             pst= conn.prepareStatement(query);
             pst.setString(1,email.getText());
@@ -341,21 +155,12 @@ private PreparedStatement pst;
                 stage.setScene(scene);
                 stage.setResizable(false);
                 stage.show();
-                
-                        
-//                String titre=" successfully login";
-//            String message = email.getText();
-//            TrayNotification tray = new TrayNotification();
-//            AnimationType type = AnimationType.POPUP;
-//            tray.setAnimationType(type);
-//            tray.setTitle(titre);
-//            tray.setMessage(message);
-//            tray.setNotificationType(NotificationType.SUCCESS);
-//            tray.showAndDismiss(Duration.millis(3000));
+  
             } catch (IOException ex) {
                 System.out.println(ex.getMessage());
             }
-                   }else
+                           }
+                  
                        if((rs.getString(1).equals("2"))&&(rs.getString(4).equals("unBlock"))){
                            User u = new User(email.getText());
                        Parent page = FXMLLoader.load(getClass().getResource("profil.fxml"));
@@ -391,35 +196,11 @@ private PreparedStatement pst;
                 stage.show();
                    }
                    
-//                    if(rs.getString(4).equals("unBlock")){
-//                       Parent page = FXMLLoader.load(getClass().getResource("profil.fxml"));
-//                Scene scene = new Scene(page);
-//                Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
-//                stage.setScene(scene);
-//                stage.setResizable(false);
-//                stage.show();
-//                   }else {
-//                       Parent page = FXMLLoader.load(getClass().getResource("blocked.fxml"));
-//                Scene scene = new Scene(page);
-//                Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
-//                stage.setScene(scene);
-//                stage.setResizable(false);
-//                stage.show();
-//                   }
-                 
-//else {
-//                       Parent page = FXMLLoader.load(getClass().getResource("profil.fxml"));
-//                Scene scene = new Scene(page);
-//                Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
-//                stage.setScene(scene);
-//                stage.setResizable(false);
-//                stage.show();
-//                   }
-                    
-               }
+            
+             
                    
-               
-           }
+                }
+            }
             
         } catch (SQLException ex) {
             Logger.getLogger(LoginController.class.getName()).log(Level.SEVERE, null, ex);
@@ -474,74 +255,6 @@ public void getEmail(){
              }
     
   
-
-
-//          Notifications notification = pushNotify(email +" was not found in our database", "try again");
-//          notification.showError();
-//     }
-// }
-//}
-//    
-//
-//@FXML
-//    public void submit(ActionEvent event) {
-        
-//     
-//        String email = email.getText().trim();
-//        String text = txt_verifcode.getText().trim();
-//        String password = txt_password.getText();
-//        String password2 = txt_password2.getText();
-//         Pattern pattern = Pattern.compile("([a-z0-9_\\-\\.])+\\@([a-z0-9_\\-\\.])+\\.([a-z]{2,4})$");
-//                 if (email.isEmpty()) {
-//            Notifications notification = pushNotify("Empty Field", "Please fill in the field");
-//            notification.showError();
-//           txt_email.requestFocus();
-//        } else  if (text.isEmpty() && password.isEmpty()&& password2.isEmpty()) {
-//            Notifications notification = pushNotify("Empty Fields", "Please fill in the fields");
-//            notification.showError();
-//           txt_verifcode.requestFocus();
-////            txt_password.setStyle("-fx-border-color: red;");
-////            txt_username.setStyle("-fx-border-color: red;");
-//        } else
-//            {
-//    if (getCode() == Integer.parseInt(text))
-//  {
-//      if (password.equals(password2))
-//     {
-//        if(!sp.Updatepassword(password,email))
-//     {
-//     System.out.println("passwoed updated");
-//     Image img = new Image(getClass().getResourceAsStream("images/ok.png"));
-//     Notifications notification = pushNotify("passwoed updated", "back to sign in");
-//     notification.graphic(new ImageView(img));
-//     notification.show();
-//     clear();
-//     setCode();
-// pane1.setVisible(true);
-// pane2.setVisible(false);
-//     }
-//     else
-//     {
-//         System.out.println("passwoed wasn't updated");
-//         Notifications notification = pushNotify("passwoed wasn't updated", "try again");
-//          notification.showError();
-//     }
-//      }else
-//      {
-//         Notifications notification = pushNotify("passwoeds don't match", "try again");
-//         notification.showError();
-//      }
-//
-//      
-//  }
-//  else
-//  {
-//        System.out.println("Rong code");
-//        Notifications notification = pushNotify("verifcode don't match", "try again");
-//        notification.showError();
-//  }
-//
-//}
 
     @Override
     public void initialize(URL url, ResourceBundle rb) {
