@@ -9,6 +9,7 @@ import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
 import entite.Article;
+import java.io.File;
 import java.net.MalformedURLException;
 import java.net.URL;
 import java.sql.Connection;
@@ -94,17 +95,18 @@ Connection conn = DataSource.getInstance().getCnx();
         this.myListener = myListener;
         label_titre.setText(article.getTitre_article());
         label_prix.setText(MyArt.CURRENCY + article.getPrix_article());
-       // label_rating.setText(article.getRate());
-        //quantite.setText(String.valueOf(fruit.getQuantite()));
-        String path =  "file://C:/xampp/htdocs/imgfile:/C:/xampp/htdocs/img/"+article.getPhoto_article();
-        
-//     Image imag = new Image(getClass().getResourceAsStream(article.getPhoto_article()));
-//     image.setImage(imag);
-         Image imag = new Image(path);
-        System.out.println(path);
-                System.out.println(imag);
-
-        image.setImage(imag);
+        label_rating.setText(String.valueOf(article.getRate()));
+      
+       String path =article.getPhoto_article().substring(6);
+        File imageFile = new File(path);
+     Image images = new Image(imageFile.toURI().toString());
+     //mage imag = new Image(getClass().getResourceAsStream(article.getPhoto_article()));
+     image.setImage(images);
+//         Image imag = new Image(path);
+//        System.out.println(path);
+//                System.out.println(imag);
+//
+//        image.setImage(imag);
         
 }
 

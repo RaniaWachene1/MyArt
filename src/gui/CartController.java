@@ -90,6 +90,10 @@ public class CartController implements Initializable {
 
     @FXML
     private void cancel(ActionEvent event) {
+         name.setText("Empty");
+        price.setText("0");
+        qte.setText("0");
+        total.setText("0");
     }
 
     @FXML
@@ -114,6 +118,9 @@ public class CartController implements Initializable {
 
     @FXML
     private void coupon(ActionEvent event) {
+        
+       if(txt_coupon.getText().equalsIgnoreCase("TheDevelopors")) 
+       {total.getText();}
     }
 
     @FXML

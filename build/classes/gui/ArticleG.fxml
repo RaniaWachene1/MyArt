@@ -46,6 +46,9 @@
                <padding>
                   <Insets left="10.0" />
                </padding>
+               <VBox.margin>
+                  <Insets />
+               </VBox.margin>
             </Rating>
             <Label fx:id="label_rating" prefHeight="15.0" prefWidth="189.0" text="   rating ">
                <padding>
@@ -55,10 +58,13 @@
                   <Font name="System Italic" size="10.0" />
                </font>
             </Label>
-            <Button fx:id="ratee" mnemonicParsing="false" onAction="#rating" prefHeight="25.0" prefWidth="151.0" text="Rate">
+            <Button fx:id="ratee" mnemonicParsing="false" onAction="#rating" prefHeight="25.0" prefWidth="51.0" style="-fx-background-color: #dfda7e; -fx-background-radius: 20;" text="Rate">
                <opaqueInsets>
                   <Insets />
                </opaqueInsets>
+               <VBox.margin>
+                  <Insets bottom="5.0" left="75.0" />
+               </VBox.margin>
             </Button>
          </children>
       </VBox>

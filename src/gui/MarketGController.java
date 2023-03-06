@@ -6,6 +6,7 @@ package gui;
 import gui.ArticleGController.MyListener;
 import entite.Article;
 import entite.Galerie;
+import java.io.File;
 import java.io.IOException;
 import java.net.URL;
 import java.sql.Connection;
@@ -134,15 +135,25 @@ System.out.println(articles);
         return articles;
     }
 Article a = new Article();
-    private void setChosenFruit(Article article) {
+    private void setselectedData(Article article) {
         
         a = article;
         
         titre.setText(article.getTitre_article());
         prix.setText(MyArt.CURRENCY + article.getPrix_article());
         //getClass().getResourceAsStream(getData().get(0)+"")
-        imag = new Image(getClass().getResourceAsStream(""));
-        imgviw.setImage(imag);
+        //imag = new Image(getClass().getResourceAsStream(""));
+       // String ss =imag.substring(6);
+       String imagePath = article.getPhoto_article().substring(6, article.getPhoto_article().length());
+     File imageFile = new File(imagePath);
+     Image image = new Image(imageFile.toURI().toString());
+     imgviw.setImage(image);
+    //System.out.print("this is image path "+imagePath+" "+"this is full pathh"+article.getPhoto_article());
+     
+     
+     
+     
+     
 //        chosenArticle.setStyle("-fx-background-color: #" + article.getColor() + ";\n" +
 //                "    -fx-background-radius: 30;");
     }
@@ -153,11 +164,11 @@ Article a = new Article();
         int column = 0;
         int row = 1;
         if (articles.size() > 0) {
-            setChosenFruit(articles.get(0));
+            setselectedData(articles.get(0));
             myListener = new MyListener() {
                 @Override
                 public void onClickListener(Article article) {
-                    setChosenFruit(article);
+                    setselectedData(article);
                 }
             };
         }

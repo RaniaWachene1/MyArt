@@ -20,10 +20,10 @@ public class Sms {
 	public String Sms() {
 		try {
 			// Construct data
-			String apiKey = "apikey=" + "yourapiKey";
+			String apiKey = "apikey=" + "NTI2MjQ3NDIzOTY1NTYzNzZkMzc0MjM1NTYzODVhNDY=";
 			String message = "&message=" + "This is your message";
-			String sender = "&sender=" + "Jims Autos";
-			String numbers = "&numbers=" + "447123456789";
+			String sender = "&sender=" + "MyArt";
+			String numbers = "&numbers=" + "22600311";
 			
 			// Send data
 			HttpURLConnection conn = (HttpURLConnection) new URL("https://api.txtlocal.com/send/?").openConnection();

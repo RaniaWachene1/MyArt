@@ -5,6 +5,7 @@
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.Menu?>
 <?import javafx.scene.control.MenuBar?>
+<?import javafx.scene.control.Separator?>
 <?import javafx.scene.control.TableColumn?>
 <?import javafx.scene.control.TableView?>
 <?import javafx.scene.control.TextArea?>
@@ -37,8 +38,7 @@
                </font>
             </Text>
             <Button fx:id="btnAdd" layoutX="231.0" layoutY="428.0" mnemonicParsing="false" onAction="#insert" style="-fx-background-color: #4f90b8;" text="Add" textFill="WHITE" />
-            <Button fx:id="photo" accessibleRole="IMAGE_VIEW" alignment="TOP_RIGHT" layoutX="21.0" layoutY="374.0" mnemonicParsing="false" onAction="#InsertPhoto" prefHeight="30.0" prefWidth="54.0" style="-fx-background-color: #4f90b8;" text="image" textAlignment="CENTER" textFill="WHITE" wrapText="true" />
-            <ImageView fx:id="imview" fitHeight="96.0" fitWidth="109.0" layoutX="98.0" layoutY="356.0" pickOnBounds="true" preserveRatio="true" />
+            <ImageView fx:id="imview" fitHeight="96.0" fitWidth="109.0" layoutX="87.0" layoutY="363.0" onMouseClicked="#InsertPhoto" pickOnBounds="true" preserveRatio="true" />
             <Label fx:id="labelidPP" layoutX="26.0" layoutY="88.0" prefHeight="18.0" prefWidth="68.0" />
             <TextField fx:id="txt_idp" layoutX="139.0" layoutY="84.0" prefHeight="26.0" prefWidth="42.0" />
             <ImageView fitHeight="44.0" fitWidth="86.0" layoutX="138.0" layoutY="75.0" pickOnBounds="true" preserveRatio="true">
@@ -46,6 +46,11 @@
                   <Image url="@../img/cache.png" />
                </image>
             </ImageView>
+            <Label layoutX="28.0" layoutY="345.0" text="Upload image" />
+            <Separator layoutX="80.0" layoutY="362.0" prefHeight="3.0" prefWidth="124.0" style="-fx-background-color: #4f90b8;" />
+            <Separator layoutX="83.0" layoutY="457.0" prefHeight="3.0" prefWidth="118.0" style="-fx-background-color: #4f90b8;" />
+            <Separator layoutX="78.0" layoutY="364.0" orientation="VERTICAL" prefHeight="96.0" prefWidth="5.0" style="-fx-background-color: #4f90b8;" />
+            <Separator layoutX="198.0" layoutY="363.0" orientation="VERTICAL" prefHeight="96.0" prefWidth="5.0" style="-fx-background-color: #4f90b8;" />
          </children>
       </AnchorPane>
       <AnchorPane layoutX="307.0" layoutY="-3.0" prefHeight="480.0" prefWidth="482.0" style="-fx-background-color: #ffff;" AnchorPane.bottomAnchor="0.0" AnchorPane.topAnchor="0.0">

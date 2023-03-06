@@ -6,7 +6,7 @@ package gui;
 
 import com.itextpdf.text.Document;
 import com.itextpdf.text.Element;
-import com.itextpdf.text.Image;
+//import com.itextpdf.text.Image;
 import com.itextpdf.text.Paragraph;
 import com.itextpdf.text.pdf.PdfPCell;
 import com.itextpdf.text.pdf.PdfPTable;
@@ -47,11 +47,13 @@ import javafx.scene.control.Alert;
 import javafx.scene.control.cell.ComboBoxTableCell;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.image.ImageView;
-import javafx.scene.image.WritableImage;
+//import javafx.scene.image.WritableImage;
 import javafx.scene.input.MouseEvent;
 import javafx.stage.FileChooser;
 import javafx.util.Duration;
-import javax.imageio.ImageIO;
+import javafx.scene.image.Image;
+import javafx.scene.image.ImageView;
+//import javax.imageio.ImageIO;
 import org.controlsfx.validation.ValidationSupport;
 import org.controlsfx.validation.Validator;
 
@@ -130,7 +132,6 @@ public class GalerieController implements Initializable {
     private Menu id_auctions;
     @FXML
     private Button btn_read;
-    @FXML
     private Button photo;
     @FXML
     private ImageView imview;
@@ -146,6 +147,7 @@ public class GalerieController implements Initializable {
     @FXML
     private TableColumn<Article, String> id_galerie;
     private List<Galerie> products;
+    private String PhotoPath;
 
 //    public ProductForm(List<Galerie> products) {
 //        this.products = products;
@@ -182,8 +184,7 @@ public class GalerieController implements Initializable {
 
     }    
 
-    @FXML
-    private void InsertPhoto(ActionEvent event) throws FileNotFoundException, IOException {
+  /*  private void InsertPhoto(ActionEvent event) throws FileNotFoundException, IOException {
 
         FileChooser fileChooser = new FileChooser();
 
@@ -194,12 +195,23 @@ public class GalerieController implements Initializable {
         File selectedFile = fileChooser.showOpenDialog(null);
         
         if (selectedFile != null) {
-            BufferedImage bufferedImage = ImageIO.read(selectedFile);
-            WritableImage image = SwingFXUtils.toFXImage(bufferedImage, null);
-            this.photo.setText(selectedFile.toURI().toURL().toString());
-           imview.setImage(image);
+            Image image = new Image(selectedFile.toURI().toString());
+                       imview.setImage(image);
+photoPath=selectelFile.getPath();
+//            BufferedImage bufferedImage = ImageIO.read(selectedFile);
+//            WritableImage image = SwingFXUtils.toFXImage(bufferedImage, null);
+//            this.photo.setText(selectedFile.toURI().toString());
+//           imview.setImage(image);
         }
-    }
+
+//    File selectedFile = fileChooser.showOpenDialog(null);
+//    if (selectedFile != null) {
+//        Image image = new Image(selectedFile.toURI().toString());
+//        imageview.setImage(image);
+//          photoPath = selectedFile.getPath();
+//    }
+    }*/
+    
 
     @FXML
     private void insert(ActionEvent event) throws Exception {
@@ -241,11 +253,7 @@ public class GalerieController implements Initializable {
         else{
               quantite.setStyle(null);
           }
-          
-          
-          
-          
-          
+           
           
          if (Txt_nomArtiste.getText().isEmpty()){
         Txt_nomArtiste.setStyle("-fx-border-color:red ; -fx-border-width:2px ;");
@@ -292,9 +300,7 @@ tray.showAndDismiss(Duration.millis(3000));
         }
          else 
             
-            if ( Txt_titre.getText().matches(".*[0-9].*")
-//                
-                    )
+            if ( Txt_titre.getText().matches(".*[0-9].*"))
             {
                 Txt_titre.setStyle("-fx-border-color:red ; -fx-border-width:2px ;");
         new animatefx.animation.Shake(Txt_titre).play();
@@ -311,9 +317,9 @@ tray.showAndDismiss(Duration.millis(4000));
         }
             else{Txt_titre.setStyle(null);}
 
-       // if (Galerie.get.equals( Txt_titre.getText()) { }
+      
        
-        String name = Txt_titre.getText();
+ 
 
         
 
@@ -554,8 +560,8 @@ List<Article> liste=new ArrayList<>();
         try { 
             PdfWriter.getInstance(document, new FileOutputStream("C://pdf/article.pdf"));
             document.open();
-            Image img = Image.getInstance("C://img/logo.png") ;
-            document.add(img);
+           // Image imgage = Image.getInstance("C://img/logo.png") ;
+           // document.add(img);
             Paragraph ph0 = new Paragraph("        ");
             Paragraph ph1 = new Paragraph("MyArt !");
             Paragraph ph2 = new Paragraph("        ");
@@ -640,6 +646,21 @@ tray.showAndDismiss(Duration.millis(3000));
         ProductListSearch = st.SearchByArticle(txt_GS.getText());
         ProductTable.setItems(ProductListSearch);
     }
+
+  @FXML
+    private void InsertPhoto(MouseEvent event) {
+
+      FileChooser fileChooser = new FileChooser();
+         fileChooser.setTitle("Select Image");
+            fileChooser.getExtensionFilters().addAll(
+            new FileChooser.ExtensionFilter("Image Files", ".png", ".jpg","*", "*.gif"));
+    File selectedFile = fileChooser.showOpenDialog(null);
+    if (selectedFile != null) {
+        Image image = new Image(selectedFile.toURI().toString());
+        imview.setImage(image);
+          PhotoPath = selectedFile.getPath();
+    }
+}
 }
         
         
