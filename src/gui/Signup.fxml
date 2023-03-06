@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Accordion?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ComboBox?>
+<?import javafx.scene.control.DatePicker?>
+<?import javafx.scene.control.PasswordField?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
+<?import javafx.scene.text.Text?>
+
+<AnchorPane fx:id="sexe" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="533.0" prefWidth="687.0" style="-fx-background-color: #ebecee;" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="gui.SignupController">
+   <children>
+      <TextField fx:id="lastname" layoutX="298.0" layoutY="290.0" prefHeight="25.0" prefWidth="174.0" promptText="lastname" />
+      <TextField fx:id="firstname" layoutX="298.0" layoutY="242.0" prefHeight="25.0" prefWidth="174.0" promptText="firstname" />
+      <TextField fx:id="email" layoutX="504.0" layoutY="290.0" prefHeight="25.0" prefWidth="163.0" promptText="email" />
+      <TextField fx:id="address" layoutX="298.0" layoutY="334.0" prefHeight="25.0" prefWidth="174.0" promptText="address" />
+      <TextField fx:id="phone" layoutX="501.0" layoutY="334.0" prefHeight="25.0" prefWidth="163.0" promptText="phone" />
+      <PasswordField fx:id="password" layoutX="298.0" layoutY="424.0" prefHeight="25.0" prefWidth="174.0" promptText="password" />
+      <PasswordField fx:id="confirmpass" layoutX="504.0" layoutY="424.0" prefHeight="25.0" prefWidth="163.0" promptText="confirm password" />
+      <Text fx:id="txt1" fill="#245393" layoutX="329.0" layoutY="65.0" strokeType="OUTSIDE" strokeWidth="0.0" text="New Account" textAlignment="CENTER" wrappingWidth="285.3046875">
+         <font>
+            <Font name="High Tower Text" size="51.0" />
+         </font>
+      </Text>
+      <Button fx:id="signup" cache="true" cacheHint="QUALITY" layoutX="320.0" layoutY="476.0" mnemonicParsing="false" onAction="#signup" prefHeight="25.0" prefWidth="130.0" style="-fx-background-color: #245393;" text="Signup" textFill="WHITE" />
+      <Button fx:id="backup" layoutX="526.0" layoutY="476.0" mnemonicParsing="false" onAction="#backup" prefHeight="25.0" prefWidth="106.0" style="-fx-background-color: #245393;" text="Back to Signin" textFill="#f8f8f8" />
+      <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Text" />
+      <ImageView fx:id="image1" fitHeight="515.0" fitWidth="279.0" layoutX="11.0" layoutY="18.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@IMG/vann.jpg" />
+         </image>
+      </ImageView>
+      <ImageView fitHeight="47.0" fitWidth="65.0" layoutX="629.0" layoutY="4.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../../../../../Downloads/324439463_718505903244455_374895459013489466_n.png" />
+         </image>
+      </ImageView>
+      <Button fx:id="addphoto" layoutX="507.0" layoutY="242.0" mnemonicParsing="false" onAction="#InsertPhoto" style="-fx-background-color: #245393;" text="Add  Photo" textFill="#fcf9f9" />
+      <Accordion />
+      <ComboBox fx:id="role" layoutX="298.0" layoutY="193.0" prefHeight="25.0" prefWidth="120.0" promptText="Role" />
+      <DatePicker fx:id="date" layoutX="298.0" layoutY="379.0" promptText="date" />
+      <ComboBox fx:id="newsexe" layoutX="502.0" layoutY="379.0" prefHeight="25.0" prefWidth="163.0" promptText="Gender" />
+      <ImageView fx:id="imviews" fitHeight="92.0" fitWidth="90.0" layoutX="591.0" layoutY="152.0" pickOnBounds="true" preserveRatio="true" />
+      <ImageView fx:id="logooo" fitHeight="74.0" fitWidth="77.0" layoutX="599.0" layoutY="14.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@IMG/logo%20(4).png" />
+         </image>
+      </ImageView>
+      <ImageView fitHeight="80.0" fitWidth="77.0" layoutX="507.0" layoutY="152.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@IMG/user.png" />
+         </image>
+      </ImageView>
+   </children>
+</AnchorPane>

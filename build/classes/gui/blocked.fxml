@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.net.URL?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
+<?import javafx.scene.text.Text?>
+
+<AnchorPane id="AnchorPane" prefHeight="400.0" prefWidth="600.0" style="-fx-background-color: #ebecee;" styleClass="mainFxmlClass" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/19" fx:controller="gui.BlockedController">
+    <stylesheets>
+        <URL value="@blocked.css" />
+    </stylesheets>
+   <children>
+      <Text fill="#245393" layoutX="178.0" layoutY="77.0" strokeType="OUTSIDE" strokeWidth="0.0" text="unfounded account please contact administrator" textAlignment="CENTER" wrappingWidth="363.13671875">
+         <font>
+            <Font name="Algerian" size="45.0" />
+         </font>
+      </Text>
+      <ImageView fitHeight="182.0" fitWidth="206.0" layoutY="83.0" pickOnBounds="true" smooth="false">
+         <image>
+            <Image url="@IMG/16.png" />
+         </image>
+      </ImageView>
+   </children>
+</AnchorPane>

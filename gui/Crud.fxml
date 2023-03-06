@@ -1,0 +1,116 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.net.URL?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ComboBox?>
+<?import javafx.scene.control.DatePicker?>
+<?import javafx.scene.control.Menu?>
+<?import javafx.scene.control.MenuBar?>
+<?import javafx.scene.control.MenuItem?>
+<?import javafx.scene.control.PasswordField?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
+<?import javafx.scene.text.Text?>
+
+<AnchorPane id="AnchorPane" fx:id="text" prefHeight="480.0" prefWidth="790.0" styleClass="mainFxmlClass" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="gui.CrudController">
+    <stylesheets>
+        <URL value="@crud.css" />
+    </stylesheets>
+   <children>
+      <AnchorPane fx:id="txt4" layoutX="333.0" layoutY="7.0" prefHeight="481.0" prefWidth="461.0">
+         <children>
+            <TableView fx:id="tableview" layoutX="-3.0" layoutY="143.0" prefHeight="198.0" prefWidth="493.0" style="-fx-background-color: #ebecee;">
+              <columns>
+                  <TableColumn fx:id="id_user" prefWidth="40.0" text="ID" />
+                <TableColumn fx:id="nom_user" prefWidth="72.0" text="firstname" />
+                <TableColumn fx:id="prenom_user" prefWidth="64.0" text="lastname" />
+                  <TableColumn fx:id="email" prefWidth="85.0" text="     email" />
+                  <TableColumn fx:id="img" prefWidth="67.0" text="photo" />
+                  <TableColumn fx:id="tel_user" prefWidth="69.0" text="phone" />
+                  <TableColumn fx:id="date_naiss" prefWidth="54.0" text="date" />
+                  <TableColumn fx:id="sexe" prefWidth="95.0" text="sexe" />
+              </columns>
+            </TableView>
+            <Button fx:id="delete" layoutX="29.0" layoutY="434.0" mnemonicParsing="false" onAction="#delete" prefHeight="30.0" prefWidth="107.0" style="-fx-background-color: #4f90b8;" text="Delete" textFill="WHITE" />
+            <Button fx:id="idbuttonc" layoutX="359.0" layoutY="434.0" mnemonicParsing="false" prefHeight="30.0" prefWidth="107.0" style="-fx-background-color: #dfda7e;" text="cancel" />
+            <MenuBar fx:id="idme" layoutX="6.0" layoutY="83.0" prefHeight="26.0" prefWidth="472.0" style="-fx-background-color: #ebecee;">
+              <menus>
+                  <Menu mnemonicParsing="false" text="Home">
+                    <items>
+                      <MenuItem mnemonicParsing="false" text="Action 1" />
+                    </items>
+                  </Menu>
+                <Menu mnemonicParsing="false" text="Gallery">
+                  <items>
+                    <MenuItem mnemonicParsing="false" text="Close" />
+                  </items>
+                </Menu>
+                <Menu mnemonicParsing="false" text="Event">
+                  <items>
+                    <MenuItem mnemonicParsing="false" text="Delete" />
+                  </items>
+                </Menu>
+                <Menu mnemonicParsing="false" text="Auction">
+                  <items>
+                    <MenuItem mnemonicParsing="false" text="About" />
+                  </items>
+                </Menu>
+              </menus>
+            </MenuBar>
+            <ImageView fitHeight="53.0" fitWidth="58.0" layoutX="424.0" pickOnBounds="true" preserveRatio="true" />
+            <ImageView fitHeight="53.0" fitWidth="58.0" layoutX="424.0" layoutY="6.0">
+               <image>
+                  <Image url="@../../../../../Downloads/324439463_718505903244455_374895459013489466_n.png" />
+               </image>
+            </ImageView>
+            <Text fx:id="txt2" fill="#245393" layoutX="192.0" layoutY="55.0" strokeType="OUTSIDE" strokeWidth="0.0" text="MyArt" wrappingWidth="107.0">
+               <font>
+                  <Font name="High Tower Text" size="30.0" />
+               </font>
+            </Text>
+            <ImageView fitHeight="150.0" fitWidth="200.0" layoutX="299.0" layoutY="-27.0" pickOnBounds="true" preserveRatio="true" />
+            <ImageView fitHeight="53.0" fitWidth="67.0" layoutX="420.0" layoutY="14.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@IMG/logo%20(4).png" />
+               </image>
+            </ImageView>
+            <Button fx:id="readall" layoutX="187.0" layoutY="434.0" mnemonicParsing="false" onAction="#readAll" prefHeight="30.0" prefWidth="107.0" style="-fx-background-color: #4f90b8;" text="ReadAll" textFill="WHITE" />
+         </children>
+      </AnchorPane>
+      <ImageView fitHeight="407.0" fitWidth="268.0" layoutX="7.0" layoutY="75.0" pickOnBounds="true" preserveRatio="true" />
+      <AnchorPane fx:id="txttt" layoutX="7.0" layoutY="17.0" prefHeight="456.0" prefWidth="320.0" style="-fx-background-color: #ebecee;">
+         <children>
+            <TextField fx:id="newlastname" layoutX="183.0" layoutY="187.0" prefHeight="17.0" prefWidth="119.0" promptText="lastname" />
+            <TextField fx:id="newemail" layoutX="11.0" layoutY="189.0" prefHeight="26.0" prefWidth="146.0" promptText="email" />
+            <TextField fx:id="newaddress" layoutX="14.0" layoutY="235.0" prefHeight="26.0" prefWidth="139.0" promptText="address" />
+            <TextField fx:id="newphone" layoutX="177.0" layoutY="235.0" prefHeight="26.0" prefWidth="139.0" promptText="phone" />
+            <PasswordField fx:id="newpass" layoutX="14.0" layoutY="323.0" prefHeight="26.0" prefWidth="139.0" promptText="password" />
+            <PasswordField fx:id="newpassc" layoutX="177.0" layoutY="323.0" prefHeight="26.0" prefWidth="139.0" promptText="confirm password" />
+            <Text fx:id="text7" fill="#245393" layoutX="173.0" layoutY="49.0" strokeType="OUTSIDE" strokeWidth="0.0" text="User" textAlignment="CENTER" wrappingWidth="138.99999999999994">
+               <font>
+                  <Font name="High Tower Text" size="53.0" />
+               </font>
+            </Text>
+            <Text fill="#4f90b8" layoutX="29.0" layoutY="129.0" strokeType="OUTSIDE" strokeWidth="0.0" textAlignment="CENTER">
+               <font>
+                  <Font name="Baskerville Old Face" size="17.0" />
+               </font>
+            </Text>
+            <Button fx:id="newupdate" layoutX="177.0" layoutY="397.0" mnemonicParsing="false" onAction="#update" prefHeight="30.0" prefWidth="94.0" style="-fx-background-color: #4f90b8;" text="Update" textFill="WHITE" />
+            <Button fx:id="addpho" layoutX="18.0" layoutY="118.0" mnemonicParsing="false" onAction="#insertphoto" prefHeight="30.0" prefWidth="82.0" style="-fx-background-color: #4f90b8;" text="Add  Photo" />
+            <ComboBox fx:id="newrole" layoutX="196.0" layoutY="135.0" prefHeight="26.0" prefWidth="94.0" promptText="Role" />
+            <DatePicker fx:id="newdatenais" layoutX="12.0" layoutY="282.0" prefHeight="26.0" prefWidth="146.0" promptText="date" />
+            <ComboBox fx:id="newsexe" layoutX="173.0" layoutY="283.0" prefHeight="26.0" prefWidth="139.0" promptText="gender" />
+            <TextField fx:id="newid" layoutX="243.0" layoutY="97.0" prefHeight="26.0" prefWidth="44.0" promptText="id" />
+            <TextField fx:id="newfirstname" layoutX="15.0" layoutY="150.0" prefHeight="26.0" prefWidth="139.0" promptText="firstname" />
+            <Button fx:id="add" graphicTextGap="0.0" layoutX="30.0" layoutY="397.0" mnemonicParsing="false" onAction="#insert" prefHeight="30.0" prefWidth="94.0" style="-fx-background-color: #4f90b8;" text="ADD" textAlignment="CENTER" textFill="WHITE" />
+            <ImageView fx:id="imageview" fitHeight="101.0" fitWidth="119.0" layoutX="11.0" layoutY="13.0" pickOnBounds="true" preserveRatio="true" />
+         </children>
+      </AnchorPane>
+   </children>
+</AnchorPane>
