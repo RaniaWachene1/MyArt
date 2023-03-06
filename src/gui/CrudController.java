@@ -155,9 +155,8 @@ public class CrudController implements Initializable {
 private PreparedStatement pst;
 private ResultSet rs;
     @FXML
-    private TableColumn<User, Boolean> block;
-    @FXML
-    private TableColumn<User, Boolean> unblock;
+    private TableColumn<User, Integer> block;
+  
     @FXML
     private Menu idhome;
     @FXML
@@ -202,7 +201,7 @@ private ResultSet rs;
                 img.setCellValueFactory(new PropertyValueFactory<>("Img"));
           //     newaddress.setCellValueFactory(new PropertyValueFactory<>("adresse"));
            block.setCellValueFactory(new PropertyValueFactory<>("block"));
-            unblock.setCellValueFactory(new PropertyValueFactory<>("unblock"));
+           
 //    
     }
      @FXML
@@ -215,13 +214,14 @@ private ResultSet rs;
          String req = "UPDATE `users` SET `block`= ? WHERE`id_user` = ? ";
          PreparedStatement pt = conn.prepareStatement(req);
          int a = Integer.parseInt(newid.getText()) ;
-         pt.setInt(1,a);
-         pt.setBoolean(2, false);
+         pt.setInt(2,a);
+         pt.setString(1, "unBlock");
  int row = pt.executeUpdate();
  System.out.print(pt);}
          catch(SQLException e){
      System.out.print(e);
  }
+        
         
     }
      @FXML
@@ -232,8 +232,8 @@ private ResultSet rs;
         String req = "UPDATE `users` SET `block`= ? WHERE`id_user` = ?";
          PreparedStatement pt = conn.prepareStatement(req);
          int a = Integer.parseInt(newid.getText()) ;
-         pt.setInt(1,a);
-         pt.setBoolean(2, true);
+         pt.setInt(2,a);
+         pt.setString(1, "Block");
         int row = pt.executeUpdate();
                 System.out.print("this is block "+pt);
 

@@ -234,22 +234,20 @@ stage.show();
           
       Node node = (Node) event.getSource();
   Stage stage = (Stage) node.getScene().getWindow();
+             User u = (User) stage.getUserData();
+
         LoginController l = new LoginController();
                 
        ConnectionClass connectionClass=new ConnectionClass();
          Connection conn=connectionClass.getConnection();
 //        conn = DataSource.getInstance().getConnection();
-        String req="SELECT * FROM `users` WHERE email= ?";
-        
-        PreparedStatement pst1;
-        
         
         try {
           //  String ema = em;
-          //Article a =(Article) stage.getUserData();
-           User u = (User) stage.getUserData();
-//rating.setRation(a.getRating())
-            pst1 = conn.prepareStatement(req);
+                  String req="SELECT * FROM `users` WHERE email= ?";
+
+
+           PreparedStatement pst1 = conn.prepareStatement(req);
              pst1.setString(1,u.getEmail());
              
              ResultSet rst=pst1.executeQuery();

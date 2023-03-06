@@ -46,7 +46,7 @@
                <font>
                   <Font name="System Bold" size="13.0" />
                </font></Button>
-            <MenuBar fx:id="idme" layoutX="10.0" layoutY="84.0" prefHeight="26.0" prefWidth="256.0" style="-fx-background-color: #ebecee; -fx-background-radius: 25;">
+            <MenuBar fx:id="idme" layoutX="43.0" layoutY="66.0" prefHeight="26.0" prefWidth="298.0" style="-fx-background-color: #ebecee; -fx-background-radius: 25;">
               <menus>
                   <Menu fx:id="idhome" mnemonicParsing="false" text="Home" />
                 <Menu fx:id="idgallery" mnemonicParsing="false" text="Gallery" />
@@ -65,7 +65,7 @@
                   <Image url="@../../../../../Downloads/324439463_718505903244455_374895459013489466_n.png" />
                </image>
             </ImageView>
-            <Text fx:id="txt2" fill="#245393" layoutX="135.0" layoutY="62.0" strokeType="OUTSIDE" strokeWidth="0.0" text="MyArt" textAlignment="CENTER" wrappingWidth="187.0">
+            <Text fx:id="txt2" fill="#245393" layoutX="124.0" layoutY="46.0" strokeType="OUTSIDE" strokeWidth="0.0" text="MyArt" textAlignment="CENTER" wrappingWidth="187.0">
                <font>
                   <Font name="Andalus" size="41.0" />
                </font>
@@ -79,8 +79,8 @@
                <font>
                   <Font name="System Bold" size="13.0" />
                </font></Button>
-            <TextField fx:id="txtsearch" layoutX="270.0" layoutY="99.0" prefHeight="26.0" prefWidth="128.0" />
-            <Button fx:id="btnsearch" layoutX="413.0" layoutY="97.0" mnemonicParsing="false" onAction="#actionSearch" style="-fx-background-color: #dfda7e; -fx-background-radius: 25;" text="search" textFill="WHITE">
+            <TextField fx:id="txtsearch" layoutX="252.0" layoutY="99.0" prefHeight="26.0" prefWidth="128.0" />
+            <Button fx:id="btnsearch" layoutX="397.0" layoutY="97.0" mnemonicParsing="false" onAction="#actionSearch" prefHeight="30.0" prefWidth="82.0" style="-fx-background-color: #dfda7e; -fx-background-radius: 25;" text="search" textFill="WHITE">
                <font>
                   <Font name="System Bold" size="13.0" />
                </font>
@@ -134,7 +134,7 @@
                   <Font name="System Bold" size="13.0" />
                </font></Button>
             <ImageView fx:id="imageview" fitHeight="101.0" fitWidth="119.0" layoutX="18.0" layoutY="14.0" pickOnBounds="true" preserveRatio="true" />
-            <TextField fx:id="blocks" layoutX="21.0" layoutY="352.0" prefHeight="26.0" prefWidth="139.0" promptText="block" />
+            <TextField fx:id="blocks" layoutX="14.0" layoutY="361.0" prefHeight="26.0" prefWidth="146.0" promptText="block" />
          </children>
       </AnchorPane>
    </children>
