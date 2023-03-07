@@ -73,29 +73,16 @@ Connection conn = DataSource.getInstance().getCnx();
            
        });
     }  
-       void rated(TouchEvent event) {
-
-           
-    }
-   
     public void setData(Article article, MyListener myListener) throws MalformedURLException {
         this.article = article;
         this.myListener = myListener;
         label_titre.setText(article.getTitre_article());
         label_prix.setText(MyArt.CURRENCY + article.getPrix_article());
         label_rating.setText(String.valueOf(article.getRate()));
-      
        String path =article.getPhoto_article().substring(6);
         File imageFile = new File(path);
      Image images = new Image(imageFile.toURI().toString());
-     //mage imag = new Image(getClass().getResourceAsStream(article.getPhoto_article()));
-     image.setImage(images);
-//         Image imag = new Image(path);
-//        System.out.println(path);
-//                System.out.println(imag);
-//
-//        image.setImage(imag);
-        
+     image.setImage(images);       
 }
     @FXML
     private void click(MouseEvent event) {
@@ -104,27 +91,19 @@ Connection conn = DataSource.getInstance().getCnx();
 
     @FXML
     private void rating(ActionEvent event) {
-        
-        
-         String req = "UPDATE `articles` SET `rate`= ? WHERE `id_user`= ?";
+ String req = "UPDATE `articles` SET `rate`= ? WHERE `id_user`= ?";
                try {
                    pst = conn.prepareStatement(req);
                    pst.setDouble(1, res);
                    pst.setInt(2, 2);
-                   
                    int row = pst.executeUpdate();
                    System.out.println(pst);
                    
                } catch (SQLException ex) {
                    Logger.getLogger(ArticleGController.class.getName()).log(Level.SEVERE, null, ex);
-               }
-         
-        
-        
+               }  
     }
-
     public interface MyListener {
     public void onClickListener(Article article);
 }
 }
-
