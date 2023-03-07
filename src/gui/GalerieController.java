@@ -368,8 +368,7 @@ tray.showAndDismiss(Duration.millis(1000));
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
     @FXML
     private void update(ActionEvent event) throws Exception {
-//                ServiceGalerie sa=new ServiceGalerie();
-//                Galerie g= new Galerie();
+
          if (txt_idp.getText().isEmpty() || Txt_titre.getText().isEmpty() || photo.getText().isEmpty() 
                  || prix.getText().isEmpty() || quantite.getText().isEmpty() || nom_artiste.getText().isEmpty() || galerie.getValue() == null ) {
              String titre="Update product failed !";
