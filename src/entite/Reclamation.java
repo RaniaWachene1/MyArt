@@ -7,13 +7,10 @@ package entite;
 import java.util.Date ; 
 import java.util.Objects ; 
 
-
-
 public class Reclamation  {
 
     
 
-   
     private int idr ; 
     private String titre ; 
     private String description ; 

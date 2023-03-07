@@ -3,10 +3,10 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package gui;
+package GUI;
 
-import service.ServiceTypeReclamation;
-import service.Servicereclamation;
+import Service.ServiceTypeReclamation;
+import Service.Servicereclamation;
 import entite.Etatreclamation;
 import entite.Reclamation;
 import java.io.IOException;
@@ -29,7 +29,7 @@ import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.stage.Stage;
-
+import myart.FXMain;
 
 /**
  * FXML Controller class
@@ -72,7 +72,7 @@ public class FXMLreclamationbackController implements Initializable {
     private void traiter(ActionEvent event) {
         if(tvreclamation.getSelectionModel().getSelectedItem()!=null){
             Reclamation r=tvreclamation.getSelectionModel().getSelectedItem();
-            if(r.getEtat().equals(Etatreclamation.EN_ATTENTE) || r.getEtat().equals(Etatreclamation.NON_TRAITE)){
+            if(r.getEtat().equals(Etatreclamation.NON_TRAITE)){
                 r.setEtat(Etatreclamation.TRAITE);
                 sr.modifier(r, r.getIdr());
                 refresh();
@@ -98,14 +98,14 @@ public class FXMLreclamationbackController implements Initializable {
         closestage.close();
         try {
             
-            Parent root=FXMLLoader.load(getClass().getResource("/gui/FXMLtypereclamationback.fxml"));
+            Parent root=FXMLLoader.load(getClass().getResource("/GUI/FXMLtypereclamationback.fxml"));
             Scene scene = new Scene(root);
             Stage primaryStage=new Stage();
             primaryStage.setTitle("Reclamation!");
             primaryStage.setScene(scene);
             primaryStage.show();
         } catch (IOException ex) {
-            Logger.getLogger(FXMLreclamationbackController.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(FXMain.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
     public void refresh(){
@@ -124,6 +124,22 @@ public class FXMLreclamationbackController implements Initializable {
         
         
         tvreclamation.setItems(data);
+    }
+
+    @FXML
+    private void stat(ActionEvent event) {
+         Stage stageclose=(Stage)((Node)event.getSource()).getScene().getWindow();
+        stageclose.close();
+        try {
+            Parent root=FXMLLoader.load(getClass().getResource("/GUI/FXMLstatreclamation.fxml"));
+            Scene scene = new Scene(root);
+            Stage primaryStage=new Stage();
+            primaryStage.setTitle("Reclamation!");
+            primaryStage.setScene(scene);
+            primaryStage.show();
+        } catch (IOException ex) {
+            Logger.getLogger(FXMain.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }
     
 }

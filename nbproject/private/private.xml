@@ -3,9 +3,13 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
-            <file>file:/C:/Users/rania/OneDrive/Documents/NetBeansProjects/MyArt/src/gui/Panier.fxml</file>
-            <file>file:/C:/Users/rania/OneDrive/Documents/NetBeansProjects/MyArt/src/gui/Galerie.fxml</file>
-            <file>file:/C:/Users/rania/OneDrive/Documents/NetBeansProjects/MyArt/src/gui/Accueil.fxml</file>
+            <file>file:/C:/Users/ASUS/Desktop/Final/myart/src/GUI/FXMLstatreclamationController.java</file>
+            <file>file:/C:/Users/ASUS/Desktop/Final/myart/src/GUI/FXMLcartereclamationController.java</file>
+            <file>file:/C:/Users/ASUS/Desktop/Final/myart/src/GUI/FXMLgstreclamationuserController.java</file>
+            <file>file:/C:/Users/ASUS/Desktop/Final/myart/src/GUI/FXMLreclamationbackController.java</file>
+            <file>file:/C:/Users/ASUS/Desktop/Final/myart/src/GUI/FXMLtypereclamationbackController.java</file>
+            <file>file:/C:/Users/ASUS/Desktop/Final/myart/src/myart/FXMain.java</file>
+            <file>file:/C:/Users/ASUS/Desktop/Final/myart/src/GUI/FXMLreclamationfrontController.java</file>
         </group>
     </open-files>
 </project-private>

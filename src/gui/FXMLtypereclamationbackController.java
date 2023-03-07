@@ -3,9 +3,10 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package gui;
+package GUI;
 
-import service.ServiceTypeReclamation;
+import Service.ServiceTypeReclamation;
+import com.mysql.jdbc.exceptions.jdbc4.MySQLIntegrityConstraintViolationException;
 import entite.TypeReclamation;
 import java.io.IOException;
 import java.net.URL;
@@ -29,7 +30,7 @@ import javafx.scene.control.TableView;
 import javafx.scene.control.TextField;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.stage.Stage;
-
+import myart.FXMain;
 
 /**
  * FXML Controller class
@@ -103,14 +104,14 @@ public class FXMLtypereclamationbackController implements Initializable {
         closestage.close();
         try {
             
-            Parent root=FXMLLoader.load(getClass().getResource("/gui/FXMLreclamationback.fxml"));
+            Parent root=FXMLLoader.load(getClass().getResource("/GUI/FXMLreclamationback.fxml"));
             Scene scene = new Scene(root);
             Stage primaryStage=new Stage();
             primaryStage.setTitle("Reclamation!");
             primaryStage.setScene(scene);
             primaryStage.show();
         } catch (IOException ex) {
-            Logger.getLogger(FXMLtypereclamationbackController.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(FXMain.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
     public void refresh(){

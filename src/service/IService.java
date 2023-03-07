@@ -1,22 +1,14 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Interface.java to edit this template
- */
-package service;
+package Service;
 
-import java.util.List;
+import java.sql.SQLException;
+import java.util.List; 
 
-/**
- *
- * @author rania
- */
-public interface IService<T> {
-// 
-  void insert(T a);
-   void delete(T a);
-    void update(T a);
-   List<T> readAll();
-    T readById(int id);
-//    
+public interface Iservice<T> {
 
+        public void ajouter (T t) ; 
+        public void modifier (T t, int id ) ; 
+       public void supprimer(int id) throws Exception ; 
+        public List<T> afficher () ; 
+    
+    
 }

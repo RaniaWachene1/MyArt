@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package service;
+package Service;
 
 import entite.Etatreclamation;
 import entite.Reclamation;
@@ -17,17 +17,17 @@ import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import java.util.stream.Collectors;
-import utils.DataSource;
+import util.Mysql;
 
 /**
  *
  * @author ASUS
  */
-public class ServiceTypeReclamation implements Iservice_1<TypeReclamation> {
+public class ServiceTypeReclamation implements Iservice<TypeReclamation> {
     
 Connection conn;
     public ServiceTypeReclamation(){
-        conn=DataSource.getInstance().getCnx();
+        conn=Mysql.getInstance().getConn();
     }
     @Override
     public void ajouter(TypeReclamation t) {

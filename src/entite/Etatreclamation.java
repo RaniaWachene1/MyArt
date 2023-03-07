@@ -10,6 +10,6 @@ package entite;
  * @author ASUS
  */
 public enum Etatreclamation {
-    NON_TRAITE , TRAITE , EN_ATTENTE 
+    NON_TRAITE , TRAITE 
     
 }
