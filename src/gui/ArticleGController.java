@@ -47,7 +47,6 @@ public class ArticleGController implements Initializable {
     @FXML
     private ImageView image;
     Double res;
-    
   private PreparedStatement pst;
   private ResultSet rs;
   private Article article;
@@ -74,20 +73,11 @@ Connection conn = DataSource.getInstance().getCnx();
            
        });
     }  
-    
-    
-    
-    
        void rated(TouchEvent event) {
 
            
     }
-    
-
-
-
-
-
+   
     public void setData(Article article, MyListener myListener) throws MalformedURLException {
         this.article = article;
         this.myListener = myListener;
@@ -107,8 +97,6 @@ Connection conn = DataSource.getInstance().getCnx();
 //        image.setImage(imag);
         
 }
-
-
     @FXML
     private void click(MouseEvent event) {
          myListener.onClickListener(article);
@@ -134,8 +122,6 @@ Connection conn = DataSource.getInstance().getCnx();
         
         
     }
-
- 
 
     public interface MyListener {
     public void onClickListener(Article article);
