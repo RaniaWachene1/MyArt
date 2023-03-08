@@ -4,8 +4,6 @@
  */
 package entite;
 
-import java.util.Date;
-
 /**
  *
  * @author rania
@@ -14,30 +12,106 @@ public class Article {
     private int id_article;
     private String titre_article;
     private String desc_article;
-    private Date date_article;
     private String photo_article;
     private String nom_artiste;
-    private int likes_article;
     private float prix_article;
     private int quantite_article;
-    private int id_galerie;
+    private double rate;
+    private Galerie galerie;
+    private User user;
 
-    public Article() {
-    }
-
-    public Article(int id_article, String titre_article, String desc_article, Date date_article, String photo_article, String nom_artiste, int likes_article, float prix_article, int quantite_article, int id_galerie) {
+   
+    public Article(int id_article, String titre_article, String desc_article, String photo_article, String nom_artiste, float prix_article, int quantite_article, Galerie galerie) {
         this.id_article = id_article;
         this.titre_article = titre_article;
         this.desc_article = desc_article;
-        this.date_article = date_article;
         this.photo_article = photo_article;
         this.nom_artiste = nom_artiste;
-        this.likes_article = likes_article;
         this.prix_article = prix_article;
         this.quantite_article = quantite_article;
-        this.id_galerie = id_galerie;
+        this.galerie = galerie;
+    }
+    
+public Article(int id_article, String titre_article, String desc_article, String nom_artiste, float prix_article, int quantite_article, Galerie galerie, User user) {
+        this.id_article = id_article;
+        this.titre_article = titre_article;
+        this.desc_article = desc_article;
+        
+        this.nom_artiste = nom_artiste;
+        this.prix_article = prix_article;
+        this.quantite_article = quantite_article;
+        this.galerie = galerie;
+        this.user = user;
     }
 
+    public Article(int id_article, String titre_article, String desc_article, String photo_article, String nom_artiste, float prix_article, int quantite_article) {
+        this.id_article = id_article;
+        this.titre_article = titre_article;
+        this.desc_article = desc_article;
+        this.photo_article = photo_article;
+        this.nom_artiste = nom_artiste;
+        this.prix_article = prix_article;
+        this.quantite_article = quantite_article;
+    }
+
+ 
+
+    public Article(int id_article) {
+        this.id_article = id_article;
+    }
+    
+
+    public Article(int id_article, String titre_article, String desc_article, String photo_article, String nom_artiste, float prix_article, int quantite_article, Galerie galerie, User user) {
+        this.id_article = id_article;
+        this.titre_article = titre_article;
+        this.desc_article = desc_article;
+        this.photo_article = photo_article;
+        this.nom_artiste = nom_artiste;
+        this.prix_article = prix_article;
+        this.quantite_article = quantite_article;
+        this.galerie = galerie;
+        this.user = user;
+    }
+
+    public Article(String titre_article, String desc_article, String photo_article, String nom_artiste, float prix_article, int quantite_article, Galerie galerie) {
+        this.titre_article = titre_article;
+        this.desc_article = desc_article;
+        this.photo_article = photo_article;
+        this.nom_artiste = nom_artiste;
+        this.prix_article = prix_article;
+        this.quantite_article = quantite_article;
+        this.galerie = galerie;
+    }
+
+   //////////////////////////////////////////////////////////////////////////////////////////// 
+    public Article() {
+    }
+
+    public Article(int id_article, String titre_article, String desc_article, String photo_article, String nom_artiste, float prix_article, int quantite_article, double rate, Galerie galerie, User user) {
+        this.id_article = id_article;
+        this.titre_article = titre_article;
+        this.desc_article = desc_article;
+        this.photo_article = photo_article;
+        this.nom_artiste = nom_artiste;
+        this.prix_article = prix_article;
+        this.quantite_article = quantite_article;
+        this.rate = rate;
+        this.galerie = galerie;
+        this.user = user;
+    }
+
+    
+   
+
+    
+///////////////////////////////////////////////////////////////////////////////////////////////
+    public Galerie getGalerie() {
+        return galerie;
+    }
+
+    public void setGalerie(Galerie galerie) {
+        this.galerie = galerie;
+    }
    
     public int getId_article() {
         return id_article;
@@ -63,13 +137,7 @@ public class Article {
         this.desc_article = desc_article;
     }
 
-    public Date getDate_article() {
-        return date_article;
-    }
-
-    public void setDate_article(Date date_article) {
-        this.date_article = date_article;
-    }
+   
 
     public String getPhoto_article() {
         return photo_article;
@@ -87,13 +155,14 @@ public class Article {
         this.nom_artiste = nom_artiste;
     }
 
-    public int getLikes_article() {
-        return likes_article;
+    public User getUser() {
+        return user;
     }
 
-    public void setLikes_article(int likes_article) {
-        this.likes_article = likes_article;
+    public void setUser(User user) {
+        this.user = user;
     }
+
 
     public float getPrix_article() {
         return prix_article;
@@ -111,17 +180,28 @@ public class Article {
         this.quantite_article = quantite_article;
     }
 
-    public int getId_galerie() {
-        return id_galerie;
+    public double getRate() {
+        return rate;
     }
 
-    public void setId_galerie(int id_galerie) {
-        this.id_galerie = id_galerie;
+    public void setRate(double rate) {
+        this.rate = rate;
     }
 
+    
+    
+    
+    
+    
     @Override
     public String toString() {
-        return "Article{" + "id_article=" + id_article + ", titre_article=" + titre_article + ", desc_article=" + desc_article + ", date_article=" + date_article + ", photo_article=" + photo_article + ", nom_artiste=" + nom_artiste + ", likes_article=" + likes_article + ", prix_article=" + prix_article + ", quantite_article=" + quantite_article + ", id_galerie=" + id_galerie + '}';
+        return "Article{" + "id_article=" + id_article + ", titre_article=" + titre_article + ", desc_article=" + desc_article + ", photo_article=" + photo_article + ", nom_artiste=" + nom_artiste + ", prix_article=" + prix_article + ", quantite_article=" + quantite_article + ", galerie=" + galerie + '}';
     }
+
+
+
+   
+
+   
     
 }
