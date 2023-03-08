@@ -3,10 +3,8 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package GUI;
+package gui;
 
-import Service.ServiceTypeReclamation;
-import Service.Servicereclamation;
 import entite.Etatreclamation;
 import entite.Reclamation;
 import java.io.File;
@@ -35,8 +33,9 @@ import javafx.scene.image.ImageView;
 import javafx.scene.layout.AnchorPane;
 import javafx.stage.FileChooser;
 import javafx.stage.Stage;
-import myart.FXMain;
-import util.FilterBadWord;
+import service.ServiceTypeReclamation;
+import service.Servicereclamation;
+import utils.FilterBadWord;
 
 /**
  * FXML Controller class
@@ -134,7 +133,7 @@ public class FXMLreclamationfrontController implements Initializable {
             primaryStage.setScene(scene);
             primaryStage.show();
         } catch (IOException ex) {
-            Logger.getLogger(FXMain.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(FXMLreclamationbackController.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
 

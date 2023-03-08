@@ -82,8 +82,6 @@ public class CrudController implements Initializable {
     private TableColumn<User, Date> date_naiss;
     @FXML
     private TableColumn<User, String> sexe;
-     @FXML
-    private TextField blocks;
     @FXML
     private Button delete;
     private TextField lastname;
@@ -105,8 +103,6 @@ public class CrudController implements Initializable {
     private AnchorPane txt4;
     @FXML
     private Button idbuttonc;
-    @FXML
-    private MenuBar idme;
     @FXML
     private Text txt2;
     @FXML
@@ -158,17 +154,17 @@ private ResultSet rs;
     private TableColumn<User, Integer> block;
   
     @FXML
-    private Menu idhome;
-    @FXML
-    private Menu idgallery;
-    @FXML
-    private Menu idevent;
-    @FXML
-    private Menu idauction;
-    @FXML
     private Button idblock;
     @FXML
     private Button idun;
+    @FXML
+    private Button userss;
+    @FXML
+    private Button galleryy;
+    @FXML
+    private Button eventss;
+    @FXML
+    private Button claimss;
 
     
     
@@ -215,7 +211,17 @@ private ResultSet rs;
          int a = Integer.parseInt(newid.getText()) ;
          pt.setInt(2,a);
          pt.setString(1, "unBlock");
+         String titre=" unBlock";
+            String message = email.getText();
+            TrayNotification tray = new TrayNotification();
+AnimationType type = AnimationType.POPUP;
+tray.setAnimationType(type);
+tray.setTitle(titre);
+tray.setMessage(message);
+tray.setNotificationType(NotificationType.SUCCESS);
+tray.showAndDismiss(Duration.millis(3000));
  int row = pt.executeUpdate();
+ 
  System.out.print(pt);}
          catch(SQLException e){
      System.out.print(e);
@@ -232,6 +238,16 @@ private ResultSet rs;
          int a = Integer.parseInt(newid.getText()) ;
          pt.setInt(2,a);
          pt.setString(1, "Block");
+          String titre=" Block";
+            String message = email.getText();
+            TrayNotification tray = new TrayNotification();
+AnimationType type = AnimationType.POPUP;
+tray.setAnimationType(type);
+tray.setTitle(titre);
+tray.setMessage(message);
+tray.setNotificationType(NotificationType.ERROR);
+tray.showAndDismiss(Duration.millis(3000));
+         
         int row = pt.executeUpdate();
                 System.out.print("this is block "+pt);
 
@@ -501,13 +517,57 @@ Listu=us.readAll();
     }
 
     @FXML
-    private void cancel(ActionEvent event) {
+    private void onactionlogout(ActionEvent event) throws IOException {
+        Parent page = FXMLLoader.load(getClass().getResource("Login.fxml"));
+                Scene scene = new Scene(page);
+                Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+                stage.setScene(scene);
+                stage.setResizable(false);
+                stage.show();
     }
-    
 
-
-    
+    @FXML
+    private void onclickedusers(ActionEvent event) throws IOException {
+        Parent page = FXMLLoader.load(getClass().getResource("Crud.fxml"));
+                Scene scene = new Scene(page);
+                Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+                stage.setScene(scene);
+                stage.setResizable(false);
+                stage.show();
     }
+
+    @FXML
+    private void onclickedgalleryy(ActionEvent event) throws IOException {
+        Parent page = FXMLLoader.load(getClass().getResource("CategoryG.fxml"));
+                Scene scene = new Scene(page);
+                Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+                stage.setScene(scene);
+                stage.setResizable(false);
+                stage.show();
+    }
+
+//    @FXML
+//    private void onclickedevents(ActionEvent event) {
+//    }
+//
+//    @FXML
+//    private void onclickedclaimss(ActionEvent event) {
+//    }
+//    
+//
+//
+
+    @FXML
+    private void gotoclaims(ActionEvent event) throws IOException {
+        Parent page = FXMLLoader.load(getClass().getResource("FXMLreclamationback.fxml"));
+                Scene scene = new Scene(page);
+                Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+                stage.setScene(scene);
+                stage.setResizable(false);
+                stage.show();
+    }
+  }
+    
 
 
 

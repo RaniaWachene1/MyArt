@@ -7,7 +7,7 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane id="AnchorPane" prefHeight="524.0" prefWidth="820.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="GUI.FXMLtypereclamationbackController">
+<AnchorPane id="AnchorPane" prefHeight="524.0" prefWidth="820.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="gui.FXMLtypereclamationbackController">
    <children>
       <TextField fx:id="tfnom" layoutX="57.0" layoutY="71.0" promptText="Name" style="-fx-background-radius: 15;">
          <font>

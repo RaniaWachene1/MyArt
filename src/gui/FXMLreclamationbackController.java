@@ -3,10 +3,8 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package GUI;
+package gui;
 
-import Service.ServiceTypeReclamation;
-import Service.Servicereclamation;
 import entite.Etatreclamation;
 import entite.Reclamation;
 import java.io.IOException;
@@ -25,11 +23,13 @@ import javafx.fxml.Initializable;
 import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.control.Button;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.stage.Stage;
-import myart.FXMain;
+import service.ServiceTypeReclamation;
+import service.Servicereclamation;
 
 /**
  * FXML Controller class
@@ -59,6 +59,14 @@ public class FXMLreclamationbackController implements Initializable {
     Servicereclamation sr=new Servicereclamation();
     @FXML
     private TableColumn<?, ?> cetat;
+    @FXML
+    private Button userss;
+    @FXML
+    private Button galleryy;
+    @FXML
+    private Button eventss;
+    @FXML
+    private Button claimss;
     /**
      * Initializes the controller class.
      */
@@ -105,7 +113,7 @@ public class FXMLreclamationbackController implements Initializable {
             primaryStage.setScene(scene);
             primaryStage.show();
         } catch (IOException ex) {
-            Logger.getLogger(FXMain.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(FXMLreclamationbackController.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
     public void refresh(){
@@ -138,8 +146,48 @@ public class FXMLreclamationbackController implements Initializable {
             primaryStage.setScene(scene);
             primaryStage.show();
         } catch (IOException ex) {
-            Logger.getLogger(FXMain.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(FXMLreclamationbackController.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
-    
+
+    @FXML
+    private void onclickedusers(ActionEvent event) throws IOException {
+        Parent page = FXMLLoader.load(getClass().getResource("Crud.fxml"));
+                Scene scene = new Scene(page);
+                Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+                stage.setScene(scene);
+                stage.setResizable(false);
+                stage.show();
+    }
+
+    @FXML
+    private void onclickedgalleryy(ActionEvent event) throws IOException {
+        Parent page = FXMLLoader.load(getClass().getResource("CategoryG.fxml"));
+                Scene scene = new Scene(page);
+                Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+                stage.setScene(scene);
+                stage.setResizable(false);
+                stage.show();
+    }
+
+//    @FXML
+//    private void onclickedevents(ActionEvent event) {
+//    }
+//
+//    @FXML
+//    private void onclickedclaimss(ActionEvent event) {
+//    }
+//    
+//
+//
+
+    @FXML
+    private void gotoclaims(ActionEvent event) throws IOException {
+        Parent page = FXMLLoader.load(getClass().getResource("FXMLreclamationback.fxml"));
+                Scene scene = new Scene(page);
+                Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+                stage.setScene(scene);
+                stage.setResizable(false);
+                stage.show();
+    }
 }

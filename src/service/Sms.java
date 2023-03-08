@@ -36,7 +36,8 @@ public class Sms {
 			final StringBuffer stringBuffer = new StringBuffer();
 			String line;
 			while ((line = rd.readLine()) != null) {
-				stringBuffer.append(line);
+			stringBuffer.append(line);
+                        
 			}
 			rd.close();
 			

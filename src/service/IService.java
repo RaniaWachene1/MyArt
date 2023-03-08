@@ -17,5 +17,6 @@ public interface IService<T> {
     void update(T a);
    List<T> readAll();
     T readById(int id);
+   
     
 }

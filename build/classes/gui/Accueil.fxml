@@ -1,55 +1,66 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <?import javafx.scene.control.Button?>
-<?import javafx.scene.control.Menu?>
-<?import javafx.scene.control.MenuBar?>
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
 
 <AnchorPane id="AnchorPane" prefHeight="480.0" prefWidth="790.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="gui.AccueilController">
    <children>
-      <MenuBar fx:id="id_menu" layoutX="96.0" layoutY="47.0" prefHeight="50.0" prefWidth="632.0">
-        <menus>
-          <Menu id="id_home" fx:id="id_home" mnemonicParsing="false" onAction="#homeOnClicked" text="Home" />
-          <Menu fx:id="id_Gallery" mnemonicParsing="false" onAction="#GalleryOnClicked" onMenuValidation="#GalleryOnClicked" text="Gallery" />
-          <Menu fx:id="id_events" mnemonicParsing="false" onAction="#EventOnClicked" text="Events" />
-            <Menu fx:id="id_auctions" mnemonicParsing="false" onAction="#AuctionOnClicked" text="Auction" />
-        </menus>
-      </MenuBar>
       <AnchorPane layoutY="280.0" prefHeight="200.0" prefWidth="790.0">
          <children>
             <ImageView fx:id="g" fitHeight="111.0" fitWidth="180.0" layoutX="48.0" layoutY="44.0" pickOnBounds="true">
                <image>
-                  <Image url="@../img/National-Portrait-Gallery.jpg" />
+                  <Image url="@IMG/National-Portrait-Gallery.jpg" />
                </image>
             </ImageView>
             <ImageView fx:id="e" fitHeight="111.0" fitWidth="162.0" layoutX="314.0" layoutY="45.0" pickOnBounds="true">
                <image>
-                  <Image url="@../img/event.jpg" />
+                  <Image url="@IMG/event.jpg" />
                </image>
             </ImageView>
             <ImageView fx:id="a" fitHeight="111.0" fitWidth="188.0" layoutX="562.0" layoutY="45.0" pickOnBounds="true" preserveRatio="true">
                <image>
-                  <Image url="@../img/auction.jpg" />
+                  <Image url="@IMG/auction.jpg" />
                </image>
             </ImageView>
-            <Button fx:id="id_galerie" layoutX="106.0" layoutY="11.0" mnemonicParsing="false" onAction="#GalleryOnClicked" style="-fx-background-color: dfda7e;" text="Gallery" />
-            <Button fx:id="id_event" layoutX="372.0" layoutY="13.0" mnemonicParsing="false" style="-fx-background-color: dfda7e;" text="Events" />
-            <Button fx:id="id_auction" layoutX="617.0" layoutY="11.0" mnemonicParsing="false" style="-fx-background-color: dfda7e;" text="Auction" />
+            <Button fx:id="id_galerie" layoutX="106.0" layoutY="11.0" mnemonicParsing="false" onAction="#GalleryOnClicked" style="-fx-background-color: dfda7e; -fx-background-radius: 25;" text="Gallery" />
+            <Button fx:id="id_event" layoutX="372.0" layoutY="13.0" mnemonicParsing="false" onAction="#EventOnClicked" style="-fx-background-color: dfda7e; -fx-background-radius: 25;" text="Events" />
+            <Button fx:id="id_auction" layoutX="617.0" layoutY="11.0" mnemonicParsing="false" onAction="#AuctionOnClicked" style="-fx-background-color: dfda7e; -fx-background-radius: 25;" text="Auction" />
          </children>
       </AnchorPane>
-      <ImageView fx:id="idimg" fitHeight="150.0" fitWidth="726.0" layoutX="32.0" layoutY="115.0" pickOnBounds="true">
+      <ImageView fx:id="idimg" fitHeight="183.0" fitWidth="726.0" layoutX="32.0" layoutY="97.0" pickOnBounds="true">
          <image>
-            <Image url="@../img/sn.jpg" />
+            <Image url="@IMG/sn.jpg" />
          </image>
       </ImageView>
-      <Button fx:id="btn_login" layoutX="613.0" layoutY="14.0" mnemonicParsing="false" style="-fx-background-color: #4f90b8;" text="Login" textFill="WHITE" />
-      <Button fx:id="btn_signup" layoutX="682.0" layoutY="14.0" mnemonicParsing="false" style="-fx-background-color: #4f90b8;" text="Sign Up" textFill="WHITE" />
-      <ImageView fx:id="logo" fitHeight="76.0" fitWidth="75.0" layoutX="14.0" layoutY="27.0" pickOnBounds="true" preserveRatio="true" AnchorPane.rightAnchor="701.0">
+      <Button fx:id="btn_login" layoutX="635.0" layoutY="14.0" mnemonicParsing="false" onAction="#loginonclicked" prefHeight="25.0" prefWidth="57.0" style="-fx-background-color: #4f90b8; -fx-background-radius: 25;" text="Login" textFill="WHITE" />
+      <Button fx:id="btn_signup" layoutX="700.0" layoutY="14.0" mnemonicParsing="false" onAction="#signupclicked" prefHeight="25.0" prefWidth="66.0" style="-fx-background-color: #4f90b8; -fx-background-radius: 25;" text="Sign Up" textFill="WHITE" />
+      <ImageView fx:id="logo" fitHeight="76.0" fitWidth="75.0" layoutX="14.0" layoutY="10.0" pickOnBounds="true" preserveRatio="true" AnchorPane.rightAnchor="701.0">
          <image>
-            <Image url="@../img/logo.png" />
+            <Image url="@IMG/logo.png" />
          </image>
       </ImageView>
+      <Button fx:id="id_home" layoutX="167.0" layoutY="39.0" mnemonicParsing="false" onAction="#homeonclicked" prefHeight="35.0" prefWidth="86.0" style="-fx-background-color: dfda7e; -fx-border-radius: 25;" text="Home">
+         <font>
+            <Font name="System Bold" size="15.0" />
+         </font></Button>
+      <Button fx:id="id_Gallery" layoutX="242.0" layoutY="39.0" mnemonicParsing="false" onAction="#GalleryOnClicked" prefHeight="35.0" prefWidth="86.0" style="-fx-background-color: dfda7e;" text="Gallery">
+         <font>
+            <Font name="System Bold" size="15.0" />
+         </font></Button>
+      <Button fx:id="id_events" layoutX="318.0" layoutY="39.0" mnemonicParsing="false" onAction="#EventOnClicked" prefHeight="35.0" prefWidth="86.0" style="-fx-background-color: dfda7e;" text="Events">
+         <font>
+            <Font name="System Bold" size="15.0" />
+         </font></Button>
+      <Button fx:id="id_auctions" layoutX="395.0" layoutY="39.0" mnemonicParsing="false" onAction="#AuctionOnClicked" prefHeight="35.0" prefWidth="86.0" style="-fx-background-color: dfda7e;" text="Auction">
+         <font>
+            <Font name="System Bold" size="15.0" />
+         </font></Button>
+      <Button fx:id="idhomeclaim" layoutX="473.0" layoutY="39.0" mnemonicParsing="false" onAction="#Claimonclicked" prefHeight="35.0" prefWidth="86.0" style="-fx-background-color: dfda7e;" text="Claim">
+         <font>
+            <Font name="System Bold" size="15.0" />
+         </font></Button>
    </children>
 </AnchorPane>

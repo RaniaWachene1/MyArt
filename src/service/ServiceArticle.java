@@ -23,7 +23,7 @@ public class ServiceArticle implements IService<Article> {
      private Connection conn;
 
     public ServiceArticle() {
-        conn = DataSource.getInstance().getCnx();
+        conn = DataSource.getInstance().getConnection();
         
     }
     
@@ -41,7 +41,7 @@ public class ServiceArticle implements IService<Article> {
             pst.setInt(6, a.getQuantite_article());
             pst.setDouble(7, a.getRate());
             pst.setInt(8,  a.getGalerie().getId_galerie());
-            pst.setInt(9,  1); //a.getUser().getId_user()
+            pst.setInt(9, 1); //a.getUser().getId_user()
             pst.executeUpdate();
             System.out.println("Article ajouté!");
 
@@ -184,6 +184,7 @@ list.add(a);
         return list;  
     }
     
+    
 
 public ObservableList<Article> SearchByArticle(String ar) {
      
@@ -243,6 +244,8 @@ public ObservableList<Article> SearchByGalerie(String ar) {
         }
         return listData;
     }
+
+  
 
     
   

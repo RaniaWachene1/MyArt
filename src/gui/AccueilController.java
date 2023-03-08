@@ -35,15 +35,13 @@ public class AccueilController implements Initializable {
 
 
     @FXML
-    private MenuBar id_menu;
+    private Button id_home;
     @FXML
-    private Menu id_home;
+    private Button id_Gallery;
     @FXML
-    private Menu id_Gallery;
+    private Button id_events;
     @FXML
-    private Menu id_events;
-    @FXML
-    private Menu id_auctions;
+    private Button id_auctions;
     @FXML
     private ImageView g;
     @FXML
@@ -64,6 +62,8 @@ public class AccueilController implements Initializable {
     private Button btn_signup;
     @FXML
     private ImageView logo;
+    @FXML
+    private Button idhomeclaim;
     /**
      * Initializes the controller class.
      */
@@ -72,7 +72,6 @@ public class AccueilController implements Initializable {
         // TODO
     }    
 
-    @FXML
     private void homeOnClicked(ActionEvent event) throws IOException {
          Parent page = FXMLLoader.load(getClass().getResource("Accueil.fxml"));
                 Scene scene = new Scene(page);
@@ -102,8 +101,54 @@ public class AccueilController implements Initializable {
     private void AuctionOnClicked(ActionEvent event) {
     }
 
+    private void GalleryOnClicked(Event event) throws IOException {
+        Parent page = FXMLLoader.load(getClass().getResource("MarketG.fxml"));
+                Scene scene = new Scene(page);
+                Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+                stage.setScene(scene);
+                stage.setResizable(false);
+                stage.show();
+    }
+
     @FXML
-    private void GalleryOnClicked(Event event) {
+    private void Claimonclicked(Event event) throws IOException {
+        Parent page = FXMLLoader.load(getClass().getResource("FXMLreclamationfront.fxml"));
+                Scene scene = new Scene(page);
+                Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+                stage.setScene(scene);
+                stage.setResizable(false);
+                stage.show();
+    }
+
+    @FXML
+    private void loginonclicked(ActionEvent event) throws IOException {
+        Parent page = FXMLLoader.load(getClass().getResource("Login.fxml"));
+                Scene scene = new Scene(page);
+                Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+                stage.setScene(scene);
+                stage.setResizable(false);
+                stage.show();
+    }
+
+    @FXML
+    private void signupclicked(ActionEvent event) throws IOException {
+        Parent page = FXMLLoader.load(getClass().getResource("Signup.fxml"));
+                Scene scene = new Scene(page);
+                Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+                stage.setScene(scene);
+                stage.setResizable(false);
+                stage.show();
+    }
+
+    @FXML
+    private void homeonclicked(ActionEvent event) throws IOException {
+           Parent page = FXMLLoader.load(getClass().getResource("Accueil.fxml"));
+                Scene scene = new Scene(page);
+                Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+                stage.setScene(scene);
+                stage.setResizable(false);
+                stage.show();
+                
     }
     
 }

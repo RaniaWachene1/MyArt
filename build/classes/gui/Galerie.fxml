@@ -3,8 +3,6 @@
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.ComboBox?>
 <?import javafx.scene.control.Label?>
-<?import javafx.scene.control.Menu?>
-<?import javafx.scene.control.MenuBar?>
 <?import javafx.scene.control.Separator?>
 <?import javafx.scene.control.TableColumn?>
 <?import javafx.scene.control.TableView?>
@@ -40,10 +38,10 @@
             <Button fx:id="btnAdd" layoutX="231.0" layoutY="428.0" mnemonicParsing="false" onAction="#insert" style="-fx-background-color: #4f90b8;" text="Add" textFill="WHITE" />
             <ImageView fx:id="imview" fitHeight="96.0" fitWidth="109.0" layoutX="87.0" layoutY="363.0" onMouseClicked="#InsertPhoto" pickOnBounds="true" preserveRatio="true" />
             <Label fx:id="labelidPP" layoutX="26.0" layoutY="88.0" prefHeight="18.0" prefWidth="68.0" />
-            <TextField fx:id="txt_idp" layoutX="139.0" layoutY="84.0" prefHeight="26.0" prefWidth="42.0" />
-            <ImageView fitHeight="44.0" fitWidth="86.0" layoutX="138.0" layoutY="75.0" pickOnBounds="true" preserveRatio="true">
+            <TextField fx:id="txt_idp" layoutX="139.0" layoutY="84.0" prefHeight="26.0" prefWidth="6.0" />
+            <ImageView fitHeight="46.0" fitWidth="38.0" layoutX="138.0" layoutY="75.0" pickOnBounds="true" preserveRatio="true">
                <image>
-                  <Image url="@../img/cache.png" />
+                  <Image url="@IMG/cache.png" />
                </image>
             </ImageView>
             <Label layoutX="28.0" layoutY="345.0" text="Upload image" />
@@ -84,14 +82,6 @@
                   <Font name="Arial Bold" size="12.0" />
                </font>
             </Button>
-            <MenuBar fx:id="id_menu" layoutX="94.0" layoutY="14.0" prefHeight="27.0" prefWidth="287.0">
-               <menus>
-                  <Menu id="id_home" fx:id="id_home" mnemonicParsing="false" text="Home" />
-                  <Menu fx:id="id_Gallery" mnemonicParsing="false" text="Gallery" />
-                  <Menu fx:id="id_events" mnemonicParsing="false" text="Events" />
-                  <Menu fx:id="id_auctions" mnemonicParsing="false" text="Auction" />
-               </menus>
-            </MenuBar>
             <Button fx:id="btn_read" layoutX="43.0" layoutY="428.0" mnemonicParsing="false" onAction="#readAll" prefHeight="33.0" prefWidth="68.0" style="-fx-background-color: #4f90b8;" text="ReadAll" textFill="WHITE">
                <font>
                   <Font name="Arial Bold" size="12.0" />
@@ -103,7 +93,16 @@
                   <Image url="@../img/logo.png" />
                </image>
             </ImageView>
-            <Button fx:id="myprofile" layoutX="394.0" layoutY="15.0" mnemonicParsing="false" onAction="#profile" style="-fx-background-color: #dfda7e;" text="Profile" />
+            <Button fx:id="myprofile" layoutX="309.0" layoutY="19.0" mnemonicParsing="false" onAction="#profonaction" prefHeight="30.0" prefWidth="73.0" style="-fx-background-color: #dfda7e; -fx-background-radius: 25;" text="Profile">
+               <font>
+                  <Font name="System Bold" size="13.0" />
+               </font>
+            </Button>
+            <Button fx:id="idbuttonc1" layoutX="395.0" layoutY="19.0" mnemonicParsing="false" onAction="#onactionlogout" prefHeight="30.0" prefWidth="73.0" style="-fx-background-color: #dfda7e; -fx-background-radius: 25;" text="Logout">
+               <font>
+                  <Font name="System Bold" size="13.0" />
+               </font>
+            </Button>
          </children>
       </AnchorPane>
    </children>

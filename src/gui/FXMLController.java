@@ -1,5 +1,6 @@
 package gui;
 
+import java.io.IOException;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -9,8 +10,13 @@ import java.sql.Statement;
 import java.util.Properties;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
+import javafx.scene.Node;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.TextField;
+import javafx.stage.Stage;
 import javax.mail.Message;
 import javax.mail.MessagingException;
 import javax.mail.PasswordAuthentication;
@@ -42,6 +48,8 @@ public class FXMLController {
      private Connection conn;
     private ResultSet rs;
 private PreparedStatement pst;
+    @FXML
+    private Button cancel;
   
     @FXML
     void save(ActionEvent event){
@@ -116,6 +124,16 @@ System.out.print("UNsuccessfully");
      
         
         
+    }
+
+    @FXML
+    private void cancel_login(ActionEvent event) throws IOException {
+          Parent page = FXMLLoader.load(getClass().getResource("Login.fxml"));
+                Scene scene = new Scene(page);
+                Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+                stage.setScene(scene);
+                stage.setResizable(false);
+                stage.show();
     }
     
     

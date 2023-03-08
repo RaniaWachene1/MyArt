@@ -83,13 +83,11 @@ public class MarketGController implements Initializable {
     private Image imag;
      private MyListener myListener;
     
-Connection conn = DataSource.getInstance().getCnx();
+Connection conn = DataSource.getInstance().getConnection();
     @FXML
-    private MenuBar id_menu;
+    private Button id_home;
     @FXML
-    private Menu id_home;
-    @FXML
-    private Menu id_Gallery;
+    private Button id_Gallery;
     @FXML
     private Button btn_logout;
     @FXML
@@ -97,6 +95,12 @@ Connection conn = DataSource.getInstance().getCnx();
     @FXML
     private ComboBox<String> Category;
     ObservableList<Article> ProductListSearch;
+    @FXML
+    private Button id_events;
+    @FXML
+    private Button id_auctions;
+    @FXML
+    private Button idhomeclaim;
     
     
     
@@ -144,7 +148,7 @@ Article a = new Article();
         //getClass().getResourceAsStream(getData().get(0)+"")
         //imag = new Image(getClass().getResourceAsStream(""));
        // String ss =imag.substring(6);
-       String imagePath = article.getPhoto_article().substring(6, article.getPhoto_article().length());
+       String imagePath = article.getPhoto_article();
      File imageFile = new File(imagePath);
      Image image = new Image(imageFile.toURI().toString());
      imgviw.setImage(image);
@@ -179,12 +183,6 @@ Article a = new Article();
                 AnchorPane anchorPane = fxmlLoader.load();
 
                 ArticleGController itemController = fxmlLoader.getController();
-//           itemController.setData( new Article(),new ArticleGController.MyListener() {
-//                    @Override
-//                    public void onClickListener(Article article) {
-//                        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
-//                    }
-//              });
           itemController.setData(articles.get(i), myListener );
                 
            
@@ -243,7 +241,7 @@ Article a = new Article();
 
     @FXML
     private void logout(ActionEvent event) throws IOException {
-        Parent page = FXMLLoader.load(getClass().getResource("Acceuil.fxml"));
+        Parent page = FXMLLoader.load(getClass().getResource("Accueil.fxml"));
                 Scene scene = new Scene(page);
                 Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
                 stage.setScene(scene);
@@ -256,6 +254,44 @@ Article a = new Article();
          ServiceArticle st= new  ServiceArticle();
         ProductListSearch = st.SearchByGalerie(Category.getValue());
     //  tableview.setItems(ProductListSearch);
+    }
+
+    @FXML
+    private void homeonclicked(ActionEvent event) throws IOException {
+         Parent page = FXMLLoader.load(getClass().getResource("Accueil.fxml"));
+                Scene scene = new Scene(page);
+                Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+                stage.setScene(scene);
+                stage.setResizable(false);
+                stage.show();
+    }
+
+    @FXML
+    private void GalleryOnClicked(ActionEvent event) throws IOException {
+         Parent page = FXMLLoader.load(getClass().getResource("Galerie.fxml"));
+                Scene scene = new Scene(page);
+                Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+                stage.setScene(scene);
+                stage.setResizable(false);
+                stage.show();
+    }
+
+    @FXML
+    private void EventOnClicked(ActionEvent event) {
+    }
+
+    @FXML
+    private void AuctionOnClicked(ActionEvent event) {
+    }
+
+    @FXML
+    private void Claimonclicked(ActionEvent event) throws IOException {
+        Parent page = FXMLLoader.load(getClass().getResource("FXMLreclamationfront.fxml"));
+                Scene scene = new Scene(page);
+                Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+                stage.setScene(scene);
+                stage.setResizable(false);
+                stage.show();
     }
     
 }

@@ -6,30 +6,34 @@ package gui;
 
 import java.io.IOException;
 import javafx.application.Application;
-import static javafx.application.ConditionalFeature.FXML;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
-import javafx.scene.control.ComboBox;
 import javafx.scene.layout.StackPane;
 import javafx.stage.Stage;
+import javafx.stage.StageStyle;
+
 
 /**
  *
- * @author rania
+ * @author AcerunBlock
  */
 public class MyArt extends Application {
-    public static final String CURRENCY = "$";
+
+
+    
+     public static final String CURRENCY = "$";
 
      @Override
     public void start(Stage primaryStage) throws IOException {
-//FXMLLoader loader=new FXMLLoader(getClass().getResource("Galerie.fxml"));
-   //  FXMLLoader loader=new FXMLLoader(getClass().getResource("CategoryG.fxml"));
-FXMLLoader loader=new FXMLLoader(getClass().getResource("MarketG.fxml"));
-                            System.out.println(loader.getLocation());
+//FXMLLoader loader=new FXMLLoader(getClass().getResource("Accueil.fxml"));
+FXMLLoader loader=new FXMLLoader(getClass().getResource("Login.fxml"));
+ //FXMLLoader loader=new FXMLLoader(getClass().getResource("Crud.fxml"));
+
+        System.out.println(loader.getLocation());
         Parent root=loader.load();
          System.out.println("MyArt");
         StackPane stackpane=new StackPane();
@@ -37,7 +41,6 @@ FXMLLoader loader=new FXMLLoader(getClass().getResource("MarketG.fxml"));
         Scene scene = new Scene(stackpane);
         primaryStage.setScene(scene);
                 primaryStage.setTitle("MyArt");
-
         primaryStage.show();
     }
 
@@ -48,4 +51,5 @@ FXMLLoader loader=new FXMLLoader(getClass().getResource("MarketG.fxml"));
         launch(args);
     }
     
+ 
 }

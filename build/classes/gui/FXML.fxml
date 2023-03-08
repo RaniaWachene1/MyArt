@@ -8,8 +8,7 @@
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-
-<AnchorPane id="AnchorPane" prefHeight="400.0" prefWidth="600.0" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/19" fx:controller="gui.FXMLController">
+<AnchorPane id="AnchorPane" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="gui.FXMLController">
    <children>
       <Text layoutX="300.0" layoutY="83.0" strokeType="OUTSIDE" strokeWidth="0.0" />
       <Text fill="#245393" layoutX="344.0" layoutY="216.0" strokeType="OUTSIDE" strokeWidth="0.0" text="E-mail" textAlignment="CENTER">
@@ -38,7 +37,7 @@
             <Font name="Arial Rounded MT Bold" size="38.0" />
          </font>
       </Text>
-      <Button fx:id="cancel" layoutX="505.0" layoutY="359.0" minWidth="40.0" mnemonicParsing="false" prefHeight="27.0" prefWidth="73.0" style="-fx-background-color: #dfda7e; -fx-background-radius: 25;" text="CANCEL" textFill="WHITE">
+      <Button fx:id="cancel" layoutX="505.0" layoutY="359.0" minWidth="40.0" mnemonicParsing="false" onAction="#cancel_login" prefHeight="27.0" prefWidth="73.0" style="-fx-background-color: #dfda7e; -fx-background-radius: 25;" text="CANCEL" textFill="WHITE">
          <font>
             <Font name="System Bold" size="12.0" />
          </font>

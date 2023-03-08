@@ -36,7 +36,8 @@ public class DataSource {
         return instance;
     }
 
-    public Connection getCnx() {
+    public Connection getConnection() {
         return cnx;
     }
+    
 }

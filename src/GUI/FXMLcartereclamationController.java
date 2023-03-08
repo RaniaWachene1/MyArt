@@ -3,11 +3,9 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package GUI;
+package gui;
 
 import Service.MyListener;
-import Service.ServiceTypeReclamation;
-import Service.Servicereclamation;
 import entite.Etatreclamation;
 import entite.Reclamation;
 import java.io.File;
@@ -21,6 +19,8 @@ import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.paint.Color;
 import javafx.scene.paint.Paint;
+import service.ServiceTypeReclamation;
+import service.Servicereclamation;
 
 /**
  * FXML Controller class
@@ -70,9 +70,17 @@ public class FXMLcartereclamationController implements Initializable {
         labeletat.setTextFill(paint);
         
         labeldesc.setText(r.getDescription());
-        File file=new File("C:\\Users\\ASUS\\Desktop\\PIDEV\\MyArt\\src\\img\\"+r.getImage());
+        if(r.getImage().equals("")){
+            File filed=new File("C:\\Users\\Acer\\Documents\\NetBeansProjects\\MyArt\\src\\gui\\IMG\\claims-1024x571.png");
+        Image imgd=new Image(filed.toURI().toString());
+        image.setImage(imgd);
+        }
+        else{
+            File file=new File("C:\\Users\\Acer\\Documents\\NetBeansProjects\\MyArt\\src\\gui\\IMG\\"+r.getImage());
         Image img=new Image(file.toURI().toString());
         image.setImage(img);
+        }
+        
     }
 
     @FXML

@@ -4,9 +4,6 @@
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.ComboBox?>
 <?import javafx.scene.control.DatePicker?>
-<?import javafx.scene.control.Menu?>
-<?import javafx.scene.control.MenuBar?>
-<?import javafx.scene.control.MenuItem?>
 <?import javafx.scene.control.PasswordField?>
 <?import javafx.scene.control.TableColumn?>
 <?import javafx.scene.control.TableView?>
@@ -22,7 +19,7 @@
         <URL value="@crud.css" />
     </stylesheets>
    <children>
-      <AnchorPane fx:id="txt4" layoutX="327.0" layoutY="5.0" prefHeight="481.0" prefWidth="461.0">
+      <AnchorPane fx:id="txt4" layoutX="327.0" layoutY="5.0" prefHeight="481.0" prefWidth="482.0">
          <children>
             <TableView fx:id="tableview" layoutX="3.0" layoutY="142.0" onMouseClicked="#handleMouse" prefHeight="209.0" prefWidth="475.0" style="-fx-background-color: #ebecee;">
               <columns>
@@ -41,27 +38,14 @@
                <font>
                   <Font name="System Bold" size="13.0" />
                </font></Button>
-            <Button fx:id="idbuttonc" layoutX="405.0" layoutY="434.0" mnemonicParsing="false" onAction="#cancel" prefHeight="30.0" prefWidth="73.0" style="-fx-background-color: #dfda7e; -fx-background-radius: 25;" text="cancel" textFill="WHITE">
+            <Button fx:id="idbuttonc" layoutX="405.0" layoutY="434.0" mnemonicParsing="false" onAction="#onactionlogout" prefHeight="30.0" prefWidth="73.0" style="-fx-background-color: #dfda7e; -fx-background-radius: 25;" text="Logout">
                <font>
                   <Font name="System Bold" size="13.0" />
                </font></Button>
-            <MenuBar fx:id="idme" layoutX="43.0" layoutY="66.0" prefHeight="26.0" prefWidth="298.0" style="-fx-background-color: #ebecee; -fx-background-radius: 25;">
-              <menus>
-                  <Menu fx:id="idhome" mnemonicParsing="false" text="Home" />
-                <Menu fx:id="idgallery" mnemonicParsing="false" text="Gallery" />
-                <Menu fx:id="idevent" mnemonicParsing="false" text="Event" />
-                <Menu fx:id="idauction" mnemonicParsing="false" text="Auction" />
-                  <Menu mnemonicParsing="false" text="claim">
-                    <items>
-                      <MenuItem mnemonicParsing="false" text="Action 1" />
-                    </items>
-                  </Menu>
-              </menus>
-            </MenuBar>
             <ImageView fitHeight="53.0" fitWidth="58.0" layoutX="424.0" pickOnBounds="true" preserveRatio="true" />
             <ImageView fitHeight="53.0" fitWidth="58.0" layoutX="424.0" layoutY="6.0">
                <image>
-                  <Image url="@../../../../../Downloads/324439463_718505903244455_374895459013489466_n.png" />
+                  <Image url="@IMG/logo.png" />
                </image>
             </ImageView>
             <Text fx:id="txt2" fill="#245393" layoutX="124.0" layoutY="46.0" strokeType="OUTSIDE" strokeWidth="0.0" text="MyArt" textAlignment="CENTER" wrappingWidth="187.0">
@@ -69,11 +53,6 @@
                   <Font name="Andalus" size="41.0" />
                </font>
             </Text>
-            <ImageView fitHeight="53.0" fitWidth="67.0" layoutX="420.0" layoutY="14.0" pickOnBounds="true" preserveRatio="true">
-               <image>
-                  <Image url="@IMG/logo%20(4).png" />
-               </image>
-            </ImageView>
             <Button fx:id="readall" layoutX="217.0" layoutY="434.0" mnemonicParsing="false" onAction="#readAll" prefHeight="30.0" prefWidth="107.0" style="-fx-background-color: #4f90b8; -fx-background-radius: 25;" text="ReadAll" textFill="WHITE">
                <font>
                   <Font name="System Bold" size="13.0" />
@@ -92,6 +71,26 @@
             <Button fx:id="idun" layoutX="383.0" layoutY="354.0" mnemonicParsing="false" onAction="#unblocked" prefHeight="30.0" prefWidth="94.0" style="-fx-background-radius: 25; -fx-background-color: #4f90b8;" text="unblocked " textFill="WHITE">
                <font>
                   <Font name="System Bold" size="13.0" />
+               </font>
+            </Button>
+            <Button fx:id="userss" layoutX="9.0" layoutY="63.0" mnemonicParsing="false" onAction="#onclickedusers" prefHeight="30.0" prefWidth="65.0" style="-fx-background-color: dfda7e; -fx-border-radius: 25;" text="Users">
+               <font>
+                  <Font name="System Bold" size="15.0" />
+               </font>
+            </Button>
+            <Button fx:id="galleryy" layoutX="78.0" layoutY="63.0" mnemonicParsing="false" onAction="#onclickedgalleryy" prefHeight="30.0" prefWidth="65.0" style="-fx-background-color: dfda7e; -fx-border-radius: 25;" text="Gallery">
+               <font>
+                  <Font name="System Bold" size="15.0" />
+               </font>
+            </Button>
+            <Button fx:id="eventss" layoutX="145.0" layoutY="63.0" mnemonicParsing="false" prefHeight="30.0" prefWidth="65.0" style="-fx-background-color: dfda7e; -fx-border-radius: 25;" text="Events">
+               <font>
+                  <Font name="System Bold" size="15.0" />
+               </font>
+            </Button>
+            <Button fx:id="claimss" layoutX="211.0" layoutY="63.0" mnemonicParsing="false" onAction="#gotoclaims" prefHeight="30.0" prefWidth="65.0" style="-fx-background-color: dfda7e; -fx-border-radius: 25;" text="Claim">
+               <font>
+                  <Font name="System Bold" size="15.0" />
                </font>
             </Button>
          </children>

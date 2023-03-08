@@ -108,8 +108,6 @@ public class LoginController implements Initializable {
     private Connection conn;
     private ResultSet rs;
 private PreparedStatement pst;
-    @FXML
-    private Button lgmail;
     Mailling m=new Mailling();
 
     @FXML
@@ -142,12 +140,28 @@ private PreparedStatement pst;
             pst.setString(2, password.getText());
             
            rs = pst.executeQuery();
+           
+          
            while(rs.next()){
+                  String titre=" successfuly login";
+            String message = email.getText();
+            TrayNotification tray = new TrayNotification();
+            AnimationType type = AnimationType.POPUP;
+            tray.setAnimationType(type);
+            tray.setTitle(titre);
+            tray.setMessage(message);
+            tray.setNotificationType(NotificationType.SUCCESS);
+            tray.showAndDismiss(Duration.millis(3000));
+               
+           
+           
                for (int i=0 ;i< rs.getString(1).length();i++){
-                   if(rs.getString(1).equals("1")){
+                   
+                   
+                   if(rs.getInt(1)==1){
                        // Admin scene
-                           try {
-                               User u = new User(email.getText());
+                        
+                User u = new User(email.getText());
                 Parent page = FXMLLoader.load(getClass().getResource("Crud.fxml"));
                 Scene scene = new Scene(page);
                 Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
@@ -156,14 +170,27 @@ private PreparedStatement pst;
                 stage.setResizable(false);
                 stage.show();
   
-            } catch (IOException ex) {
-                System.out.println(ex.getMessage());
-            }
                            }
                   
-                       if((rs.getString(1).equals("2"))&&(rs.getString(4).equals("unBlock"))){
+                   
+                   
+                    if(rs.getInt(1)==3){
+                           // Client
                            User u = new User(email.getText());
                        Parent page = FXMLLoader.load(getClass().getResource("profil.fxml"));
+                Scene scene = new Scene(page);
+                Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+                stage.setUserData(u);
+                stage.setScene(scene);
+                stage.setResizable(false);
+                stage.show();
+                   }
+                   
+                   
+                       if(rs.getInt(1)==2 && rs.getString(4).equals("unBlock")){
+                           // Client
+                           User u = new User(email.getText());
+                       Parent page = FXMLLoader.load(getClass().getResource("MarketG.fxml"));
                 Scene scene = new Scene(page);
                 Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
                 stage.setUserData(u);
@@ -178,29 +205,27 @@ private PreparedStatement pst;
                 stage.setResizable(false);
                 stage.show();
                    }
-                   if((rs.getString(1).equals("3"))&&(rs.getString(4).equals("unBlock"))){
-                       User u = new User(email.getText());
-                       Parent page = FXMLLoader.load(getClass().getResource("profil.fxml"));
-                Scene scene = new Scene(page);
-                Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
-                stage.setUserData(u);
-                stage.setScene(scene);
-                stage.setResizable(false);
-                stage.show();
-                   }else{
-                       Parent page = FXMLLoader.load(getClass().getResource("blocked.fxml"));
-                Scene scene = new Scene(page);
-                Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
-                stage.setScene(scene);
-                stage.setResizable(false);
-                stage.show();
-                   }
+                     
+                       
+                       
+                       
+                       
+                  
                    
             
              
                    
                 }
             }
+            String titre=" ERROR";
+            String message = email.getText();
+            TrayNotification tray = new TrayNotification();
+AnimationType type = AnimationType.POPUP;
+tray.setAnimationType(type);
+tray.setTitle(titre);
+tray.setMessage(message);
+tray.setNotificationType(NotificationType.ERROR);
+tray.showAndDismiss(Duration.millis(3000));
             
         } catch (SQLException ex) {
             Logger.getLogger(LoginController.class.getName()).log(Level.SEVERE, null, ex);
@@ -215,10 +240,20 @@ tray.setNotificationType(NotificationType.ERROR);
 tray.showAndDismiss(Duration.millis(3000));
         } catch (IOException ex) {
             Logger.getLogger(LoginController.class.getName()).log(Level.SEVERE, null, ex);
+             String titre=" ERROR";
+            String message = email.getText();
+            TrayNotification tray = new TrayNotification();
+AnimationType type = AnimationType.POPUP;
+tray.setAnimationType(type);
+tray.setTitle(titre);
+tray.setMessage(message);
+tray.setNotificationType(NotificationType.ERROR);
+tray.showAndDismiss(Duration.millis(3000));
              
         }
     
     }
+    
    public String em;
 public void getEmail(){
     login.setOnAction(new EventHandler<ActionEvent>() {
@@ -260,6 +295,16 @@ public void getEmail(){
     public void initialize(URL url, ResourceBundle rb) {
 
 
+    }
+
+    @FXML
+    private void cancel_login(ActionEvent event) throws IOException {
+        Parent page = FXMLLoader.load(getClass().getResource("Accueil.fxml"));
+                Scene scene = new Scene(page);
+                Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+                stage.setScene(scene);
+                stage.setResizable(false);
+                stage.show();
     }
 
  

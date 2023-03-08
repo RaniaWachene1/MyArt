@@ -3,11 +3,9 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package GUI;
+package gui;
 
 import Service.MyListener;
-import Service.ServiceTypeReclamation;
-import Service.Servicereclamation;
 import com.itextpdf.io.font.constants.StandardFonts;
 import com.itextpdf.io.image.ImageDataFactory;
 import com.itextpdf.kernel.colors.DeviceRgb;
@@ -54,8 +52,9 @@ import javafx.scene.layout.GridPane;
 import javafx.scene.layout.Region;
 import javafx.stage.FileChooser;
 import javafx.stage.Stage;
-import myart.FXMain;
-import util.PdfGenerator;
+import service.ServiceTypeReclamation;
+import service.Servicereclamation;
+import utils.PdfGenerator;
 
 /**
  * FXML Controller class
@@ -173,7 +172,7 @@ public class FXMLgstreclamationuserController implements Initializable {
     private void generatepdf(ActionEvent event) {
         PdfGenerator pg=new PdfGenerator();
         String date=LocalDateTime.now().toLocalDate().toString();
-        String path="C:\\Users\\ASUS\\Desktop\\PIDEV\\MyArt\\src\\pdf\\"+"MesReclamations"+date+".pdf";
+        String path="C:\\Users\\Acer\\Documents\\NetBeansProjects\\MyArt\\src\\pdf\\"+"MesReclamations"+date+".pdf";
         Document doc=pg.createPDF(path);
         doc.add(generateTablePDF());
         doc.close();
@@ -238,13 +237,13 @@ public class FXMLgstreclamationuserController implements Initializable {
         tftitre.setText(r.getTitre());
         cbtypereclamation.setValue(str.getTypeNomById(r.getId_typer()));
         tfimage.setText(r.getImage());
-        File file=new File("C:\\Users\\ASUS\\Desktop\\PIDEV\\MyArt\\src\\img\\"+r.getImage());
+        File file=new File("C:\\Users\\Acer\\Documents\\NetBeansProjects\\MyArt\\src\\gui\\IMG\\"+r.getImage());
         Image img=new Image(file.toURI().toString());
         image.setImage(img);
     }
     public Table generateTablePDF(){
         int row=1;
-        String imgPath="C:\\Users\\ASUS\\Desktop\\PIDEV\\MyArt\\src\\img\\";
+        String imgPath="C:\\Users\\Acer\\Documents\\NetBeansProjects\\MyArt\\src\\gui\\IMG\\";
         PdfFont bold=null;
         try {
             bold=PdfFontFactory.createFont(StandardFonts.TIMES_BOLD);
@@ -281,7 +280,14 @@ public class FXMLgstreclamationuserController implements Initializable {
             table.addCell(r.getDescription()+"");
             table.addCell(r.getDater()+"");
             table.addCell(r.getEtat()+"");
-            String currentPath=imgPath+r.getImage();
+            String currentPath="";
+            if(r.getImage().equals("")){
+                currentPath=imgPath+"claims-1024x571.png";
+            }
+            else{
+                currentPath=imgPath+r.getImage();
+            }
+            
             try {
                 com.itextpdf.layout.element.Image img;
                 img=new com.itextpdf.layout.element.Image(ImageDataFactory.create(currentPath));
@@ -311,7 +317,7 @@ public class FXMLgstreclamationuserController implements Initializable {
             primaryStage.setScene(scene);
             primaryStage.show();
         } catch (IOException ex) {
-            Logger.getLogger(FXMain.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(FXMLgstreclamationuserController.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
     public void recherche_avance(){

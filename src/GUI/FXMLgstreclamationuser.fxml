@@ -6,14 +6,20 @@
 <?import javafx.scene.control.ScrollPane?>
 <?import javafx.scene.control.TextArea?>
 <?import javafx.scene.control.TextField?>
+<?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.GridPane?>
 <?import javafx.scene.layout.RowConstraints?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane id="AnchorPane" fx:id="anchore" prefHeight="777.0" prefWidth="1411.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="GUI.FXMLgstreclamationuserController">
+<AnchorPane id="AnchorPane" fx:id="anchore" prefHeight="710.0" prefWidth="1329.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="gui.FXMLgstreclamationuserController">
    <children>
+      <ImageView fitHeight="720.0" fitWidth="499.0" layoutX="13.0" layoutY="34.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@IMG/777.jpg" />
+         </image>
+      </ImageView>
       <TextField fx:id="tftitre" layoutX="82.0" layoutY="107.0" prefHeight="25.0" prefWidth="200.0" promptText="Title " style="-fx-background-radius: 15;">
          <font>
             <Font name="System Bold Italic" size="12.0" />
@@ -27,11 +33,11 @@
          <font>
             <Font name="System Bold Italic" size="12.0" />
          </font></TextField>
-      <Button layoutX="98.0" layoutY="690.0" mnemonicParsing="false" onAction="#modifier" prefHeight="25.0" prefWidth="51.0" style="-fx-background-radius: 15; -fx-background-color: #4f90b8;" text="Edit" textFill="#fcf9f9">
+      <Button layoutX="110.0" layoutY="628.0" mnemonicParsing="false" onAction="#modifier" prefHeight="25.0" prefWidth="51.0" style="-fx-background-radius: 15; -fx-background-color: #4f90b8;" text="Edit" textFill="#fcf9f9">
          <font>
             <Font name="System Bold" size="12.0" />
          </font></Button>
-      <Button layoutX="205.0" layoutY="690.0" mnemonicParsing="false" onAction="#supprimer" prefHeight="25.0" prefWidth="60.0" style="-fx-background-radius: 15; -fx-background-color: #4f90b8;" text="Delete" textFill="#fcf3f3">
+      <Button layoutX="205.0" layoutY="630.0" mnemonicParsing="false" onAction="#supprimer" prefHeight="25.0" prefWidth="60.0" style="-fx-background-radius: 15; -fx-background-color: #4f90b8;" text="Delete" textFill="#fcf3f3">
          <font>
             <Font name="System Bold" size="12.0" />
          </font></Button>
@@ -39,7 +45,7 @@
          <font>
             <Font name="System Bold" size="12.0" />
          </font></Button>
-      <ScrollPane layoutX="500.0" layoutY="71.0" prefHeight="610.0" prefWidth="833.0" style="-fx-background-color: #4f90b8;">
+      <ScrollPane layoutX="517.0" layoutY="126.0" opacity="0.68" prefHeight="570.0" prefWidth="791.0" style="-fx-background-color: #4f90b8;">
          <content>
             <GridPane fx:id="grid">
               <rowConstraints>
@@ -48,15 +54,15 @@
             </GridPane>
          </content>
       </ScrollPane>
-      <TextField fx:id="tfrecherche" layoutX="768.0" layoutY="29.0" promptText="Search " style="-fx-background-radius: 15;">
+      <TextField fx:id="tfrecherche" layoutX="642.0" layoutY="83.0" promptText="Search " style="-fx-background-radius: 15;">
          <font>
             <Font name="System Italic" size="12.0" />
          </font></TextField>
-      <Button layoutX="1224.0" layoutY="29.0" mnemonicParsing="false" onAction="#generatepdf" prefHeight="25.0" prefWidth="51.0" style="-fx-background-radius: 15; -fx-background-color: #4f90b8;" text="PDF" textFill="WHITE">
+      <Button layoutX="1098.0" layoutY="83.0" mnemonicParsing="false" onAction="#generatepdf" prefHeight="25.0" prefWidth="51.0" style="-fx-background-radius: 15; -fx-background-color: #4f90b8;" text="PDF" textFill="WHITE">
          <font>
             <Font name="System Bold" size="12.0" />
          </font></Button>
-      <Button layoutX="1091.0" layoutY="29.0" mnemonicParsing="false" onAction="#tri" prefHeight="25.0" prefWidth="51.0" style="-fx-background-radius: 15; -fx-background-color: #4f90b8;" text="Tri" textFill="#f8f5f5">
+      <Button layoutX="965.0" layoutY="83.0" mnemonicParsing="false" onAction="#tri" prefHeight="25.0" prefWidth="51.0" style="-fx-background-radius: 15; -fx-background-color: #4f90b8;" text="Tri" textFill="#f8f5f5">
          <font>
             <Font name="System Bold" size="12.0" />
          </font></Button>

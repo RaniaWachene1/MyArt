@@ -11,6 +11,7 @@ import com.itextpdf.text.Paragraph;
 import com.itextpdf.text.pdf.PdfPCell;
 import com.itextpdf.text.pdf.PdfPTable;
 import com.itextpdf.text.pdf.PdfWriter;
+import com.mysql.cj.protocol.Resultset;
 import com.sun.scenario.effect.ImageData;
 //import static com.sun.xml.internal.fastinfoset.alphabet.BuiltInRestrictedAlphabets.table;
 import entite.Article;
@@ -21,6 +22,10 @@ import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 import java.io.IOException;
 import java.net.URL;
+import java.sql.Connection;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.ResourceBundle;
@@ -43,6 +48,10 @@ import service.ServiceArticle;
 import service.ServiceGalerie;
 import javafx.collections.ObservableList;
 import javafx.embed.swing.SwingFXUtils;
+import javafx.fxml.FXMLLoader;
+import javafx.scene.Node;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
 import javafx.scene.control.Alert;
 import javafx.scene.control.cell.ComboBoxTableCell;
 import javafx.scene.control.cell.PropertyValueFactory;
@@ -53,9 +62,11 @@ import javafx.stage.FileChooser;
 import javafx.util.Duration;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
+import javafx.stage.Stage;
 //import javax.imageio.ImageIO;
 import org.controlsfx.validation.ValidationSupport;
 import org.controlsfx.validation.Validator;
+import service.ConnectionClass;
 
 import tray.animations.AnimationType;
 import tray.notification.NotificationType;
@@ -121,16 +132,6 @@ public class GalerieController implements Initializable {
     @FXML
     private Button btn_GS;
     @FXML
-    private MenuBar id_menu;
-    @FXML
-    private Menu id_home;
-    @FXML
-    private Menu id_Gallery;
-    @FXML
-    private Menu id_events;
-    @FXML
-    private Menu id_auctions;
-    @FXML
     private Button btn_read;
     private Button photo;
     @FXML
@@ -150,6 +151,8 @@ public class GalerieController implements Initializable {
     private String PhotoPath;
     @FXML
     private Button myprofile;
+    @FXML
+    private Button idbuttonc1;
 
 //    public ProductForm(List<Galerie> products) {
 //        this.products = products;
@@ -181,194 +184,205 @@ public class GalerieController implements Initializable {
         List<String> list2=list.stream().map(e->e.getTitre_galerie()).collect(Collectors.toList());
         System.out.println(list2);
         galerie.setItems(FXCollections.observableArrayList(list2));
-               
-              
-
+ 
     }    
 
 
     @FXML
-    private void insert(ActionEvent event) throws Exception {
-   if (Txt_titre.getText().isEmpty() || photo.getText().isEmpty() || prix.getText().isEmpty() || quantite.getText().isEmpty() || nom_artiste.getText().isEmpty() || galerie.getValue() == null) {
-    
-            String titre="Required fields are empty !";
-String message = "Required fields are empty";
-TrayNotification tray = new TrayNotification();
-AnimationType type = AnimationType.POPUP;
-tray.setAnimationType(type);
-tray.setTitle(titre);
-tray.setMessage(message);
-tray.setNotificationType(NotificationType.ERROR);
-tray.showAndDismiss(Duration.millis(3000));
-            
-        }
-   
-        if (Txt_titre.getText().isEmpty()){
-        Txt_titre.setStyle("-fx-border-color:red ; -fx-border-width:2px ;");
-        new animatefx.animation.Shake(Txt_titre).play();
-        
-        }
-        
-        else{Txt_titre.setStyle(null);}
-        
-        
-       
-        if (Txt_nomArtiste.getText().isEmpty()){
-        Txt_nomArtiste.setStyle("-fx-border-color:red ; -fx-border-width:2px ;");
-        new animatefx.animation.Shake(Txt_nomArtiste).play();
-        
-        }
-        
-        else{Txt_nomArtiste.setStyle(null);}
-        
-        
-         if (desc.getText().isEmpty()){
-        desc.setStyle("-fx-border-color:red ; -fx-border-width:2px ;");
-        new animatefx.animation.Shake(desc).play();
-        
-        }
-        
-        else{desc.setStyle(null);}
-         
-         
-          if (quantite.getText().isEmpty()){
-        quantite.setStyle("-fx-border-color:red ; -fx-border-width:2px ;");
-        new animatefx.animation.Shake(quantite).play();
-        
-        }
-        
-        else{
-              quantite.setStyle(null);
-          }
-           
-          
-         if (Txt_nomArtiste.getText().isEmpty()){
-        Txt_nomArtiste.setStyle("-fx-border-color:red ; -fx-border-width:2px ;");
-        new animatefx.animation.Shake(Txt_nomArtiste).play();
-        
-        }
-        
-        else{Txt_nomArtiste.setStyle(null);}
-         
-         
-          if (prix.getText().isEmpty()){
-        prix.setStyle("-fx-border-color:red ; -fx-border-width:2px ;");
-        new animatefx.animation.Shake(prix).play();
-        
-        }
-        
-        else
-          {prix.setStyle(null); }
-        
-        if (photo.getText().isEmpty()){
-        photo.setStyle("-fx-border-color:red ; -fx-border-width:2px ;");
-        new animatefx.animation.Shake(photo).play();
-        
-        }
-        
-        else{photo.setStyle(null);}
- 
-       
-        
-        if ( 
-                prix.getText().matches(".*[a-z].*")
-                    )
-            {
-                prix.setStyle("-fx-border-color:red ; -fx-border-width:2px ;");
-        new animatefx.animation.Shake(prix).play();
-                        String titre=" Price must be number !";
-String message = "Please enter only Numbers !";
-TrayNotification tray = new TrayNotification();
-AnimationType type = AnimationType.POPUP;
-tray.setAnimationType(type);
-tray.setTitle(titre);
-tray.setMessage(message);
-tray.setNotificationType(NotificationType.ERROR);
-tray.showAndDismiss(Duration.millis(4000));
-
-        }
-            else{prix.setStyle(null);}
-        
-        
-        
-        
-         if ( 
-                quantite.getText().matches(".*[a-z].*")
-                    )
-            {
-                quantite.setStyle("-fx-border-color:red ; -fx-border-width:2px ;");
-        new animatefx.animation.Shake(quantite).play();
-                        String titre=" Quantity must be number !";
-String message = "Please enter only Numbers !";
-TrayNotification tray = new TrayNotification();
-AnimationType type = AnimationType.POPUP;
-tray.setAnimationType(type);
-tray.setTitle(titre);
-tray.setMessage(message);
-tray.setNotificationType(NotificationType.ERROR);
-tray.showAndDismiss(Duration.millis(4000));
-
-        }
-            else{quantite.setStyle(null);}
-        
-        
-        
-        
-    
-   if ((!(Txt_titre.getText().isEmpty() && photo.getText().isEmpty() && prix.getText().isEmpty() && quantite.getText().isEmpty() && nom_artiste.getText().isEmpty() && galerie.getValue() == null))
-    &&(!( Txt_titre.getText().matches(".*[0-9].*")))&&(!( Txt_nomArtiste.getText().matches(".*[0-9].*")))&&(!( prix.getText().matches(".*[a-z].*")))&&(!( quantite.getText().matches(".*[a-z].*"))))
-   {
-
-        ServiceGalerie sa=new ServiceGalerie();
+    private void insert(ActionEvent event) throws SQLException {
+//   if (Txt_titre.getText().isEmpty() || photo.getText().isEmpty() || prix.getText().isEmpty() || quantite.getText().isEmpty() || nom_artiste.getText().isEmpty() || galerie.getValue() == null) {
+//    
+//            String titre="Required fields are empty !";
+//String message = "Required fields are empty";
+//TrayNotification tray = new TrayNotification();
+//AnimationType type = AnimationType.POPUP;
+//tray.setAnimationType(type);
+//tray.setTitle(titre);
+//tray.setMessage(message);
+//tray.setNotificationType(NotificationType.ERROR);
+//tray.showAndDismiss(Duration.millis(3000));
+//            
+//        }
+//   
+//        if (Txt_titre.getText().isEmpty()){
+//        Txt_titre.setStyle("-fx-border-color:red ; -fx-border-width:2px ;");
+//        new animatefx.animation.Shake(Txt_titre).play();
+//        
+//        }
+//        
+//        else{Txt_titre.setStyle(null);}
+//        
+//        
+//       
+//        if (Txt_nomArtiste.getText().isEmpty()){
+//        Txt_nomArtiste.setStyle("-fx-border-color:red ; -fx-border-width:2px ;");
+//        new animatefx.animation.Shake(Txt_nomArtiste).play();
+//        
+//        }
+//        
+//        else{Txt_nomArtiste.setStyle(null);}
+//        
+//        
+//         if (desc.getText().isEmpty()){
+//        desc.setStyle("-fx-border-color:red ; -fx-border-width:2px ;");
+//        new animatefx.animation.Shake(desc).play();
+//        
+//        }
+//        
+//        else{desc.setStyle(null);}
+//         
+//         
+//          if (quantite.getText().isEmpty()){
+//        quantite.setStyle("-fx-border-color:red ; -fx-border-width:2px ;");
+//        new animatefx.animation.Shake(quantite).play();
+//        
+//        }
+//        
+//        else{
+//              quantite.setStyle(null);
+//          }
+//           
+//          
+//         if (Txt_nomArtiste.getText().isEmpty()){
+//        Txt_nomArtiste.setStyle("-fx-border-color:red ; -fx-border-width:2px ;");
+//        new animatefx.animation.Shake(Txt_nomArtiste).play();
+//        
+//        }
+//        
+//        else{Txt_nomArtiste.setStyle(null);}
+//         
+//         
+//          if (prix.getText().isEmpty()){
+//        prix.setStyle("-fx-border-color:red ; -fx-border-width:2px ;");
+//        new animatefx.animation.Shake(prix).play();
+//        
+//        }
+//        
+//        else
+//          {prix.setStyle(null); }
+//        
+//        if (photo.getText().isEmpty()){
+//        photo.setStyle("-fx-border-color:red ; -fx-border-width:2px ;");
+//        new animatefx.animation.Shake(photo).play();
+//        
+//        }
+//        
+//        else{photo.setStyle(null);}
+// 
+//       
+//        
+//        if ( 
+//                prix.getText().matches(".*[a-z].*")
+//                    )
+//            {
+//                prix.setStyle("-fx-border-color:red ; -fx-border-width:2px ;");
+//        new animatefx.animation.Shake(prix).play();
+//                        String titre=" Price must be number !";
+//String message = "Please enter only Numbers !";
+//TrayNotification tray = new TrayNotification();
+//AnimationType type = AnimationType.POPUP;
+//tray.setAnimationType(type);
+//tray.setTitle(titre);
+//tray.setMessage(message);
+//tray.setNotificationType(NotificationType.ERROR);
+//tray.showAndDismiss(Duration.millis(4000));
+//
+//        }
+//            else{prix.setStyle(null);}
+//        
+//        
+//        
+//        
+//         if ( 
+//                quantite.getText().matches(".*[a-z].*")
+//                    )
+//            {
+//                quantite.setStyle("-fx-border-color:red ; -fx-border-width:2px ;");
+//        new animatefx.animation.Shake(quantite).play();
+//                        String titre=" Quantity must be number !";
+//String message = "Please enter only Numbers !";
+//TrayNotification tray = new TrayNotification();
+//AnimationType type = AnimationType.POPUP;
+//tray.setAnimationType(type);
+//tray.setTitle(titre);
+//tray.setMessage(message);
+//tray.setNotificationType(NotificationType.ERROR);
+//tray.showAndDismiss(Duration.millis(4000));
+//
+//        }
+//            else{quantite.setStyle(null);}
+//        
+//        
+//        
+//        
+//    
+//   if ((!(Txt_titre.getText().isEmpty() && photo.getText().isEmpty() && prix.getText().isEmpty() && quantite.getText().isEmpty() && nom_artiste.getText().isEmpty() && galerie.getValue() == null))
+//    &&(!( Txt_titre.getText().matches(".*[0-9].*")))&&(!( Txt_nomArtiste.getText().matches(".*[0-9].*")))&&(!( prix.getText().matches(".*[a-z].*")))&&(!( quantite.getText().matches(".*[a-z].*"))))
+//   {
+//       
+//       ServiceGalerie sa=new ServiceGalerie();
+//          Galerie g= new Galerie();
+//                      int intGalerie=sa.getgalerieFromName( galerie.getValue());
+//
+//           g.setId_galerie(intGalerie);
+//         Article a=new Article( Txt_titre.getText(),
+//                 desc.getText(),
+//                 photo.getText(),
+//                 nom_artiste.getText(),
+//                 Float.parseFloat(prix.getText()),
+//                 Integer.parseInt(quantite.getText()),
+//                 g);
+//                 ServiceArticle servicearticle=new ServiceArticle();
+//           servicearticle.insert(a);
+//
+//
+//String titre=" Product Successfully added !";
+//String message =( Txt_titre.getText()+" Successfully added !");
+//TrayNotification tray = new TrayNotification();
+//AnimationType type = AnimationType.POPUP;
+//tray.setAnimationType(type);
+//tray.setTitle(titre);
+//tray.setMessage(message);
+//tray.setNotificationType(NotificationType.SUCCESS);
+//tray.showAndDismiss(Duration.millis(4000));
+//
+//         }
+//   else{
+//   
+//   String titre="Add product failed !";
+//String message =("Failed to add "+ Txt_titre.getText()+" , please try again !");
+//TrayNotification tray = new TrayNotification();
+//AnimationType type = AnimationType.POPUP;
+//tray.setAnimationType(type);
+//tray.setTitle(titre);
+//tray.setMessage(message);
+//tray.setNotificationType(NotificationType.ERROR);
+//tray.showAndDismiss(Duration.millis(1000));
+//   
+//   
+//   }
+  ServiceGalerie sa=new ServiceGalerie();
           Galerie g= new Galerie();
                       int intGalerie=sa.getgalerieFromName( galerie.getValue());
-
-           g.setId_galerie(intGalerie);
-
-        
-         Article a=new Article( Txt_titre.getText(),
-                 desc.getText(),
-                 photo.getText(),
-                 nom_artiste.getText(),
-                 
-                 Float.parseFloat(prix.getText()),
-                 Integer.parseInt(quantite.getText()),
-                 g);
-                 ServiceArticle servicearticle=new ServiceArticle();
-           servicearticle.insert(a);
-
-
-String titre=" Product Successfully added !";
-String message =( Txt_titre.getText()+" Successfully added !");
-TrayNotification tray = new TrayNotification();
-AnimationType type = AnimationType.POPUP;
-tray.setAnimationType(type);
-tray.setTitle(titre);
-tray.setMessage(message);
-tray.setNotificationType(NotificationType.SUCCESS);
-tray.showAndDismiss(Duration.millis(4000));
-
-         }
-   else{
-   
-   String titre="Add product failed !";
-String message =("Failed to add "+ Txt_titre.getText()+" , please try again !");
-TrayNotification tray = new TrayNotification();
-AnimationType type = AnimationType.POPUP;
-tray.setAnimationType(type);
-tray.setTitle(titre);
-tray.setMessage(message);
-tray.setNotificationType(NotificationType.ERROR);
-tray.showAndDismiss(Duration.millis(1000));
-   
-   
-   }
-  
-    }
+       ConnectionClass connectionClass=new ConnectionClass();
+         Connection conn=connectionClass.getConnection();
+       String sql = "INSERT INTO `articles`(`id_galerie`, `titre_article`, `nom_artiste`, `prix_article`, `desc_article`, `quantite_article`,`photo_article`) VALUES (?,?,?,?,?,?,?)";
+       PreparedStatement pst = conn.prepareStatement(sql);
+       pst.setInt(1,intGalerie);
+       pst.setString(2,Txt_titre.getText());
+       pst.setString(3,nom_artiste.getText());
+       pst.setFloat(4, Float.parseFloat(prix.getText()));
+       pst.setString(5,desc.getText());
+       pst.setInt(6,Integer.parseInt(quantite.getText()));
+       pst.setString(7, PhotoPath);
+      pst.executeUpdate();
+      System.out.println(pst);
+  }
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
     @FXML
     private void update(ActionEvent event) throws Exception {
-
+//                ServiceGalerie sa=new ServiceGalerie();
+//                Galerie g= new Galerie();
          if (txt_idp.getText().isEmpty() || Txt_titre.getText().isEmpty() || photo.getText().isEmpty() 
                  || prix.getText().isEmpty() || quantite.getText().isEmpty() || nom_artiste.getText().isEmpty() || galerie.getValue() == null ) {
              String titre="Update product failed !";
@@ -450,6 +464,7 @@ List<Article> liste=new ArrayList<>();
         ObservableList<Article> data =FXCollections.observableArrayList(liste);
                  System.out.println(sa);
                 ProductTable.setItems(data); 
+                System.out.print(liste);
     }
 
     @FXML
@@ -459,8 +474,8 @@ List<Article> liste=new ArrayList<>();
         try { 
             PdfWriter.getInstance(document, new FileOutputStream("C://pdf/article.pdf"));
             document.open();
-           // Image imgage = Image.getInstance("C://img/logo.png") ;
-           // document.add(img);
+//            Image imgage = Image.getInstance("C://img/logo.png") ;
+//            document.add(img);
             Paragraph ph0 = new Paragraph("        ");
             Paragraph ph1 = new Paragraph("MyArt !");
             Paragraph ph2 = new Paragraph("        ");
@@ -562,7 +577,23 @@ tray.showAndDismiss(Duration.millis(3000));
 }
 
     @FXML
-    private void profile(ActionEvent event) {
+    private void profonaction(ActionEvent event) throws IOException {
+         Parent page = FXMLLoader.load(getClass().getResource("Profile.fxml"));
+                Scene scene = new Scene(page);
+                Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+                stage.setScene(scene);
+                stage.setResizable(false);
+                stage.show();
+    }
+
+    @FXML
+    private void onactionlogout(ActionEvent event) throws IOException {
+        Parent page = FXMLLoader.load(getClass().getResource("Accueil.fxml"));
+                Scene scene = new Scene(page);
+                Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+                stage.setScene(scene);
+                stage.setResizable(false);
+                stage.show();
     }
 }
         

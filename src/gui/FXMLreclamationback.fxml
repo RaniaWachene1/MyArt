@@ -6,7 +6,7 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane id="AnchorPane" prefHeight="667.0" prefWidth="1009.0" style="-fx-background-color: #7f9db9;" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="GUI.FXMLreclamationbackController">
+<AnchorPane id="AnchorPane" prefHeight="667.0" prefWidth="1009.0" style="-fx-background-color: #7f9db9;" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="gui.FXMLreclamationbackController">
    <children>
       <TableView fx:id="tvreclamation" layoutX="177.0" layoutY="108.0" prefHeight="417.0" prefWidth="704.0">
         <columns>
@@ -28,7 +28,7 @@
          <font>
             <Font name="System Bold" size="15.0" />
          </font></Button>
-      <Button layoutX="788.0" layoutY="21.0" mnemonicParsing="false" onAction="#gotogsttype" prefHeight="35.0" prefWidth="157.0" style="-fx-background-color: #b8a468; -fx-background-radius: 15; -fx-background-color: ;" text="Claim Management " textFill="#fffdfd">
+      <Button layoutX="788.0" layoutY="21.0" mnemonicParsing="false" onAction="#gotogsttype" prefHeight="35.0" prefWidth="183.0" style="-fx-background-color: #b8a468; -fx-background-radius: 15; -fx-background-color: ;" text="Claim Type Management " textFill="#fffdfd">
          <font>
             <Font name="System Bold" size="13.0" />
          </font></Button>
@@ -36,5 +36,25 @@
          <font>
             <Font name="System Bold" size="15.0" />
          </font></Button>
+      <Button fx:id="userss" layoutX="202.0" layoutY="41.0" mnemonicParsing="false" onAction="#onclickedusers" prefHeight="30.0" prefWidth="65.0" style="-fx-background-color: dfda7e; -fx-border-radius: 25;" text="Users">
+         <font>
+            <Font name="System Bold" size="15.0" />
+         </font>
+      </Button>
+      <Button fx:id="galleryy" layoutX="271.0" layoutY="41.0" mnemonicParsing="false" onAction="#onclickedgalleryy" prefHeight="31.0" prefWidth="79.0" style="-fx-background-color: dfda7e; -fx-border-radius: 25;" text="Gallery">
+         <font>
+            <Font name="System Bold" size="15.0" />
+         </font>
+      </Button>
+      <Button fx:id="eventss" layoutX="355.0" layoutY="41.0" mnemonicParsing="false" prefHeight="31.0" prefWidth="95.0" style="-fx-background-color: dfda7e; -fx-border-radius: 25;" text="Events">
+         <font>
+            <Font name="System Bold" size="15.0" />
+         </font>
+      </Button>
+      <Button fx:id="claimss" layoutX="454.0" layoutY="41.0" mnemonicParsing="false" onAction="#gotoclaims" prefHeight="30.0" prefWidth="65.0" style="-fx-background-color: dfda7e; -fx-border-radius: 25;" text="Claim">
+         <font>
+            <Font name="System Bold" size="15.0" />
+         </font>
+      </Button>
    </children>
 </AnchorPane>

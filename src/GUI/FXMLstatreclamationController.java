@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package GUI;
+package gui;
 
 import java.io.IOException;
 import java.net.URL;
@@ -28,9 +28,7 @@ import javafx.scene.chart.PieChart;
 import javafx.scene.chart.XYChart;
 import javafx.scene.chart.XYChart.Series;
 import javafx.stage.Stage;
-import myart.FXMain;
-import util.Mysql;
-
+import utils.DataSource;
 /**
  * FXML Controller class
  *
@@ -40,7 +38,7 @@ public class FXMLstatreclamationController implements Initializable {
 
     @FXML
     private BarChart<String, Integer> barchart;
-    Connection conn=Mysql.getInstance().getConn();
+    Connection conn=DataSource.getInstance().getConnection();
     ObservableList<XYChart.Data> data=FXCollections.observableArrayList();
     /**
      * Initializes the controller class.
@@ -81,7 +79,7 @@ public class FXMLstatreclamationController implements Initializable {
             primaryStage.setScene(scene);
             primaryStage.show();
         } catch (IOException ex) {
-            Logger.getLogger(FXMain.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(FXMLreclamationbackController.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
     

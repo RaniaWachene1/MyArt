@@ -28,9 +28,12 @@ import utils.DataSource;
 
 public class ServiceGalerie implements IService<Galerie>{
  private Connection conn;
+ private Statement ste;                          
+private PreparedStatement pst;
+private ResultSet rs;
 
     public ServiceGalerie() {
-        conn = DataSource.getInstance().getCnx();
+       conn = DataSource.getInstance().getConnection();
         
     }
     ///////////////////////////////////////////////CRUD AJOUTER GALERIE ///////////////////////////////////////////////////////// OK*
@@ -162,13 +165,7 @@ public class ServiceGalerie implements IService<Galerie>{
       return i;
   
     }
-  
-
-  
-  
-  
-  
-  
+ 
   public ObservableList<Galerie> SearchBycateg(String ar) {
      
         ObservableList<Galerie> listData = FXCollections.observableArrayList();
@@ -189,6 +186,8 @@ public class ServiceGalerie implements IService<Galerie>{
         }
         return listData;
     }
+
+    
   
   
   

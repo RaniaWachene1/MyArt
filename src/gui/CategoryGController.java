@@ -14,7 +14,11 @@ import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
+import javafx.scene.Node;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
@@ -24,6 +28,7 @@ import javafx.scene.control.TextField;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.text.Text;
+import javafx.stage.Stage;
 import javafx.util.Duration;
 import service.ServiceGalerie;
 import tray.animations.AnimationType;
@@ -68,6 +73,16 @@ public class CategoryGController implements Initializable {
     ObservableList<Galerie> CategoryListSearch;
     @FXML
     private Button myprofile;
+    @FXML
+    private Button idbuttonc1;
+    @FXML
+    private Button userss;
+    @FXML
+    private Button galleryy;
+    @FXML
+    private Button eventss;
+    @FXML
+    private Button claimss;
 
     /**
      * Initializes the controller class.
@@ -235,8 +250,66 @@ tray.showAndDismiss(Duration.millis(3000));
     }
 
     @FXML
-    private void profile(ActionEvent event) {
+    private void profonaction(ActionEvent event) throws IOException {
+         Parent page = FXMLLoader.load(getClass().getResource("Profile.fxml"));
+                Scene scene = new Scene(page);
+                Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+                stage.setScene(scene);
+                stage.setResizable(false);
+                stage.show();
     }
+
+    @FXML
+    private void onactionlogout(ActionEvent event) throws IOException {
+          Parent page = FXMLLoader.load(getClass().getResource("Accueil.fxml"));
+                Scene scene = new Scene(page);
+                Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+                stage.setScene(scene);
+                stage.setResizable(false);
+                stage.show();
+    }
+
+    @FXML
+    private void onclickedusers(ActionEvent event) throws IOException {
+        Parent page = FXMLLoader.load(getClass().getResource("Crud.fxml"));
+                Scene scene = new Scene(page);
+                Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+                stage.setScene(scene);
+                stage.setResizable(false);
+                stage.show();
+    }
+
+    @FXML
+    private void onclickedgalleryy(ActionEvent event) throws IOException {
+        Parent page = FXMLLoader.load(getClass().getResource("CategoryG.fxml"));
+                Scene scene = new Scene(page);
+                Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+                stage.setScene(scene);
+                stage.setResizable(false);
+                stage.show();
+    }
+
+//    @FXML
+//    private void onclickedevents(ActionEvent event) {
+//    }
+//
+//    @FXML
+//    private void onclickedclaimss(ActionEvent event) {
+//    }
+//    
+//
+//
+
+    @FXML
+    private void gotoclaims(ActionEvent event) throws IOException {
+        Parent page = FXMLLoader.load(getClass().getResource("FXMLreclamationback.fxml"));
+                Scene scene = new Scene(page);
+                Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+                stage.setScene(scene);
+                stage.setResizable(false);
+                stage.show();
+    }
+    
     
     }
     
