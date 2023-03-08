@@ -1,49 +1,52 @@
 /*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Main.java to edit this template
+ * To change this license header, choose License Headers in Project Properties.
+ * To change this template file, choose Tools | Templates
+ * and open the template in the editor.
  */
 package myart;
-import utils.DataSource;
-import service.UserService;
-import entite.User;
-import service.RoleService;
-import entite.Role;
-import java.time.LocalDate;
-import java.util.Date;
+
+import Service.ServiceTypeReclamation;
+import Service.Servicereclamation;
+import entite.Etatreclamation;
+import entite.Reclamation;
+import entite.TypeReclamation;
+import java.io.IOException;
+import java.sql.Date;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+import util.FilterBadWord;
+
 /**
  *
- * @author rania
+ * @author ASUS
  */
-public class MyArt {
+public class Myart {
 
-//    /**
-//     * @param args the command line arguments
-//     */
-  public static void main(String[] args) {
-     // TODO code application logic here
-     DataSource ds1 =DataSource.getInstance();
-    System.out.println(ds1);
-//     
-  LocalDate ld=LocalDate.of(1999, 03, 06);
-//     
-//     
-//
-Role r=new Role(1,"Admin");
-UserService pst =new UserService();
-User u1 =new User( "Admin", "admin", ld, "Admin@gmail.com", "admin", "femme", 00000, "Img", "adresse",r);
-////RoleService pst =new RoleService();
-//
-//pst.insert(u1);
-  //pst.insert(u1);
-////pst.readById(2);
-////pst.readAll().forEach(System.out::println);
-pst.update(u1);
-//
-//  // RoleService r=new RoleService();
-//  //Role role=new Role();
-//  //role=r.readById(1);
-//    //  System.out.println(role);
-//    }
-//
-//  
-}}
+    /**
+     * @param args the command line arguments
+     */
+    public static void main(String[] args) {
+        ServiceTypeReclamation st=new ServiceTypeReclamation();
+        Servicereclamation sr=new Servicereclamation();
+        Reclamation r=new Reclamation("aaa", "qaa", "aa", new Date(2023-1900,2,12), 19, 1, Etatreclamation.TRAITE);
+        TypeReclamation tr=new TypeReclamation("test2", "uuuu");
+        try {
+            //st.ajouter(tr);
+            //st.modifier(tr, 2);
+            //System.out.println(st.afficher());
+            //st.supprimer(2);
+            //sr.ajouter(r);
+            //sr.modifier(r, 3);
+            //sr.supprimer(8);
+            //System.out.println(st.getAllNom());
+            //System.out.println(FilterBadWord.filter("hello fucking world"));
+            System.out.println(FilterBadWord.checkBadWords("fuck"));
+        } catch (IOException ex) {
+            Logger.getLogger(Myart.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        //System.out.println("'hello world'");
+        
+                
+    }
+    
+}

@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane id="AnchorPane" onMouseClicked="#selectionreclamation" prefHeight="460.0" prefWidth="345.0" style="-fx-background-color: #f8eddf; -fx-background-radius: 20; -fx-border-color: #121212; -fx-border-radius: 20; -fx-border-width: 1;" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="GUI.FXMLcartereclamationController">
+   <children>
+      <ImageView fx:id="image" fitHeight="200.0" fitWidth="340.0" layoutX="7.0" layoutY="6.0" pickOnBounds="true" preserveRatio="true" />
+      <Label fx:id="labeltitre" layoutX="177.0" layoutY="248.0" text="Label">
+         <font>
+            <Font size="15.0" />
+         </font></Label>
+      <Label fx:id="labeldesc" layoutX="98.0" layoutY="329.0" text="Label" />
+      <Label fx:id="labeltype" layoutX="177.0" layoutY="287.0" text="Label">
+         <font>
+            <Font size="15.0" />
+         </font></Label>
+      <Label fx:id="labeldate" layoutX="35.0" layoutY="429.0" text="Label" />
+      <Label fx:id="labeletat" layoutX="218.0" layoutY="420.0" text="Label">
+         <font>
+            <Font size="22.0" />
+         </font></Label>
+      <Label layoutX="21.0" layoutY="250.0" text="Titre" />
+      <Label layoutX="24.0" layoutY="290.0" text="Type reclamation" />
+      <Label layoutX="27.0" layoutY="328.0" text="Description:" />
+   </children>
+</AnchorPane>
