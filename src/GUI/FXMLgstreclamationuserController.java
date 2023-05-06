@@ -107,32 +107,21 @@ public class FXMLgstreclamationuserController implements Initializable {
             alert.showAndWait();
         }
         else{
-            
             int idtr=str.getTypeByNom(cbtypereclamation.getSelectionModel().getSelectedItem());
-            Reclamation ramodifier=sr.getById(Integer.parseInt(idgetter.getText()));
-            if(ramodifier.getEtat().equals(Etatreclamation.TRAITE)){
-                Alert alert=new Alert(Alert.AlertType.WARNING);
-                alert.setTitle("erreure modification reclamation");
-                alert.setContentText("This claim is already treated");
-                alert.showAndWait();
-            }
-            else{
-                Reclamation r=new Reclamation();
-                r.setDescription(tfdescription.getText());
-                r.setTitre(tftitre.getText());
-                r.setImage(tfimage.getText());
-                r.setId_typer(idtr);
-                r.setId_user(15);
-                r.setDater(new Date(System.currentTimeMillis()));
-                r.setEtat(Etatreclamation.NON_TRAITE);
-                sr.modifier(r,Integer.valueOf(idgetter.getText()));
-                Alert alert=new Alert(Alert.AlertType.INFORMATION);
-                alert.setTitle("Reclamation");
-                alert.setContentText("ajout reclamation avec succes");
-                alert.showAndWait();
-                refresh(sr.afficher());
-            }
-            
+            Reclamation r=new Reclamation();
+            r.setDescription(tfdescription.getText());
+            r.setTitre(tftitre.getText());
+            r.setImage(tfimage.getText());
+            r.setId_typer(idtr);
+            r.setId_user(15);
+            r.setDater(new Date(System.currentTimeMillis()));
+            r.setEtat(Etatreclamation.Unprocessed);
+            sr.modifier(r,Integer.valueOf(idgetter.getText()));
+            Alert alert=new Alert(Alert.AlertType.INFORMATION);
+            alert.setTitle("Reclamation");
+            alert.setContentText("ajout reclamation avec succes");
+            alert.showAndWait();
+            refresh(sr.afficher());
         }
     }
     public String controleDeSaisie(){
@@ -173,7 +162,7 @@ public class FXMLgstreclamationuserController implements Initializable {
     private void generatepdf(ActionEvent event) {
         PdfGenerator pg=new PdfGenerator();
         String date=LocalDateTime.now().toLocalDate().toString();
-        String path="C:\\Users\\ASUS\\Desktop\\PIDEV\\MyArt\\src\\pdf\\"+"MesReclamations"+date+".pdf";
+        String path="C:\\Users\\ASUS\\Downloads\\myart\\src\\pdf\\"+"MesReclamations"+date+".pdf";
         Document doc=pg.createPDF(path);
         doc.add(generateTablePDF());
         doc.close();
@@ -238,13 +227,13 @@ public class FXMLgstreclamationuserController implements Initializable {
         tftitre.setText(r.getTitre());
         cbtypereclamation.setValue(str.getTypeNomById(r.getId_typer()));
         tfimage.setText(r.getImage());
-        File file=new File("C:\\Users\\ASUS\\Desktop\\PIDEV\\MyArt\\src\\img\\"+r.getImage());
+        File file=new File("C:\\Users\\ASUS\\Downloads\\myart\\src\\img\\"+r.getImage());
         Image img=new Image(file.toURI().toString());
         image.setImage(img);
     }
     public Table generateTablePDF(){
         int row=1;
-        String imgPath="C:\\Users\\ASUS\\Desktop\\PIDEV\\MyArt\\src\\img\\";
+        String imgPath="C:\\Users\\ASUS\\Downloads\\myart\\src\\img\\";
         PdfFont bold=null;
         try {
             bold=PdfFontFactory.createFont(StandardFonts.TIMES_BOLD);
@@ -342,6 +331,22 @@ public class FXMLgstreclamationuserController implements Initializable {
             });
             refresh(filtreddata);
         });
+    }
+
+    @FXML
+    private void gotoreponseuser(ActionEvent event) {
+        Stage stageclose=(Stage)((Node)event.getSource()).getScene().getWindow();
+        stageclose.close();
+        try {
+            Parent root=FXMLLoader.load(getClass().getResource("/GUI/FXMLreponseuser.fxml"));
+            Scene scene = new Scene(root);
+            Stage primaryStage=new Stage();
+            primaryStage.setTitle("Reclamation!");
+            primaryStage.setScene(scene);
+            primaryStage.show();
+        } catch (IOException ex) {
+            Logger.getLogger(FXMain.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }
     
 }

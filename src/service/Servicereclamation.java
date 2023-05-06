@@ -7,7 +7,6 @@ package Service;
 
 import entite.Etatreclamation;
 import entite.Reclamation;
-import java.io.IOException;
 import java.sql.Connection;
 import java.sql.ResultSet;
 import java.sql.SQLException;
@@ -16,7 +15,6 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
-import util.FilterBadWord;
 import util.Mysql;
 
 /**
@@ -31,19 +29,14 @@ public class Servicereclamation implements Iservice<Reclamation>{
     @Override
     public void ajouter(Reclamation t) {
         try {
-            String query="";
-            try {
-                query = "INSERT INTO `reclam`"
-                        + "(`titre`, `description`,"
-                        + " `image`, `dater`, `id_user`,"
-                        + " `idtyper`, `etat`) VALUES "
-                        + "('"+FilterBadWord.filter(t.getTitre())+"',"
-                        + "'"+FilterBadWord.filter(t.getDescription())+"','"+t.getImage()+"',"
-                        + "'"+t.getDater()+"','"+t.getId_user()+"',"
-                        + "'"+t.getId_typer()+"','"+t.getEtat()+"')";
-            } catch (IOException ex) {
-                Logger.getLogger(Servicereclamation.class.getName()).log(Level.SEVERE, null, ex);
-            }
+            String query="INSERT INTO `reclam`"
+                    + "(`titre`, `description`,"
+                    + " `image`, `dater`, `id_user`,"
+                    + " `idtyper`, `etat`) VALUES "
+                    + "('"+t.getTitre()+"',"
+                    + "'"+t.getDescription()+"','"+t.getImage()+"',"
+                    + "'"+t.getDater()+"','"+t.getId_user()+"',"
+                    + "'"+t.getId_typer()+"','"+t.getEtat()+"')";
             Statement st=conn.createStatement();
             st.executeUpdate(query);
         } catch (SQLException ex) {
@@ -54,18 +47,13 @@ public class Servicereclamation implements Iservice<Reclamation>{
     @Override
     public void modifier(Reclamation t, int id) {
         try {
-            String query="";
-            try {
-                query = "UPDATE `reclam` SET `titre`='"+FilterBadWord.filter(t.getTitre())+"',"
-                        + "`description`='"+FilterBadWord.filter(t.getDescription())+"',"
-                        + "`image`='"+t.getImage()+"',"
-                        + "`dater`='"+t.getDater()+"',"
-                        + "`id_user`='"+t.getId_user()+"',"
-                        + "`idtyper`='"+t.getId_typer()+"',"
-                        + "`etat`='"+t.getEtat()+"' WHERE idr="+id;
-            } catch (IOException ex) {
-                Logger.getLogger(Servicereclamation.class.getName()).log(Level.SEVERE, null, ex);
-            }
+            String query="UPDATE `reclam` SET `titre`='"+t.getTitre()+"',"
+                    + "`description`='"+t.getDescription()+"',"
+                    + "`image`='"+t.getImage()+"',"
+                    + "`dater`='"+t.getDater()+"',"
+                    + "`id_user`='"+t.getId_user()+"',"
+                    + "`idtyper`='"+t.getId_typer()+"',"
+                    + "`etat`='"+t.getEtat()+"' WHERE idr="+id;
             Statement st=conn.createStatement();
             st.executeUpdate(query);
         } catch (SQLException ex) {
@@ -110,7 +98,7 @@ public class Servicereclamation implements Iservice<Reclamation>{
         return lr;
     }
     public Reclamation getById(int id){
-        return afficher().stream().filter(r->r.getIdr()==id).findAny().orElse(null);
+        return afficher().stream().filter(r->r.getIdr()==id).findFirst().orElse(null);
     }
     
 }

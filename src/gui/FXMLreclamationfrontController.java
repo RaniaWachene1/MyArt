@@ -11,7 +11,6 @@ import entite.Etatreclamation;
 import entite.Reclamation;
 import java.io.File;
 import java.io.IOException;
-import java.net.MalformedURLException;
 import java.net.URL;
 import java.sql.Date;
 import java.util.ResourceBundle;
@@ -36,7 +35,6 @@ import javafx.scene.layout.AnchorPane;
 import javafx.stage.FileChooser;
 import javafx.stage.Stage;
 import myart.FXMain;
-import util.FilterBadWord;
 
 /**
  * FXML Controller class
@@ -72,7 +70,7 @@ public class FXMLreclamationfrontController implements Initializable {
     }    
 
     @FXML
-    private void ajouter(ActionEvent event) throws MalformedURLException, IOException {
+    private void ajouter(ActionEvent event) {
         if(controleDeSaisie().length()>0){
             Alert alert=new Alert(Alert.AlertType.WARNING);
             alert.setTitle("erreure ajout reclamation");
@@ -82,21 +80,13 @@ public class FXMLreclamationfrontController implements Initializable {
         else{
             int idtr=str.getTypeByNom(cbtype.getSelectionModel().getSelectedItem());
             Reclamation r=new Reclamation();
-            
-            if(FilterBadWord.checkBadWords(tadesc.getText())|| FilterBadWord.checkBadWords(tftitre.getText())){
-                Alert alertbd=new Alert(Alert.AlertType.WARNING);
-                alertbd.setTitle("erreure ajout reclamation");
-                alertbd.setContentText("-Attention de ne pas mettre des gros mots\n");
-                alertbd.showAndWait();
-            }
-            
             r.setDescription(tadesc.getText());
             r.setTitre(tftitre.getText());
             r.setImage(tfimage.getText());
             r.setId_typer(idtr);
             r.setId_user(15);
             r.setDater(new Date(System.currentTimeMillis()));
-            r.setEtat(Etatreclamation.NON_TRAITE);
+            r.setEtat(Etatreclamation.Unprocessed);
             sr.ajouter(r);
             Alert alert=new Alert(Alert.AlertType.INFORMATION);
             alert.setTitle("Reclamation");
@@ -107,18 +97,15 @@ public class FXMLreclamationfrontController implements Initializable {
     }
     public String controleDeSaisie(){
         String erreur="";
-            
-            if(tftitre.getText().trim().isEmpty()){
-                erreur+="Titre vide!\n";
-            }
-            if(tadesc.getText().trim().isEmpty()){
-                erreur+="Description vide!\n";
-            }
-            if(cbtype.getSelectionModel().getSelectedItem()==null){
-                erreur+="type reclamtion vide!\n";
-            }
-            
-        
+        if(tftitre.getText().trim().isEmpty()){
+            erreur+="Titre vide!\n";
+        }
+        if(tadesc.getText().trim().isEmpty()){
+            erreur+="Description vide!\n";
+        }
+        if(cbtype.getSelectionModel().getSelectedItem()==null){
+            erreur+="type reclamtion vide!\n";
+        }
         return erreur;
     }
 

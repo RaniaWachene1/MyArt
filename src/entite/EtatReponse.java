@@ -9,7 +9,6 @@ package entite;
  *
  * @author ASUS
  */
-public enum Etatreclamation {
-    Handled , Unprocessed  
-    
+public enum EtatReponse {
+    Unsatisfied,Satisfied
 }

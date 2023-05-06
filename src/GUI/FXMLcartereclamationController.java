@@ -60,7 +60,7 @@ public class FXMLcartereclamationController implements Initializable {
         labeltitre.setText(r.getTitre());
         labeltype.setText(str.getTypeNomById(r.getId_typer()));
         labeletat.setText(r.getEtat().name());
-        if(r.getEtat().equals(Etatreclamation.NON_TRAITE)){
+        if(r.getEtat().equals(Etatreclamation.Unprocessed)){
             paint=new Color(1, 0, 0, 1);
         }
         else {
@@ -70,7 +70,7 @@ public class FXMLcartereclamationController implements Initializable {
         labeletat.setTextFill(paint);
         
         labeldesc.setText(r.getDescription());
-        File file=new File("C:\\Users\\ASUS\\Desktop\\PIDEV\\MyArt\\src\\img\\"+r.getImage());
+        File file=new File("C:\\Users\\ASUS\\Downloads\\myart\\src\\img\\"+r.getImage());
         Image img=new Image(file.toURI().toString());
         image.setImage(img);
     }
